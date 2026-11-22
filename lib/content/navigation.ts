@@ -1,0 +1,127 @@
+import { assets } from "@/lib/assets";
+import { footerIndustries } from "./industries";
+import { services } from "./services";
+
+/*
+  Navbar navigation, used by components/layout/SiteHeader.tsx. The dropdowns list the Footer's
+  Services, Industries and Company columns with the Footer's labels. A link points at a page only
+  where that page already exists on the site; every other "#" is a placeholder until real URLs are
+  provided. Do not invent URLs.
+
+  The Footer (components/layout/SiteFooter.tsx) reads its company labels from `companyLinks`, and its
+  social links, legal links, intro and regions from `socialLinks`, `legalLinks` and `navBrandCard`.
+  It reuses the labels only: its link destinations stay in the Footer itself (of its column links,
+  only About Us and Insights have a page; the rest, and the social and legal links, are "#").
+  Whether the Footer should use these real routes is a pending owner decision (R3), so
+  `footerColumns` is not used by it.
+*/
+
+export type NavLink = {
+  label: string;
+  href: string;
+  /** Shown under the label in the Navbar dropdown: the service's Services-section card text. */
+  description?: string;
+};
+
+/**
+ * A Navbar dropdown: one Footer column, ending in its action link. `links` are the main links;
+ * `extra` are the column's remaining links, shown smaller in the dropdown's action bar. The Footer
+ * order is `links` then `extra`.
+ */
+export type NavMenu = {
+  title: string;
+  links: NavLink[];
+  extra?: NavLink[];
+  action: NavLink;
+};
+
+export type NavItem = NavLink & {
+  menu?: NavMenu;
+  /** Draws the chevron on an item that has no dropdown yet ("Our Work", as in the design). */
+  chevron?: boolean;
+};
+
+/**
+ * Each service links to its Details page, the same `href` its Services card uses. Only the six
+ * featured services carry a description, so only they become main links.
+ */
+const serviceLinks: NavLink[] = services.map(({ title, featured, card }) => ({
+  label: title,
+  href: card?.href ?? "#",
+  description: featured ? card?.description : undefined,
+}));
+
+/** The six featured services are the main links; the other two are extras. */
+export const servicesMenu: NavMenu = {
+  title: "Services",
+  links: serviceLinks.filter((link) => link.description),
+  extra: serviceLinks.filter((link) => !link.description),
+  action: { label: "View All Services", href: "/services" },
+};
+
+export const industriesMenu: NavMenu = {
+  title: "Industries",
+  links: footerIndustries.map((label) => ({ label, href: "#" })),
+  // Under Industries on purpose: the reference has it wrong (approved decision).
+  action: { label: "View All Industries", href: "/industries" },
+};
+
+/** The About Us page. The Footer looks this link up too, so the destination lives in one place. */
+export const aboutUsLink: NavLink = { label: "About Us", href: "/about" };
+
+/** The Footer's "Company" column. "Our Work" is listed here, while the Navbar also has it at the top level. */
+export const companyLinks: NavLink[] = [
+  aboutUsLink,
+  { label: "How We Work", href: "#" },
+  { label: "Our Team", href: "#" },
+  { label: "Global Delivery", href: "#" },
+  { label: "Careers", href: "#" },
+  { label: "Insights", href: "/insights" },
+  { label: "Our Work", href: "/our-work" },
+];
+
+/** "Our Work" is an extra here, because the Navbar also lists it at the top level. */
+export const companyMenu: NavMenu = {
+  title: "Company",
+  links: companyLinks.filter((link) => link.label !== "Our Work"),
+  extra: companyLinks.filter((link) => link.label === "Our Work"),
+  action: { label: "Contact Us", href: "/contact" },
+};
+
+/** The navy card in every Navbar dropdown: the Footer's introduction and regions, word for word. */
+export const navBrandCard = {
+  intro:
+    "A global technology company designing and building digital products for ambitious businesses in the USA, UAE, and worldwide.",
+  regions: "USA • UAE • Worldwide",
+};
+
+/**
+ * Navbar items, in order. An item with a menu and href "#" is one toggle button (no navigation):
+ * Services works like Industries and Company, and /services is reached from its dropdown's
+ * "View All Services" button.
+ */
+export const primaryNav: NavItem[] = [
+  { label: "Services", href: "#", menu: servicesMenu },
+  { label: "Industries", href: "#", menu: industriesMenu },
+  { label: "Our Work", href: "#", chevron: true },
+  { label: "Company", href: "#", menu: companyMenu },
+  { label: "Contact", href: "/contact" },
+];
+
+/** The Footer's three link columns, each ending in its action link (the same lists as the dropdowns). */
+export const footerColumns: NavMenu[] = [servicesMenu, industriesMenu, companyMenu].map(
+  ({ extra = [], ...menu }) => ({ ...menu, links: [...menu.links, ...extra] }),
+);
+
+export const legalLinks: NavLink[] = [
+  { label: "Cookie Policy", href: "#" },
+  { label: "Terms of Service", href: "#" },
+  { label: "Privacy Policy", href: "#" },
+];
+
+/** Twitter keeps the bird icon, not X (approved decision). */
+export const socialLinks: (NavLink & { icon: string })[] = [
+  { label: "LinkedIn", href: "#", icon: assets.footerLinkedin },
+  { label: "Twitter", href: "#", icon: assets.footerTwitter },
+  { label: "Instagram", href: "#", icon: assets.footerInstagram },
+];

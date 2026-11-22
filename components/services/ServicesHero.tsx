@@ -1,0 +1,116 @@
+import { AssetImage } from "@/components/ui/AssetImage";
+import { ButtonLink } from "@/components/ui/ButtonLink";
+import { MaskLine } from "@/components/motion/MaskLine";
+import { StaggerText } from "@/components/motion/StaggerText";
+import { assets } from "@/lib/assets";
+import { servicesHero } from "@/lib/content/services";
+
+const { eyebrow, heading, description, primaryAction, secondaryAction, features } = servicesHero;
+
+// Entrance animations are CSS only, so content never depends on JavaScript to appear.
+const textEnter = "animate-hero-text motion-reduce:animate-hero-fade";
+
+export function ServicesHero() {
+  return (
+    <section id="services-hero" className="relative overflow-hidden bg-[#eedac2]">
+      {/*
+        Homepage Hero standard (owner, 2026-11-18): the frame of components/home/Hero.tsx, as on the
+        other inner pages. From lg the content sits in the Homepage's two-column grid with its top
+        padding (bar height plus clamp(40px, 4.167vw, 80px)) and bottom padding (clamp(56px, 5.208vw,
+        100px)); the right column is an empty 760/562 box in place of the Homepage photo grid, so the
+        Hero is 842px at 1920 and the text is centred against it. The artwork covers the whole area.
+        From lg the artwork fills the section. Below that it sits under the text, cropped to the devices.
+      */}
+      <div className="absolute inset-0 hidden lg:block">
+        <AssetImage
+          src={assets.serviceListHero}
+          alt=""
+          sizes="100vw"
+          priority
+          className="object-cover"
+        />
+      </div>
+
+      <div className="relative mx-auto grid w-full max-w-[1600px] px-5 pt-[116px] pb-12 md:px-8 md:pt-[124px] md:pb-16 lg:grid-cols-[minmax(0,800fr)_minmax(0,760fr)] lg:items-center lg:pt-[calc(76px+clamp(40px,4.167vw,80px))] lg:pb-[clamp(56px,5.208vw,100px)] xl:px-5 xl:pt-[calc(100px+clamp(40px,4.167vw,80px))]">
+        <div className="min-w-0 lg:pr-6">
+        <p
+          className={`${textEnter} text-[16px] leading-5 font-bold tracking-[0.066em] text-brand uppercase lg:text-[clamp(14px,0.833vw,16px)]`}
+        >
+          {eyebrow}
+        </p>
+
+        <h1
+          className="mt-[23px] text-[min(calc((100vw-40px)/10.3),64px)] leading-[1.04] font-[660] tracking-[-0.0096em] text-ink lg:text-[clamp(38px,3.75vw,72px)] lg:whitespace-nowrap"
+        >
+          <MaskLine onLoad order={1}>
+            {heading.first}
+          </MaskLine>{" "}
+          <MaskLine onLoad order={2} className="text-brand">
+            {heading.accent}
+          </MaskLine>
+        </h1>
+
+        <p
+          className={`${textEnter} mt-[25px] max-w-[26.5em] text-[18px] leading-[1.367] text-ink [animation-delay:260ms] lg:text-[clamp(18px,1.354vw,26px)]`}
+        >
+          {description}
+        </p>
+
+        <div
+          className={`${textEnter} mt-6 flex flex-wrap items-center gap-3 [animation-delay:340ms]`}
+        >
+          {/* No destinations in the design yet. */}
+          <ButtonLink href={primaryAction.href} className="h-[60px] px-6 pt-px text-[20px] font-medium! lg:h-[clamp(48px,3.125vw,60px)] lg:px-[clamp(16px,1.25vw,24px)] lg:text-[clamp(16px,1.042vw,20px)] gap-2.5 lg:gap-[clamp(7px,0.521vw,10px)] lg:min-w-[min(12.97vw,249px)]">
+            <StaggerText text={primaryAction.label} />
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="mr-0.5">
+              <path
+                d="M2 9h14M10.5 3.5 16 9l-5.5 5.5"
+                stroke="currentColor"
+                strokeWidth="1.75"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </ButtonLink>
+          <ButtonLink href={secondaryAction.href} variant="secondary" className="h-[60px] px-6 pt-0.5 text-[20px] font-semibold! tracking-[-0.001em]! lg:h-[clamp(48px,3.125vw,60px)] lg:px-[clamp(16px,1.25vw,24px)] lg:text-[clamp(16px,1.042vw,20px)] border-[#a59788]! hover:border-ink! lg:min-w-[min(12.92vw,248px)]">
+            <StaggerText text={secondaryAction.label} />
+          </ButtonLink>
+        </div>
+
+        <ul className="mt-6 flex flex-wrap gap-x-[22.35px] gap-y-2">
+          {features.map((feature, index) => (
+            <li
+              key={feature}
+              style={{ animationDelay: `${420 + index * 70}ms` }}
+              className={`${textEnter} flex items-center gap-2 text-[18px] leading-5 text-ink xl:gap-1.5 xl:first:gap-[11px] lg:text-[clamp(15px,0.94vw,18px)]`}
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path
+                  d="m2 8.5 4 4 8-9"
+                  stroke="#eb5a20"
+                  strokeWidth="1.75"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              {feature}
+            </li>
+          ))}
+        </ul>
+        </div>
+
+        {/* The Homepage photo grid's box (760x562 at 1920), left empty: the artwork shows through. */}
+        <div aria-hidden="true" className="hidden aspect-[760/562] w-full lg:block" />
+      </div>
+
+      <div className="relative aspect-[6/5] [mask-image:linear-gradient(to_bottom,transparent,black_48px)] md:aspect-[2/1] lg:hidden">
+        <AssetImage
+          src={assets.serviceListHero}
+          alt=""
+          sizes="(min-width: 768px) 100vw, 200vw"
+          className="object-cover object-right"
+        />
+      </div>
+    </section>
+  );
+}
