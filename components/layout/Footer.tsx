@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { Container } from "@/components/ui/Container";
@@ -7,7 +6,8 @@ import { revealOrder } from "@/components/motion/revealOrder";
 import { assets } from "@/lib/assets";
 import { finalCta } from "@/lib/content/contact";
 import { homeFooter } from "@/lib/content/home";
-import { legalLinks, navBrandCard, socialLinks } from "@/lib/content/navigation";
+import { legalLinks, navBrandCard } from "@/lib/content/navigation";
+import { FooterSocialLinks } from "./FooterSocialLinks";
 
 /*
   The Homepage Footer (2026-11-16 redesign, reference `Frame 2147239202.png`): the Final CTA and
@@ -131,19 +131,7 @@ export function Footer() {
               <p className="mt-6 max-w-[30em] text-[17px] leading-[1.3] xl:mt-[calc(var(--u)*30)] xl:max-w-[calc(var(--u)*460)] xl:text-[max(16px,calc(var(--u)*18))] xl:leading-[calc(var(--u)*22)]">
                 {navBrandCard.intro}
               </p>
-              <ul className="mt-6 flex gap-[9px] xl:mt-[calc(var(--u)*29.3)]">
-                {socialLinks.map((social) => (
-                  <li key={social.label}>
-                    <Link
-                      href={social.href}
-                      aria-label={social.label}
-                      className="block size-9 rounded-[5px] transition-opacity duration-200 hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                    >
-                      <Image src={social.icon} alt="" width={36} height={36} />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              <FooterSocialLinks className="mt-6 xl:mt-[calc(var(--u)*29.3)]" />
             </div>
 
             <div className="grid gap-10 sm:grid-cols-[minmax(0,247fr)_minmax(0,312fr)_minmax(max-content,112fr)] sm:gap-x-6 xl:gap-x-0">

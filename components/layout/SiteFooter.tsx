@@ -11,10 +11,10 @@ import {
   companyLinks,
   legalLinks,
   navBrandCard,
-  socialLinks,
 } from "@/lib/content/navigation";
 import { services } from "@/lib/content/services";
 import { FooterBackground } from "./FooterBackground";
+import { FooterSocialLinks } from "./FooterSocialLinks";
 
 /*
   Destinations for column links that have a page: About Us and Insights so far (owner, 2026-11-11),
@@ -89,19 +89,7 @@ export function SiteFooter() {
               {navBrandCard.intro}
             </p>
 
-            <ul style={revealOrder(1)} className="ww-rise mt-[29px] flex gap-2.5">
-              {socialLinks.map((social) => (
-                <li key={social.label}>
-                  <Link
-                    href="#"
-                    aria-label={social.label}
-                    className={`block size-9 transition-opacity duration-200 hover:opacity-70 ${focusRing}`}
-                  >
-                    <Image src={social.icon} alt="" width={36} height={36} />
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <FooterSocialLinks style={revealOrder(1)} className="ww-rise mt-[29px] gap-2.5" />
 
             {/* Animated itself, not through a parent: a parent's opacity would interrupt the blur. */}
             <div

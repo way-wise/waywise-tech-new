@@ -1,4 +1,3 @@
-import { assets } from "@/lib/assets";
 import { footerIndustries } from "./industries";
 import { services } from "./services";
 
@@ -103,7 +102,7 @@ export const navBrandCard = {
 export const primaryNav: NavItem[] = [
   { label: "Services", href: "#", menu: servicesMenu },
   { label: "Industries", href: "#", menu: industriesMenu },
-  { label: "Our Work", href: "#", chevron: true },
+  { label: "Our Work", href: "/our-work",},
   { label: "Company", href: "#", menu: companyMenu },
   { label: "Contact", href: "/contact" },
 ];
@@ -119,9 +118,12 @@ export const legalLinks: NavLink[] = [
   { label: "Privacy Policy", href: "#" },
 ];
 
-/** Twitter keeps the bird icon, not X (approved decision). */
-export const socialLinks: (NavLink & { icon: string })[] = [
-  { label: "LinkedIn", href: "#", icon: assets.footerLinkedin },
-  { label: "Twitter", href: "#", icon: assets.footerTwitter },
-  { label: "Instagram", href: "#", icon: assets.footerInstagram },
+/** The Footer's social buttons: the official WayWiseTech pages (owner, 2026-11-22). Icons by name. */
+export type SocialIcon = "facebook" | "github" | "youtube" | "linkedin";
+
+export const socialLinks: (NavLink & { icon: SocialIcon })[] = [
+  { label: "Facebook", href: "https://www.facebook.com/WayWiseTech/", icon: "facebook" },
+  { label: "GitHub", href: "https://github.com/way-wise", icon: "github" },
+  { label: "YouTube", href: "https://www.youtube.com/@WayWiseTech", icon: "youtube" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/waywisetech/", icon: "linkedin" },
 ];

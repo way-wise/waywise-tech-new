@@ -47,7 +47,7 @@ export const homeOurWork = {
   heading: { first: "Real Projects.", accent: "Real", second: "Digital Solutions." },
   description:
     "Explore some of the websites, apps, and software solutions we've designed and developed for different businesses.",
-  action: { label: "View All Projects", href: "#" },
+  action: { label: "View All Projects", href: "/our-work" },
   industryLabel: "Industry",
   summary: "Our team of 10 highly skilled engineers excels in delivering innovative solutions.",
   details: [
@@ -190,15 +190,15 @@ export const homeIndustryCards = industryCards.map((card) => ({
  */
 export const homeFooter = {
   /** The owner's exact button text (the reference reads "Start Our Free Consultation"). */
-  cta: { label: "START YOUR FREE CONSULTATION", href: "/contact" },
+  cta: { label: "START YOUR FREE CONSULTATION", href: "/contact#contact-form" },
   columns: [
     {
       title: "Services",
       links: [
         { label: "UI/UX & Product Design", href: "/services/ui-ux-product-design" },
         { label: "Custom Software", href: "/services/custom-software-development" },
-        { label: "Web & Mobile Apps", href: "#" },
-        { label: "AI & Cloud DevOps", href: "#" },
+        { label: "Web & Mobile Apps", href: "/mobile-app-development" },
+        { label: "AI & Cloud DevOps", href: "/ai-data-automation" },
       ],
       action: { label: "View All Services", href: "/services" },
     },

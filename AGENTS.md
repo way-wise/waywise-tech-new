@@ -707,6 +707,16 @@ The Figma design was redesigned. Every section's reference frame is now **1920 Ã
   - **Checks:** `tsc` and `eslint` pass.
   - **Bug found and fixed during QA:** inline links and the button carried their parent's 24px line box (+9px in total). The column links, "View Allâ€¦" links and the CTA button are now block or flex boxes (`w-fit`).
 
+### Footer social links (2026-11-22, owner's instruction; awaiting approval)
+
+- **What changed:** the three placeholder buttons (LinkedIn, Twitter, Instagram, all `#`) were replaced with four links to the official pages: Facebook, GitHub, YouTube and LinkedIn. Each opens in a new tab (`target="_blank"`, `rel="noopener noreferrer"`) and has an `aria-label` and a native `title` tooltip. This supersedes the "Twitter bird, not X" decision.
+- **Files:**
+  - `socialLinks` in `lib/content/navigation.ts`: labels, URLs and icon names (`SocialIcon`).
+  - New `components/layout/FooterSocialLinks.tsx`, used by both `Footer.tsx` (every page) and `SiteFooter.tsx` (the 404 page). Only the social list changed in each footer.
+  - `lib/assets.ts` is unchanged; the old `footer/Button*.svg` files are no longer used.
+- **Icons:** Simple Icons marks inlined with `currentColor` (no package). They sit in the existing 36px outlined button with 5px corners. On hover or keyboard focus the button fills brand red; the 2px lift is motion-safe only.
+- **QA (Playwright CLI):** all four links have the correct URL and `rel` at 1920, 1024, 768 and 390 on `/` and at 1440 on the 404 page, with no overflow and no console errors. `tsc` and `eslint` pass.
+
 ## Hero + Client Logo Strip standard (owner, 2026-11-11)
 
 Project-wide, for **every page including the Homepage**. The reference implementation is the About Us Hero (`components/about/AboutHero.tsx`, see "About Us page").
