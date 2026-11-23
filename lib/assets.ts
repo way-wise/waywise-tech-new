@@ -13,7 +13,7 @@ export const assets = {
   missionVision: "/images/mission-vision/Industry%20Card.png",
   // Services cards. The six original files are 987x400 PNGs with rounded top corners in the file.
   serviceUiUx: "/images/services/ui-ux.png",
-  
+
   serviceCustomSoftware: "/images/services/custom-software-dev.png",
   serviceWeb: "/images/services/web-dev.png",
   serviceMobile: "/images/services/mobile-app-dev.png",
@@ -166,22 +166,22 @@ export const assets = {
   contactOfficeDhaka: "/images/contact%20us/dhaka.png",
   // About Us page Hero: sunlit desk with a laptop, phone and plants, 3840x1614 (2x its 1920x807
   // section). Matches the reference's background exactly, so no overlay is drawn on top.
-  aboutHero: "/images/about%20us/Hero%20Image.png",
+  aboutHero: "/images/about_us/hero.png",
   // About Us "Our Story" photo cards, each 706x573 (2x its 353x286.5 card), rounded corners in the
   // files. Mapped to the reference by pixel comparison.
-  aboutStoryTeam: "/images/about%20us/team.png", // the team in their office
-  aboutStoryCalifornia: "/images/about%20us/california.png", // city skyline at sunset over water
-  aboutStoryDubai: "/images/about%20us/dubai.png", // Dubai skyline with the Burj Khalifa
-  aboutStoryDhaka: "/images/about%20us/dhaka.png", // aerial city view at dusk
+  aboutStoryTeam: "/images/about_us/team.png", // the team in their office
+  aboutStoryCalifornia: "/images/about_us/california.png", // city skyline at sunset over water
+  aboutStoryDubai: "/images/about_us/dubai.png", // Dubai skyline with the Burj Khalifa
+  aboutStoryDhaka: "/images/about_us/dhaka.png", // aerial city view at dusk
   // About Us leadership portraits, each 480x800 (2x its 240x400 frame), square corners (the
   // frame rounds them).
-  aboutChairman: "/images/about%20us/chairman.png", // the Chairman beside a Way-Wise Global sign
-  aboutCeo: "/images/about%20us/ceo.png", // the CEO seated at his desk with a laptop
+  aboutChairman: "/images/about_us/chairman.png", // the Chairman beside a Way-Wise Global sign
+  aboutCeo: "/images/about_us/lee.png", // the CEO seated at his desk with a laptop
   // About Us "Our Global Presence" office photos, each 1008x700 (2x its 504x350 card image), top
   // corners rounded in the files. Mapped to the reference by pixel comparison.
-  aboutOfficeUsa: "/images/about%20us/usa.png", // Statue of Liberty, US flag and New York skyline
-  aboutOfficeUae: "/images/about%20us/uae.png", // Dubai skyline with the Burj Khalifa at dusk
-  aboutOfficeInternational: "/images/about%20us/international.png", // city lights along a river at night
+  aboutOfficeUsa: "/images/about_us/usa.png", // Statue of Liberty, US flag and New York skyline
+  aboutOfficeUae: "/images/about_us/uae.png", // Dubai skyline with the Burj Khalifa at dusk
+  aboutOfficeInternational: "/images/about_us/international.png", // city lights along a river at night
   // FAQ page Hero: a glossy red question mark on a marble table, 3840x1614 (2x its 1920x807
   // section). Matches the reference's background exactly, so no overlay is drawn on top.
   faqHero: "/images/faq/Hero%20Image.png",
@@ -266,17 +266,57 @@ export const clientLogos = [
   // Added 2026-11-18 (owner-supplied exports, in export order). All are 34px-high grey marks with
   // transparent backgrounds; ak-printing, Bui-IQ, calgrove, Captivate, pleage and "Zealous Law" wrap
   // PNGs (ak-printing and "Zealous Law" are about 1MB each). Names are the wording on each logo.
-  { name: "Super Speciosa Raw Leaf", src: "/images/logos/speciosa.svg", width: 45, height: 34 },
-  { name: "MilkyMama", src: "/images/logos/MilkyMama.svg", width: 163, height: 34 },
+  {
+    name: "Super Speciosa Raw Leaf",
+    src: "/images/logos/speciosa.svg",
+    width: 45,
+    height: 34,
+  },
+  {
+    name: "MilkyMama",
+    src: "/images/logos/MilkyMama.svg",
+    width: 163,
+    height: 34,
+  },
   { name: "Fiera", src: "/images/logos/Fiera.svg", width: 116, height: 34 },
-  { name: "GleeFull Supplements", src: "/images/logos/GleeFull.svg", width: 116, height: 34 },
+  {
+    name: "GleeFull Supplements",
+    src: "/images/logos/GleeFull.svg",
+    width: 116,
+    height: 34,
+  },
   { name: "Numin", src: "/images/logos/numin.svg", width: 128, height: 35 },
   { name: "Feno", src: "/images/logos/feno.svg", width: 116, height: 34 },
-  { name: "AK Printing", src: "/images/logos/ak-printing.svg", width: 100, height: 34 },
+  {
+    name: "AK Printing",
+    src: "/images/logos/ak-printing.svg",
+    width: 100,
+    height: 34,
+  },
   { name: "Pleage", src: "/images/logos/pleage.svg", width: 115, height: 34 },
-  { name: "Zealous Law", src: "/images/logos/Zealous%20Law.svg", width: 116, height: 34 },
-  { name: "Calgrove Rentals", src: "/images/logos/calgrove.svg", width: 196, height: 34 },
-  { name: "Maison Lumen", src: "/images/logos/Maison-Lumen.svg", width: 116, height: 34 },
+  {
+    name: "Zealous Law",
+    src: "/images/logos/Zealous%20Law.svg",
+    width: 116,
+    height: 34,
+  },
+  {
+    name: "Calgrove Rentals",
+    src: "/images/logos/calgrove.svg",
+    width: 196,
+    height: 34,
+  },
+  {
+    name: "Maison Lumen",
+    src: "/images/logos/Maison-Lumen.svg",
+    width: 116,
+    height: 34,
+  },
   { name: "BU-IQ", src: "/images/logos/Bui-IQ.svg", width: 83, height: 34 },
-  { name: "Captivate", src: "/images/logos/Captivate.svg", width: 175, height: 34 },
+  {
+    name: "Captivate",
+    src: "/images/logos/Captivate.svg",
+    width: 175,
+    height: 34,
+  },
 ];
