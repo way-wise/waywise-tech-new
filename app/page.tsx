@@ -34,7 +34,7 @@ export default function Home() {
         */}
         <PinnedSection hold="30svh">
           {/* 2026-11-16 redesign: one 1920x942 frame, Homepage-only card copy. */}
-          <Services variant="compact" services={homeServiceCards} />
+          <Services services={homeServiceCards} />
         </PinnedSection>
         {/* Same 30svh hold as Services, so Industries does not peek into its 1920x942 frame. */}
         <PinnedSection hold="30svh">

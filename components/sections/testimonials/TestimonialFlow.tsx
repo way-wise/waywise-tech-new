@@ -131,6 +131,13 @@ export function TestimonialFlow({ testimonials }: TestimonialFlowProps) {
    * the first change, so nothing plays on load.
    */
   const [direction, setDirection] = useState<"next" | "prev" | null>(null);
+  /**
+   * The testimonial that was featured before the last change (null until the first change). Its card
+   * carries data-was-front, so only it plays the leaving animation; a card whose place before the
+   * change was the hidden far end carries data-from-far, so only it plays the arriving animation
+   * (portfolio-testimonials.css).
+   */
+  const [previous, setPrevious] = useState<number | null>(null);
   /** Bumped on every change, so the active segment's fill restarts even on the same index. */
   const [cycle, setCycle] = useState(0);
   /** Set only by someone moving the carousel, never by autoplay, for the live region. */
@@ -159,6 +166,7 @@ export function TestimonialFlow({ testimonials }: TestimonialFlowProps) {
       // Forward if the target is at most half the loop ahead, so Next/autoplay are always forward.
       const ahead = (index - current + count) % count;
       setDirection(ahead <= count / 2 ? "next" : "prev");
+      setPrevious(current);
       activeRef.current = index;
       setActive(index);
       setCycle((value) => value + 1);
@@ -444,6 +452,10 @@ export function TestimonialFlow({ testimonials }: TestimonialFlowProps) {
                     key={testimonial.id}
                     data-index={index}
                     data-place={place}
+                    data-was-front={index === previous ? "" : undefined}
+                    data-from-far={
+                      previous !== null && placeOf(index, previous, count) === "far" ? "" : undefined
+                    }
                     aria-hidden={!front || undefined}
                     className="pt-card"
                   >

@@ -89,7 +89,7 @@ export const homeOurWork = {
 };
 
 /**
- * The Homepage Our Services cards (components/sections/Services.tsx, `variant="compact"`), from the
+ * The Homepage Our Services cards (components/sections/Services.tsx), from the
  * 2026-11-16 Figma redesign. The redesign shortened each card description; the owner approved the
  * new copy for the Homepage only (2026-11-16), so the shared `serviceCards` (used by /services and
  * the Navbar's Services dropdown) keep their descriptions. Titles, links and images are shared.
@@ -119,7 +119,7 @@ export const homeServiceCards = serviceCards.map((card) => ({
 
 /**
  * The /services page's Services section (2026-11-16 reference `Section.png`, 1920x942, the same
- * compact layout as the Homepage): all eight cards, with the reference's short descriptions for the
+ * Services design as the Homepage): all eight cards, with the reference's short descriptions for the
  * six it shows. Cloud, API & DevOps and Support & Maintenance (the third row, below the frame) keep
  * their shared descriptions.
  */
@@ -197,8 +197,8 @@ export const homeFooter = {
       links: [
         { label: "UI/UX & Product Design", href: "/services/ui-ux-product-design" },
         { label: "Custom Software", href: "/services/custom-software-development" },
-        { label: "Web & Mobile Apps", href: "/mobile-app-development" },
-        { label: "AI & Cloud DevOps", href: "/ai-data-automation" },
+        { label: "Web & Mobile Apps", href: "/services/mobile-app-development" },
+        { label: "AI & Cloud DevOps", href: "/services/ai-data-automation" },
       ],
       action: { label: "View All Services", href: "/services" },
     },
@@ -217,7 +217,7 @@ export const homeFooter = {
       links: [
         { label: "About Us", href: "/about" },
         { label: "How We Work", href: "#" },
-        { label: "Our Team", href: "#" },
+        { label: "FAQ", href: "/faq" },
         { label: "Our Work", href: "/our-work" },
       ],
       action: { label: "Contact Us", href: "/contact" },

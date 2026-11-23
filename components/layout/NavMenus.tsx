@@ -254,7 +254,7 @@ function DesktopMenuItem({
     // The panel becomes visible on this render, so focus on the next frame.
     requestAnimationFrame(() => {
       const links = panelLinks();
-      links[(index + links.length) % links.length]?.focus();
+      links[(index + links.length) % links.length]?.focus();  
     });
   };
 
@@ -380,8 +380,8 @@ type DropdownSheetProps = {
  *   action button on the right, the same in every menu.
  * Each menu is laid out for its content. Services (links with descriptions) spans the bar's full
  * content width on three columns. Short lists are only as wide as their content and centred:
- * five links or fewer run down two columns (Industries), six on three columns of two rows
- * (Company).
+ * three links or fewer sit side by side on one row (Company), four or five run down two columns
+ * (Industries), six on three columns of two rows.
  */
 function DropdownSheet({ ref, id, menu, isOpen, switching, onNavigate, onKeyDown }: DropdownSheetProps) {
   const pathname = usePathname();
@@ -391,17 +391,22 @@ function DropdownSheet({ ref, id, menu, isOpen, switching, onNavigate, onKeyDown
 
   // Short lists size their columns to their labels (plus room for the hover arrow), so the links
   // stay together instead of spreading across fixed-width columns.
-  const columns = rich ? 3 : menu.links.length <= 5 ? 2 : 3;
+  // Three links or fewer (Company) sit side by side on one row, each column as wide as its label,
+  // equally spaced; a two-column list would run them down one column beside an empty one.
+  const singleRow = !rich && menu.links.length <= 3;
+  const columns = rich ? 3 : singleRow ? menu.links.length : menu.links.length <= 5 ? 2 : 3;
   const list = rich
     ? "grid-cols-3"
-    : columns === 2
+    : singleRow
+      ? "grid-flow-col auto-cols-max self-center"
+      : columns === 2
       ? `grid-flow-col grid-cols-[repeat(2,clamp(290px,15.6vw,300px))] ${
           menu.links.length > 2 ? "grid-rows-3" : ""
         }`
       : "grid-cols-[repeat(3,minmax(152px,max-content))]";
   // The brand card is as tall as its own text. Beside a list taller than the card (Services,
   // Industries) it starts with the first row of links; beside a short list (Company) it runs from
-  // the label so its foot meets the list's foot.
+  // the label, and a single row of links is centred in the space beside it.
   const tallList = rich || Math.ceil(menu.links.length / columns) >= 3;
   const cardPlace = tallList ? "row-start-2 mt-4 self-start" : "row-span-2 row-start-1 self-start";
 
@@ -448,7 +453,7 @@ function DropdownSheet({ ref, id, menu, isOpen, switching, onNavigate, onKeyDown
 
           <ul
             className={`col-start-1 row-start-2 mt-4 grid gap-x-[clamp(20px,1.6vw,32px)] border-b border-[#e9e2da] ${list} ${
-              rich ? "" : "self-start"
+              rich || singleRow ? "" : "self-start"
             }`}
           >
             {menu.links.map((link, index) => {

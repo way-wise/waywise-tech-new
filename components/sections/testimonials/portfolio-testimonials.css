@@ -702,14 +702,22 @@
   }
 
   /* Next: the leaving featured card drifts left and fades out, as in the reference, then waits at
-     the hidden far end of the row. */
-  .pt-stage[data-dir="next"] .pt-card[data-place="far"] {
-    animation: pt-leave 850ms both;
+     the hidden far end of the row. Only the card that really was featured ([data-was-front]): its
+     keyframes start at the featured place, so in a jump of several places another card sent to the
+     far end would first snap there. Those simply move and fade by their transitions.
+     `backwards`, not `both`: the keyframes end exactly on the resting style (far here, the featured
+     place below), so nothing changes when they finish, and the card is not held by the animation,
+     which would make its next move a jump instead of a transition. */
+  .pt-stage[data-dir="next"] .pt-card[data-place="far"][data-was-front] {
+    animation: pt-leave 850ms backwards;
   }
 
-  /* Prev: the arriving featured card comes in from that same place, fading in. */
-  .pt-stage[data-dir="prev"] .pt-card[data-place="0"] {
-    animation: pt-arrive 850ms var(--pt-ease) both;
+  /* Prev: the arriving featured card comes in from that same place, fading in. Only a card that was
+     at the hidden far end ([data-from-far]): one already visible further down the row (a backward
+     jump of several places) slides to the featured place by its transitions instead of vanishing
+     and fading in from the left. */
+  .pt-stage[data-dir="prev"] .pt-card[data-place="0"][data-from-far] {
+    animation: pt-arrive 850ms var(--pt-ease) backwards;
   }
 
   /* The incoming headline, word by word, then the quote, rating and author. The outgoing one has

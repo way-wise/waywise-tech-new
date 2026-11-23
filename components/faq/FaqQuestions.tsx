@@ -33,13 +33,18 @@ function ToggleIcon({ open }: { open: boolean }) {
 }
 
 /*
-  One question. Items open and close independently, as in the site's shared FAQ, so opening one
-  never moves another that is already being read. The answer opens through grid-template-rows (0fr
+  One question. Only one is open at a time (owner, 2026-11-23, as in the site's shared FAQ): the list
+  holds which one, so opening a question closes the previous one. The answer opens through grid-template-rows (0fr
   to 1fr), so it reaches its natural height with no measuring, while the text fades in and settles
   a little after the row starts opening, and fades out quickly on close. Reduced motion: instant.
 */
-function FaqItem({ question, answer, order }: Item & { order: number }) {
-  const [open, setOpen] = useState(false);
+function FaqItem({
+  question,
+  answer,
+  order,
+  open,
+  onToggle,
+}: Item & { order: number; open: boolean; onToggle: () => void }) {
   const id = useId();
   const buttonId = `${id}-button`;
   const panelId = `${id}-panel`;
@@ -57,7 +62,7 @@ function FaqItem({ question, answer, order }: Item & { order: number }) {
           type="button"
           aria-expanded={open}
           aria-controls={panelId}
-          onClick={() => setOpen((value) => !value)}
+          onClick={onToggle}
           className="group/q flex min-h-[72px] w-full items-center justify-between gap-5 rounded-[10px] py-4 pr-6 pl-5 text-left text-[18px] leading-[1.3] font-medium text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink sm:pl-[30px] lg:min-h-[clamp(60px,3.75vw,72px)] lg:pr-[clamp(24px,1.927vw,37px)] lg:text-[clamp(18px,1.146vw,22px)]"
         >
           {question}
@@ -246,6 +251,8 @@ export function FaqQuestions() {
   const sectionRef = useRef<HTMLElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
   useFaqTimeline(listRef, sectionRef);
+  // Single-open accordion: the open question's index, or null when all are closed.
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <section ref={sectionRef} id="faq-questions" aria-labelledby="faq-questions-heading" className="bg-[#f4f0e9]">
@@ -285,7 +292,13 @@ export function FaqQuestions() {
             <span className="wf-rail__fill" />
           </li>
           {items.map((item, index) => (
-            <FaqItem key={item.question} {...item} order={1 + index * 0.5} />
+            <FaqItem
+              key={item.question}
+              {...item}
+              order={1 + index * 0.5}
+              open={openIndex === index}
+              onToggle={() => setOpenIndex((current) => (current === index ? null : index))}
+            />
           ))}
         </ul>
       </Reveal>
