@@ -35,9 +35,9 @@ export default function ServicesPage() {
           1920x942) before Services had come to rest. Same fix as the Homepage sections.
         */}
         <PinnedSection hold="30svh">
-          {/* All eight services in the compact layout (Section.png, 2026-11-16): two rows fill the 942 frame,
+          {/* All eight services in the shared Services design (Section.png, 2026-11-16): two rows fill the 942 frame,
               the third row follows in normal scrolling. The header button leads to /contact. */}
-          <Services variant="compact" services={servicesPageCards} action={servicesSection.pageAction} />
+          <Services services={servicesPageCards} action={servicesSection.pageAction} />
         </PinnedSection>
         {/* Hold as for Services: Our Process rests in its 942 frame before Industries rises. */}
         <PinnedSection hold="var(--op-hold, 30svh)">

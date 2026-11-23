@@ -10,8 +10,14 @@ import { servicesFaq } from "@/lib/content/faq";
 
 type Question = { question: string; answer: string };
 
-function FaqItem({ question, answer, order }: Question & { order: number }) {
-  const [open, setOpen] = useState(false);
+/** One question. Whether it is open is held by the list (one open at a time), not here. */
+function FaqItem({
+  question,
+  answer,
+  order,
+  open,
+  onToggle,
+}: Question & { order: number; open: boolean; onToggle: () => void }) {
   const id = useId();
 
   return (
@@ -21,7 +27,7 @@ function FaqItem({ question, answer, order }: Question & { order: number }) {
           type="button"
           aria-expanded={open}
           aria-controls={id}
-          onClick={() => setOpen((value) => !value)}
+          onClick={onToggle}
           className="flex min-h-20 w-full items-center justify-between gap-4 rounded-lg py-4 pr-5 pl-5 text-left text-[18px] leading-[1.3] text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink sm:pr-9 sm:pl-[30px] lg:text-[clamp(18px,1.146vw,22px)]"
         >
           {question}
@@ -64,6 +70,10 @@ function FaqItem({ question, answer, order }: Question & { order: number }) {
   76px below at 1920, an 18px eyebrow and a 53.5px heading.
 */
 export function Faq() {
+  // Single-open accordion (owner, 2026-11-23): opening a question closes the one that was open;
+  // clicking the open question again closes it. null = all closed.
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
   return (
     <section aria-labelledby="faq-heading" className="bg-[#eae2dd]">
       <noscript>
@@ -111,7 +121,13 @@ export function Faq() {
           className="mt-8 flex flex-col gap-5 lg:mt-[60.5px] min-[1600px]:-mx-[14.5px]"
         >
           {servicesFaq.items.map((item: Question, index) => (
-            <FaqItem key={item.question} {...item} order={index * 0.3} />
+            <FaqItem
+              key={item.question}
+              {...item}
+              order={index * 0.3}
+              open={openIndex === index}
+              onToggle={() => setOpenIndex((current) => (current === index ? null : index))}
+            />
           ))}
         </Reveal>
       </div>

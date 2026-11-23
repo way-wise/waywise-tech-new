@@ -48,17 +48,22 @@ export function Hero() {
           the top padding is the bar's height (76px, 100px from xl) plus the gap below it: at 1920
           the image grid starts 80px under the bar, at y 180.
         */}
-        <div className="relative mx-auto grid w-full max-w-[1600px] gap-10 px-5 pt-[116px] pb-12 md:px-8 md:pt-[124px] md:pb-16 lg:grid-cols-[minmax(0,800fr)_minmax(0,760fr)] lg:items-center lg:gap-0 lg:pt-[calc(76px+clamp(40px,4.167vw,80px))] lg:pb-[clamp(56px,5.208vw,100px)] xl:px-5 xl:pt-[calc(100px+clamp(40px,4.167vw,80px))]">
-          <div className="min-w-0 lg:pr-6">
+        {/*
+          Phones (below sm) follow the mobile reference (mobile-version.png, 2026-11-23): everything
+          centred, a slimmer one-line eyebrow (smaller below 375px so it never wraps), full-width stacked buttons, no feature checklist,
+          and the photo grid 16px under the buttons with 28px below it. sm and up are unchanged.
+        */}
+        <div className="relative mx-auto grid w-full max-w-[1600px] gap-10 px-5 pt-[116px] pb-12 max-sm:gap-4 max-sm:pt-[102px] max-sm:pb-7 md:px-8 md:pt-[124px] md:pb-16 lg:grid-cols-[minmax(0,800fr)_minmax(0,760fr)] lg:items-center lg:gap-0 lg:pt-[calc(76px+clamp(40px,4.167vw,80px))] lg:pb-[clamp(56px,5.208vw,100px)] xl:px-5 xl:pt-[calc(100px+clamp(40px,4.167vw,80px))]">
+          <div className="min-w-0 max-sm:text-center lg:pr-6">
             <p
-              className={`${textEnter} inline-flex items-center gap-1.5 rounded-full border border-black bg-white/10 px-3 py-[5px] text-[11px] leading-[19px] font-medium tracking-[0.078em] text-black uppercase sm:pr-[13px] sm:pl-3.5 sm:text-[14px]`}
+              className={`${textEnter} inline-flex items-center gap-1.5 rounded-full border border-black bg-white/10 px-3 py-[5px] text-[11px] leading-[19px] font-medium tracking-[0.078em] text-black uppercase max-sm:py-[3px] max-sm:text-[clamp(9px,2.86vw,11px)] max-sm:leading-4 max-sm:tracking-[0.05em] sm:pr-[13px] sm:pl-3.5 sm:text-[14px]`}
             >
               <span className="size-1.5 shrink-0 rounded-full bg-brand" aria-hidden="true" />
               {eyebrow}
             </p>
 
             <h1
-              className={`${textEnter} mt-6 text-[clamp(28px,8.8vw,64px)] leading-[1.04] font-semibold tracking-[-0.005em] text-ink [animation-delay:80ms] lg:text-[clamp(38px,3.75vw,72px)]`}
+              className={`${textEnter} mt-6 text-[clamp(28px,8.8vw,64px)] leading-[1.04] font-semibold tracking-[-0.005em] text-ink [animation-delay:80ms] max-sm:mt-2.5 max-sm:text-[clamp(25px,7.4vw,36px)] max-sm:leading-[1.18] lg:text-[clamp(38px,3.75vw,72px)]`}
             >
               {heading.first}
               <br />
@@ -68,21 +73,21 @@ export function Hero() {
             </h1>
 
             <p
-              className={`${textEnter} mt-[25px] max-w-[26.5em] text-[18px] leading-[1.385] text-ink [animation-delay:160ms] lg:max-w-[36em] lg:text-[clamp(16px,1.146vw,22px)] lg:leading-[1.636] lg:tracking-[0.042em]`}
+              className={`${textEnter} mt-[25px] max-w-[26.5em] text-[18px] leading-[1.385] text-ink [animation-delay:160ms] max-sm:mx-auto max-sm:mt-2 max-sm:text-[clamp(14px,3.85vw,17px)] max-sm:leading-[1.25] lg:max-w-[36em] lg:text-[clamp(16px,1.146vw,22px)] lg:leading-[1.636] lg:tracking-[0.042em]`}
             >
               {description}
             </p>
 
-            <div className={`${textEnter} mt-[23px] flex flex-wrap items-center gap-3 [animation-delay:240ms]`}>
-              <ButtonLink href={primaryAction.href} className="h-[59px] px-6 pt-0.5 xl:min-w-[221px] text-[20px]">
+            <div className={`${textEnter} mt-[23px] flex flex-wrap items-center gap-3 [animation-delay:240ms] max-sm:mt-3 max-sm:flex-col max-sm:items-stretch max-sm:gap-3.5`}>
+              <ButtonLink href={primaryAction.href} className="h-[59px] px-6 pt-0.5 xl:min-w-[221px] text-[20px] max-sm:h-11 max-sm:text-[16px]">
                 {primaryAction.label}
               </ButtonLink>
-              <ButtonLink href={secondaryAction.href} variant="secondary" className="h-[61px] px-6 pt-0.5 xl:min-w-[245px] text-[20px]">
+              <ButtonLink href={secondaryAction.href} variant="secondary" className="h-[61px] px-6 pt-0.5 xl:min-w-[245px] text-[20px] max-sm:h-11 max-sm:text-[16px]">
                 {secondaryAction.label}
               </ButtonLink>
             </div>
 
-            <ul className={`${textEnter} mt-6 flex flex-wrap gap-x-[20.35px] gap-y-2 [animation-delay:320ms]`}>
+            <ul className={`${textEnter} mt-6 flex flex-wrap gap-x-[20.35px] gap-y-2 [animation-delay:320ms] max-sm:hidden`}>
               {features.map((feature) => (
                 <li key={feature} className="flex items-center gap-2 text-[18px] leading-5 text-ink lg:text-[clamp(15px,0.94vw,18px)]">
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -101,7 +106,7 @@ export function Hero() {
           </div>
 
           <div
-            className="grid aspect-[760/562] w-full grid-cols-[440fr_300fr] grid-rows-2 gap-x-[2.63%] gap-y-[3.56%]"
+            className="grid aspect-[760/562] w-full grid-cols-[440fr_300fr] grid-rows-2 gap-x-[2.63%] gap-y-[3.56%]" //3 images 
           >
             {images.map((image) => (
               <div

@@ -72,11 +72,11 @@ export const aboutUsLink: NavLink = { label: "About Us", href: "/about" };
 export const companyLinks: NavLink[] = [
   aboutUsLink,
   { label: "How We Work", href: "#" },
-  { label: "Our Team", href: "#" },
-  { label: "Global Delivery", href: "#" },
-  { label: "Careers", href: "#" },
+  // { label: "Our Team", href: "#" },
+  // { label: "Global Delivery", href: "#" },
+  // { label: "Careers", href: "#" },
   { label: "Insights", href: "/insights" },
-  { label: "Our Work", href: "/our-work" },
+  //{ label: "Our Work", href: "/our-work" },
 ];
 
 /** "Our Work" is an extra here, because the Navbar also lists it at the top level. */

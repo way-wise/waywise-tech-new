@@ -12,7 +12,8 @@ export const assets = {
   // office with bookshelves, a portrait, an armchair and a flag. The supplied file name says "Industry Card".
   missionVision: "/images/mission-vision/Industry%20Card.png",
   // Services cards. The six original files are 987x400 PNGs with rounded top corners in the file.
-  serviceUiUx: "/images/services/ui-ux%20%26%20product.png",
+  serviceUiUx: "/images/services/ui-ux.png",
+  
   serviceCustomSoftware: "/images/services/custom-software-dev.png",
   serviceWeb: "/images/services/web-dev.png",
   serviceMobile: "/images/services/mobile-app-dev.png",
