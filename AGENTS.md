@@ -775,6 +775,35 @@ Applies to the whole project: Homepage, `/services`, all Service Details pages, 
 
 These 15 are the only routes. Nothing links to `/case-study` yet. The Blog Details route is linked only from the first Insights article card (its existing `insightsArticleHref`). Nothing links to `/faq` yet; the Navbar's Company → Insights links to `/insights` (2026-11-11), and so does the Footer's Insights (2026-11-11). **How they are reached today:** the six Services cards (Homepage and `/services`) link to the six Details pages (approved, see "Approved decisions"); the Navbar's Services item links to `/services` and its Contact item to `/contact` (approved 2026-11-10); the logo and the Details breadcrumb link to `/`. Nothing links to `/industries` or `/our-work` yet: the Navbar's Industries, Our Work and Company items are still `#`, and every Footer link except the logo and About Us is `#`. Since 2026-11-11 every existing About Us link goes to `/about` (see "About Us links").
 
+## Landing pages (`/attorney`, `/doctor`, `/ecommerce`, `/plumber`, `/restaurant`)
+
+Five standalone industry landing pages, copied in from the earlier `company-site-frontend` project. They are **not** part of the main site's design system: none of the main site's rules about the 1920×942 frame, `PinnedSection`, the shared Navbar/Footer, `lib/content/` or `lib/assets.ts` applies to them, and none of their code is used by the main site. The "Routes" list above does not include them. Nothing in the main site links to them. Recorded 2026-11-25 from a read-only review; no approval or freeze is recorded for any of them. **Do not change their design** without the owner's instruction.
+
+### Structure
+
+- **Routes:** `app/<page>/layout.tsx` + `app/<page>/page.tsx`. Each layout loads its own fonts with `next/font` (for example DM Sans, Rajdhani and Instrument Sans on `/attorney`), scoped to that route, and wraps the page in `LandingRoot`. Each page is a plain stack of its sections inside `<main>`, with its own top bar or navbar and its own footer. Normal document scrolling: no `PinnedSection`.
+- **Components:** `components/landing/<page>/` holds that page's sections, prefixed with the page name (`AttorneyBanner`, `PlumberPackages`, …). Navbars, footers, FAQs and pricing sections look alike across pages, but each is a different design (hundreds of lines differ). Keep them separate.
+- **Shared** (`components/landing/shared/`):
+  - `LandingRoot.tsx`: the wrapper. Adds the `landing-root` class, the Inter and Outfit fonts these pages expect (`fonts.ts`; static weights, separate from the site's own Outfit) and `LandingScrollPadding`.
+  - `landing.css`: base styles scoped under `.landing-root`, plus three global utility classes (`marquee-scroll`, `auto-scroll`, `animate-nav-slide-down`). The main site does not use those names (checked 2026-11-25); don't reuse them there.
+  - `LandingScrollPadding.tsx`: clears the root layout's `scroll-pt-[110px]` on `<html>` while a landing page is shown and restores it when the page is hidden. The pages offset their own anchors with `scroll-mt-*`.
+  - `LandingSmoothScroll.tsx`: turns on `scroll-behavior: smooth` for the page's lifetime (not with reduced motion) and restores it. Used by all five layouts. *2026-11-25: replaced five identical per-page copies.*
+  - `LandingPlayButton.tsx`: the layered play button. `EcommercePlayButton`, `PlumberPlayButton` and `RestaurentPlayButton` (typo in the name is the original's) are thin wrappers that pass only their own hover and triangle classes, so each renders exactly the classes it had before. *2026-11-25: replaced three near-identical copies.* `AttorneyPlayButton` and `DoctorPlayButton` (inside `DoctorBanner.tsx`) are different designs and stay separate.
+  - `site.ts`: `SITE_URL` / `absoluteUrl()` for the pages' self-referencing canonical URLs. It reads `NEXT_PUBLIC_SITE_URL` and falls back to `https://www.waywisetech.com` in production. **This conflicts with `lib/site.ts`**, whose `url` is deliberately `null` until the owner confirms the domain; the two need reconciling with the SEO decision.
+  - `utils.ts`: `cn()` (`clsx` + `tailwind-merge`).
+- **Images:** mostly static imports from `assets/landing/<page>/` at the project root (outside `public/`; about 34 MB, some files 2–10 MB, for example `assets/landing/doctor/after-price-r2-c2.png` at 9.7 MB). Some are served from `public/images/restaurant/` and `public/images/shared/`. They do not go through `lib/assets.ts`.
+- **Packages added with these pages:** `clsx`, `tailwind-merge` and `lucide-react` (icons). Only the landing pages use them.
+
+### Parked sections
+
+Each `page.tsx` has five sections commented out in its JSX (for example `AttorneyWhyUs`, `AttorneyProcess`, `AttorneyInsights`, `AttorneyReviews`, `AttorneyFaq`), and several sections have a commented-out play button. Their imports are commented out next to them (2026-11-25, to clear the lint warnings without deleting anything). **To bring one back, uncomment both its import and its JSX.** The component files themselves are kept. Also parked: the four icon imports and `introTypography` in `PlumberWhyChoose.tsx`, and the badge list data in `RestaurantGuestExperience.tsx`.
+
+### Known points
+
+- **Brand spelling:** the landing page titles use "Way Wise Tech", a fourth form beside the main site's (see "Known limitations").
+- **Many `href="#"` placeholders** (about 280), as on the main site.
+- **Kept-mounted pages:** with `cacheComponents` a visited landing page stays in the DOM while hidden. The scroll-padding and smooth-scroll changes are made in effects, which are cleaned up when the page is hidden, so they never leak onto other pages; keep any future page-wide change on that pattern.
+
 ## Section status
 
 **Do not modify any section below without the owner's permission.** This includes shared files they rely on: `components/ui/*`, `lib/assets.ts` (adding entries is fine) and `app/globals.css`.

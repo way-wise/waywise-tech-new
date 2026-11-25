@@ -1,0 +1,83 @@
+/*
+  Styles the five landing pages relied on from company-site-frontend's globals.css.
+  Everything is either scoped to .landing-root or uses names no other page uses, so nothing
+  here changes the rest of the site. app/globals.css is deliberately left untouched.
+*/
+
+/*
+  Base defaults the pages inherited there (body font/colours and shadcn's border/outline
+  reset). In the base layer so every Tailwind utility still overrides them, exactly as before.
+*/
+@layer base {
+  .landing-root {
+    background-color: #ffffff;
+    color: oklch(0.145 0 0);
+    font-family: var(--font-inter), sans-serif;
+  }
+
+  .landing-root *,
+  .landing-root ::before,
+  .landing-root ::after {
+    border-color: oklch(0.922 0 0);
+    outline-color: oklch(0.708 0 0 / 0.5);
+  }
+}
+
+/* Attorney marquee (single animated wrapper holding two identical copies). */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-scroll {
+  width: max-content;
+  flex-wrap: nowrap;
+  animation: marquee-scroll 35s linear infinite;
+}
+
+.marquee-scroll:hover {
+  animation-play-state: paused;
+}
+
+@keyframes auto-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.auto-scroll {
+  animation: auto-scroll 35s linear infinite;
+}
+
+.auto-scroll:hover {
+  animation-play-state: paused;
+}
+
+/* Sticky-navbar entrance used by all five landing navbars. */
+@keyframes nav-slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-nav-slide-down {
+  animation: nav-slide-down 0.4s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-nav-slide-down {
+    animation: none;
+  }
+}
