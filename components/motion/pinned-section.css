@@ -10,20 +10,23 @@
   hold, then is covered as usual. The page grows by exactly the hold.
 
   Until --pin-height is set, these values are invalid and fall back to normal flow.
+
+  Every rule needs `data-scroll-effects` on <html> (the site-wide switch in scrollEffects.ts). Since
+  2026-11-25 (owner) the switch is off, so no section pins and the page scrolls normally.
 */
 @media (prefers-reduced-motion: no-preference) {
-  .pin-wrapper {
+  :root[data-scroll-effects] .pin-wrapper {
     --pin-cover: min(100svh, var(--pin-height), var(--pin-limit, var(--pin-height)));
     margin-bottom: calc(-1 * var(--pin-cover));
   }
 
-  .pin-wrapper::after {
+  :root[data-scroll-effects] .pin-wrapper::after {
     content: "";
     display: block;
     height: calc(var(--pin-cover) + var(--pin-hold, 0px));
   }
 
-  .pin-body {
+  :root[data-scroll-effects] .pin-body {
     position: sticky;
     top: min(0px, calc(100svh - var(--pin-height)));
   }
@@ -34,24 +37,24 @@
     stretching to fill: the background extends below, the content stays where it is. Times zero
     --pin-height, so this only applies once JavaScript has measured, like the rest of the pin.
   */
-  .pin-wrapper[data-hold] > .pin-body {
+  :root[data-scroll-effects] .pin-wrapper[data-hold] > .pin-body {
     display: flex;
     flex-direction: column;
     min-height: calc(100svh + 0 * var(--pin-height));
   }
 
-  .pin-wrapper[data-hold] > .pin-body > * {
+  :root[data-scroll-effects] .pin-wrapper[data-hold] > .pin-body > * {
     flex-grow: 1;
   }
 
   /* A keyboard user must never land on a link hidden under the rising section. */
-  .pin-body:has(:focus-visible):not([data-pointer-focus]) {
+  :root[data-scroll-effects] .pin-body:has(:focus-visible):not([data-pointer-focus]) {
     position: relative;
     top: auto;
   }
 
   /* While released that way, drop the hold too, so it never leaves an empty gap below the section. */
-  .pin-wrapper:has(> .pin-body :focus-visible):not(:has(> .pin-body[data-pointer-focus]))::after {
+  :root[data-scroll-effects] .pin-wrapper:has(> .pin-body :focus-visible):not(:has(> .pin-body[data-pointer-focus]))::after {
     height: var(--pin-cover);
   }
 }

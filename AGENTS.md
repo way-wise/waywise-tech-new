@@ -45,6 +45,24 @@ Last updated 2026-11-10. Read this before changing anything. Details were verifi
   - **Lenis:** the `lenis` dependency and its wheel interception.
   - **`pinned-section.css`:** CSS additions for the depth layers.
 
+## Scroll effects turned off: normal scrolling site-wide (owner, 2026-11-25)
+
+**Every main-site page now scrolls normally, like the Blog Details page.** This overrides the many notes below about pins, holds, hand-offs, "rests N wheel steps", the FAQ timeline, the Our Process journey, the About card convergence and the Insights drift. Those notes describe the code as it behaves with the switch **on**.
+
+- **One switch:** `SCROLL_EFFECTS` in `components/motion/scrollEffects.ts` (now `false`). `app/layout.tsx` sets `data-scroll-effects` on `<html>` from it, and the CSS effects need that attribute. Set it to `true` to restore everything exactly as before. No section, layout, content or page structure was changed or deleted; pages keep their `PinnedSection` wrappers.
+- **Off:**
+  - `PinnedSection` pinning, `hold` and `limitCoverTo` (`pinned-section.css` rules need the attribute; the component skips measuring). Sections sit in normal flow at their natural heights.
+  - Our Process journey (`ProcessJourney.tsx`): rope fully drawn, steps at rest, no phone pill, no extended pin (its reduced-motion state).
+  - FAQ page timeline (`FaqQuestions.tsx`): static track with inactive points, and the card is no longer sticky (its reduced-motion state).
+  - About "Our Global Presence" scroll-linked convergence (`about-presence.css`): the cards use their one-time Reveal rise.
+  - Insights photo drift (`insights-articles.css`): photos rest unscaled.
+- **Kept (owner's decision):**
+  - the `CardStack` stacks: Homepage Our Work and Industries Industry Solutions (sticky header, 16px stacking, their holds, the Footer rising over the stack, and Industry Solutions' scroll-linked depth layering);
+  - the one-time entrance animations (`Reveal`, `MaskLine`, `RollingNumber`, the CSS Hero entrance);
+  - the Navbar's hide-on-scroll and compact state.
+- **Verified 2026-11-25** (headless Chrome, 1920×942 and 390×844, all 13 main routes including the 404): no pinned section anywhere; sticky elements only in the two card stacks; no horizontal overflow; every page ends exactly at its Footer. `tsc` and `eslint` pass.
+- **Relation to the planned Lenis + Layered Depth work:** that plan builds on the pinned transitions, so it needs revisiting with the owner before it starts.
+
 ## Phase A: CMS & SEO readiness (owner-approved, 2026-11-14)
 
 Preparation only. No CMS, database, backend, API route, Server Action, package or dynamic route was added, and no existing page, component, content file, title, description or URL was changed.
@@ -774,6 +792,22 @@ Applies to the whole project: Homepage, `/services`, all Service Details pages, 
 | `/insights/the-insiders-guide-to-credit-reports` | `app/insights/the-insiders-guide-to-credit-reports/page.tsx` | "Blog Details" (the first Insights article). Built 2026-11-12 from `Blog Details.png` as one complete page with **normal document scrolling** (no `PinnedSection`, sticky stacking or scroll-driven effects, owner's instruction), no red banner. **Awaiting the owner's visual review**. Reached from the first Insights article card. See "Blog Details page" |
 
 These 15 are the only routes. Nothing links to `/case-study` yet. The Blog Details route is linked only from the first Insights article card (its existing `insightsArticleHref`). Nothing links to `/faq` yet; the Navbar's Company → Insights links to `/insights` (2026-11-11), and so does the Footer's Insights (2026-11-11). **How they are reached today:** the six Services cards (Homepage and `/services`) link to the six Details pages (approved, see "Approved decisions"); the Navbar's Services item links to `/services` and its Contact item to `/contact` (approved 2026-11-10); the logo and the Details breadcrumb link to `/`. Nothing links to `/industries` or `/our-work` yet: the Navbar's Industries, Our Work and Company items are still `#`, and every Footer link except the logo and About Us is `#`. Since 2026-11-11 every existing About Us link goes to `/about` (see "About Us links").
+
+## Company profile booklet (`/book`, built 2026-11-25, awaiting the owner's review)
+
+The Navbar's "Our Profile" card (desktop and mobile menu, `ProfileCard` in `SiteHeader.tsx`) links to `/book`, which shows the company profile PDF as a page-turning booklet.
+
+- **Files:** `app/book/page.tsx` (floating Navbar, a short header, the booklet, shared Footer; normal scrolling), `components/book/ProfileFlipbook.tsx`, `components/book/page-flip.d.ts` (types for the untyped package), `lib/content/profile.ts` (PDF path, format, header copy, labels).
+- **Packages (owner-approved 2026-11-25):** `pdfjs-dist` (v6) draws the PDF pages in the browser; `page-flip` (StPageFlip 2.0.7) turns them. Both are loaded only on this page (dynamic imports).
+- **The PDF:** `public/file/company-profile.pdf` is a **sample** (14 A3-landscape pages, 4.4 MB) until the owner supplies the final one. Replace the file, or change `pdf` in `lib/content/profile.ts`; nothing is converted ahead of time.
+- **`format`:**
+  - `"spreads"` (the sample): a printed fold-out. PDF page 1 = back cover (left half) + front cover (right half); the other PDF pages are inside spreads. Each is cut into its two pages, so the booklet reads front cover → 02|03 → … → back cover (28 pages), and the counter matches the printed page numbers.
+  - `"pages"`: one booklet page per PDF page. Use it if the final PDF is made of single pages.
+- **Size and position (owner, 2026-11-25):** the book and its controls fit one screen (the screen height less 150px, `RESERVED_HEIGHT`; at least 420px tall), as wide as that allows: pages 560×792 at 1920×942, 530×749 at 1440×900, 436×617 at 1024×768, full width on phones. (A full-width book, 780×1103 at 1920, was tried first and was too big.) Full screen makes it larger. A page shown alone (the front cover, then the back cover) is slid to the middle of the open book (`translateX(∓25%)`, 700ms, motion-safe), sliding back as the book opens. The slide starts with a button or key turn and follows the drag's end; `<main>` is `overflow-x-clip` so the back cover's empty half never makes the page scroll sideways.
+- **Full screen (owner, 2026-11-25):** a round button beside "Download PDF" (labels `fullscreen` / `exitFullscreen` in `lib/content/profile.ts`). It uses the browser's full screen on the booklet and its controls; where that isn't available (iPhone Safari), the booklet is laid over the whole page instead (`fixed`, z-100, the page behind it can't scroll, Escape closes). In both cases the book is sized to fit the screen height, so a whole spread and the controls are visible at once (pages 590×834 at 1920×942). Leaving full screen restores the normal large size on the same page.
+- **Behaviour:** two pages side by side when each can be at least 260px wide (from about 560px), otherwise one page. Turn pages by dragging a corner or swiping, the arrows, ←/→, Home/End. "Download PDF" downloads the file. Pages are rendered one after another (the cover first) as WebP images at the on-screen size (max 1600px per page). Reduced motion: instant page changes, no dragging. Without JavaScript or on failure, a link opens the PDF.
+- **Verified 2026-11-25** (headless Chrome at 1920×942, 1024×768, 390×844, 320×640): all 28 pages render, Next/Previous/End and the counter work, no overflow, no console errors from the page; the Navbar card opens `/book`. **Not tested:** real touch devices, Safari, Firefox, reduced motion.
+- **Draft copy to confirm:** the header ("Company Profile" / "Our Company Profile" / its one-line description).
 
 ## Landing pages (`/attorney`, `/doctor`, `/ecommerce`, `/plumber`, `/restaurant`)
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
+import { SCROLL_EFFECTS } from "@/components/motion/scrollEffects";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -16,7 +17,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     // scroll-pt keeps keyboard-focused links clear of the sticky navbar.
-    <html lang="en" className={`${outfit.variable} h-full scroll-pt-[110px] antialiased`}>
+    // data-scroll-effects: the site-wide scroll-effects switch for CSS (components/motion/scrollEffects.ts).
+    <html
+      lang="en"
+      className={`${outfit.variable} h-full scroll-pt-[110px] antialiased`}
+      data-scroll-effects={SCROLL_EFFECTS ? "" : undefined}
+    >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );

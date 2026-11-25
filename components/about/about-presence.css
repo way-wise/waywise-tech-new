@@ -30,14 +30,16 @@
     - Where this runs, the cards' one-time Reveal rise is switched off (translate: none), so the two
       never stack; the animation also overrides the Reveal opacity. Browsers without
       `animation-timeline` keep that Reveal, and reduced motion keeps everything still.
+    - Off since 2026-11-25 (owner: normal scrolling site-wide): every rule needs `data-scroll-effects`
+      on <html> (components/motion/scrollEffects.ts), so the cards use their one-time Reveal rise.
 */
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
-    .wp-presence-row {
+    :root[data-scroll-effects] .wp-presence-row {
       view-timeline-name: --wp-row;
     }
 
-    .wp-presence-card {
+    :root[data-scroll-effects] .wp-presence-card {
       --wp-shift: 0%;
       --wp-turn: 0deg;
       --wp-photo-shift: 0%;
@@ -48,7 +50,7 @@
       animation-range: entry 0% entry calc(100% + min(40px, 2.5vw));
     }
 
-    .wp-presence-card__media img {
+    :root[data-scroll-effects] .wp-presence-card__media img {
       animation: wp-presence-photo both cubic-bezier(0.39, 0.575, 0.565, 1);
       animation-timeline: --wp-card;
       animation-range: entry 0% entry calc(100% + min(40px, 2.5vw));
@@ -60,25 +62,25 @@
       perspective().
     */
     @media (min-width: 768px) {
-      .wp-presence-row {
+      :root[data-scroll-effects] .wp-presence-row {
         perspective: 1800px;
       }
 
-      .wp-presence-card {
+      :root[data-scroll-effects] .wp-presence-card {
         animation-name: wp-presence-depth-shared;
       }
     }
 
     /* Tablet: two plus one. */
     @media (min-width: 768px) and (max-width: 1023.98px) {
-      .wp-presence-card:nth-child(1) {
+      :root[data-scroll-effects] .wp-presence-card:nth-child(1) {
         --wp-shift: -12%;
         --wp-turn: 9deg;
         --wp-photo-shift: 3%;
         animation-name: wp-presence-side;
       }
 
-      .wp-presence-card:nth-child(2) {
+      :root[data-scroll-effects] .wp-presence-card:nth-child(2) {
         --wp-shift: 12%;
         --wp-turn: -9deg;
         --wp-photo-shift: -3%;
@@ -88,19 +90,19 @@
 
     /* Desktop: three across, one shared row timeline. */
     @media (min-width: 1024px) {
-      .wp-presence-card,
-      .wp-presence-card__media img {
+      :root[data-scroll-effects] .wp-presence-card,
+      :root[data-scroll-effects] .wp-presence-card__media img {
         animation-timeline: --wp-row;
       }
 
-      .wp-presence-card:nth-child(1) {
+      :root[data-scroll-effects] .wp-presence-card:nth-child(1) {
         --wp-shift: -14%;
         --wp-turn: 10deg;
         --wp-photo-shift: 3%;
         animation-name: wp-presence-side;
       }
 
-      .wp-presence-card:nth-child(3) {
+      :root[data-scroll-effects] .wp-presence-card:nth-child(3) {
         --wp-shift: 14%;
         --wp-turn: -10deg;
         --wp-photo-shift: -3%;
@@ -110,11 +112,11 @@
 
     /* From 1280 the side movement opens up: about 110px at 1920. */
     @media (min-width: 1280px) {
-      .wp-presence-card:nth-child(1) {
+      :root[data-scroll-effects] .wp-presence-card:nth-child(1) {
         --wp-shift: -22%;
       }
 
-      .wp-presence-card:nth-child(3) {
+      :root[data-scroll-effects] .wp-presence-card:nth-child(3) {
         --wp-shift: 22%;
       }
     }

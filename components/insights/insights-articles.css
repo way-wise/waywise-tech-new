@@ -502,13 +502,15 @@
     Scroll-linked drift: the photo moves slightly slower than its card as the card crosses the
     screen. Kept at 1.065x so the +-3% travel never shows an edge. A named timeline, because the
     frame (overflow: hidden) is a scroll container.
+    Off since 2026-11-25 (owner: normal scrolling site-wide): needs `data-scroll-effects` on <html>
+    (components/motion/scrollEffects.ts), so the photos rest unscaled, as with reduced motion.
   */
   @supports (animation-timeline: view()) {
-    .wi-card {
+    :root[data-scroll-effects] .wi-card {
       view-timeline-name: --wi-card;
     }
 
-    .wi-card__drift {
+    :root[data-scroll-effects] .wi-card__drift {
       animation: wi-drift linear both;
       animation-timeline: --wi-card;
       animation-range: cover 0% cover 100%;
