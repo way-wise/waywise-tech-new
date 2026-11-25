@@ -16,3 +16,11 @@ export const landingOutfit = Outfit({
   subsets: ["latin"],
   weight: ["400", "600", "700", "800"],
 });
+
+/**
+ * The main site's Outfit (the variable font, every weight), for the shared "Our Profile" card in
+ * the landing navbars (LandingProfileCard), so it matches the main site's Navbar exactly.
+ */
+export const siteOutfit = Outfit({
+  subsets: ["latin"],
+});

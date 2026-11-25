@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import LandingProfileCard from "../shared/LandingProfileCard";
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
-const profileGuide = "/images/shared/book-v2-front.png";
 
 /**
  * Navbar.
@@ -164,19 +164,6 @@ const RestaurantNavbar = () => {
                   {link.label}
                 </a>
               ))}
-              <Link
-                href="/book"
-                title="View Company Profile"
-                className="hidden overflow-hidden rounded-sm shadow-[0_0_8px_rgba(0,163,255,0.3)] transition-all duration-300 hover:scale-[1.04] hover:ring-[#00A3FF]/80 hover:shadow-[0_0_14px_rgba(0,163,255,0.5)] lg:block"
-              >
-              <Image unoptimized
-                src={profileGuide}
-                alt="Way Wise Tech company profile"
-                width={1190}
-                height={841}
-                className="h-auto w-24 object-cover"
-              />
-            </Link>
             </nav>
 
             {/*
@@ -186,6 +173,7 @@ const RestaurantNavbar = () => {
             */}
             <div className="flex items-center gap-4 lg:gap-10 xl:gap-[75px]">
               
+              <LandingProfileCard heightClassName="h-10 xl:h-12" className="lg:-mr-6 xl:-mr-[59px]" />
               <Link
                 href="/contact"
                 style={navTypography}

@@ -1,13 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import LandingProfileCard from "../shared/LandingProfileCard";
 import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import AttorneyContainer, { ATTORNEY_NAV_WIDTH } from "./AttorneyContainer";
 import AttorneyLogo from "./AttorneyLogo";
 
-const profileGuide = "/images/shared/book-v2-front.png";
 
 /** Scroll depth at which the navbar detaches and pins to the viewport top. */
 const STICK_AFTER_PX = 100;
@@ -159,25 +158,12 @@ const AttorneyNavbar = () => {
               {link.label}
             </a>
           ))}
-          <Link
-            href="/book"
-            title="View Company Profile"
-            className="hidden overflow-hidden rounded-sm shadow-[0_0_8px_rgba(0,163,255,0.3)] transition-all duration-300 hover:scale-[1.04] hover:ring-[#00A3FF]/80 hover:shadow-[0_0_14px_rgba(0,163,255,0.5)] lg:block"
-          >
-            <Image unoptimized
-              src={profileGuide}
-              alt="Way Wise Tech company profile"
-              width={1190}
-              height={841}
-              className="h-auto w-24 object-cover"
-            />
-          </Link>
         </nav>
 
         {/* Right cluster: profile book + CTA */}
         <div className="flex items-center gap-4">
-          {/* Company profile thumbnail, glow ring matches the main site treatment */}
-
+          {/* The main site's "Our Profile" card (opens /book) */}
+          <LandingProfileCard heightClassName="h-[38px]" />
           <Link
             href="/contact"
             style={buttonTypography}
