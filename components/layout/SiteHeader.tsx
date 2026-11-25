@@ -19,7 +19,7 @@ function ProfileCard({ showThumbnail = true, size = "default" }: ProfileCardProp
   const small = size === "small";
   return (
     <Link
-      href="#"
+      href="/book"
       className={`flex shrink-0 items-center bg-[#fdf3f2] shadow-[inset_0_0_0_1.5px_var(--color-brand)] transition-colors duration-200 hover:bg-[#fbe4e2] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink ${
         small
           ? "h-12 gap-3 rounded-lg px-[14px] min-[1440px]:w-[192px]"

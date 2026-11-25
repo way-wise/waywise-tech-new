@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { ourProcess } from "@/lib/content/process";
+import { SCROLL_EFFECTS } from "@/components/motion/scrollEffects";
 
 /** The step circles are 104px at every width (OurProcess.tsx). */
 const CIRCLE_RADIUS = 52;
@@ -60,6 +61,9 @@ export function ProcessJourney() {
     const wrapper = section.closest<HTMLElement>(".pin-wrapper");
     const xl = window.matchMedia("(min-width: 1280px)");
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    // Scroll effects off (scrollEffects.ts) behaves as reduced motion: the rope fully drawn, the steps
+    // at rest, no pill and no extended pin.
+    const still = () => !SCROLL_EFFECTS || reduced.matches;
 
     // stops: scroll positions where progress reaches each step (each quarter of the rope);
     // activations: where each step activates (from xl, the moment the line touches its circle's edge).
@@ -71,7 +75,7 @@ export function ProcessJourney() {
     const setReached = (reached: number) => {
       if (reached === current) return;
       current = reached;
-      const resting = reduced.matches;
+      const resting = still();
       steps.forEach((step, index) => {
         if (resting) delete step.dataset.state;
         else step.dataset.state = index === reached ? "active" : index < reached ? "done" : "todo";
@@ -104,7 +108,7 @@ export function ProcessJourney() {
     };
 
     const update = () => {
-      if (reduced.matches || !thresholds.length) return;
+      if (still() || !thresholds.length) return;
       const scroll = window.scrollY;
       const progress = progressAt(scroll);
       let reached = -1;
@@ -124,7 +128,7 @@ export function ProcessJourney() {
 
     const measure = () => {
       const viewport = window.innerHeight;
-      const journey = xl.matches && !reduced.matches;
+      const journey = xl.matches && !still();
 
       // The pin rest: the journey plus the existing rest from xl; otherwise the page's 30svh fallback.
       if (wrapper) {
@@ -203,7 +207,7 @@ export function ProcessJourney() {
 
     const applyMotionPreference = () => {
       measure();
-      if (reduced.matches) {
+      if (still()) {
         line.style.strokeDashoffset = "0";
         head.style.opacity = "0";
         setReached(-1);
@@ -218,7 +222,7 @@ export function ProcessJourney() {
     observer.observe(section);
     observer.observe(document.documentElement);
     window.addEventListener("resize", measure);
-    window.addEventListener("scroll", update, { passive: true });
+    if (SCROLL_EFFECTS) window.addEventListener("scroll", update, { passive: true });
     xl.addEventListener("change", measure);
     reduced.addEventListener("change", applyMotionPreference);
 
@@ -277,7 +281,7 @@ export function ProcessPill() {
     <div
       data-op-pill
       aria-hidden="true"
-      className="pointer-events-none sticky bottom-4 z-20 mx-auto mt-10 flex w-full max-w-[440px] items-center gap-4 rounded-full bg-white/95 py-3 pr-5 pl-4 shadow-[0_8px_24px_rgb(35_31_32/0.08),0_0_0_1px_rgb(35_31_32/0.05)] transition-opacity duration-500 xl:hidden motion-reduce:hidden group-data-[reveal=pending]/steps:opacity-0"
+      className={SCROLL_EFFECTS ? "pointer-events-none sticky bottom-4 z-20 mx-auto mt-10 flex w-full max-w-[440px] items-center gap-4 rounded-full bg-white/95 py-3 pr-5 pl-4 shadow-[0_8px_24px_rgb(35_31_32/0.08),0_0_0_1px_rgb(35_31_32/0.05)] transition-opacity duration-500 xl:hidden motion-reduce:hidden group-data-[reveal=pending]/steps:opacity-0" : "hidden"}
     >
       <span data-pill-label className="shrink-0 text-[14px] leading-5 font-medium whitespace-pre text-[#0d1d44] tabular-nums">
         {`01  ${ourProcess.steps[0].title}`}

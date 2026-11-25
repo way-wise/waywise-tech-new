@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
 import "./pinned-section.css";
+import { SCROLL_EFFECTS } from "./scrollEffects";
 
 type PinnedSectionProps = {
   children: ReactNode;
@@ -22,12 +23,19 @@ type PinnedSectionProps = {
  * Holds a section still once its bottom reaches the bottom of the screen, while the next section
  * rises over it. Scrolling stays native: this only measures heights, because CSS cannot read an
  * element's own height for `top`. Without JavaScript the height is unset and the page scrolls normally.
+ *
+ * Off since 2026-11-25 (owner): with SCROLL_EFFECTS false the section sits in normal flow, its `hold`
+ * and `limitCoverTo` have no effect, and the page scrolls normally. Pages keep their PinnedSection
+ * wrappers, so setting the switch back to true restores every pin exactly as it was.
  */
 export function PinnedSection({ children, limitCoverTo, hold }: PinnedSectionProps) {
   const wrapper = useRef<HTMLDivElement>(null);
   const body = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Scroll effects off (scrollEffects.ts): no pin, so nothing to measure. The wrapper stays in the
+    // DOM, so the page structure and anything that looks it up are unchanged.
+    if (!SCROLL_EFFECTS) return;
     const section = body.current;
     const limit = limitCoverTo ? document.querySelector(limitCoverTo) : null;
     if (!wrapper.current || !section) return;
