@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import LandingProfileCard from "../shared/LandingProfileCard";
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Menu, X } from "lucide-react";
 import logo from "@/assets/landing/doctor/logo.webp";
@@ -174,6 +175,7 @@ const DoctorNavbar = () => {
             </nav>
 
             <div className="flex items-center gap-4">
+              <LandingProfileCard heightClassName="h-[50px]" />
               <Link
                 href="/contact"
                 style={navTypography}
