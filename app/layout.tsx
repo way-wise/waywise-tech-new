@@ -20,8 +20,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     // data-scroll-effects: the site-wide scroll-effects switch for CSS (components/motion/scrollEffects.ts).
     <html
       lang="en"
-      className={`${outfit.variable} h-full scroll-pt-[110px] antialiased`}
+      className={`${outfit.variable} h-full scroll-pt-27.5 antialiased`}
       data-scroll-effects={SCROLL_EFFECTS ? "" : undefined}
+      suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

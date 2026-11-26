@@ -67,7 +67,7 @@ export const services: Service[] = [
     card: {
       href: "/services/mobile-app-development",
       description:
-        "We develop intelligent AI solutions that automate workflows and power smarter decisions.",
+        "Intelligent AI solutions that automate tasks, analyse data, and enable  smarter decisions.",
       image: assets.serviceMobile,
       alt: "Two phones showing a property app with app store icons",
     },
