@@ -58,9 +58,18 @@ export const servicesMenu: NavMenu = {
   action: { label: "View All Services", href: "/services" },
 };
 
+/** Each industry's landing page, by its label in `footerIndustries`. A label not listed stays "#". */
+const industryHrefs: Record<string, string> = {
+  "Law Firms & Legal": "/attorney",
+  "Healthcare": "/doctor",
+  "Home Technicians & Repair Vendors": "/plumber",
+  "Restaurants & Hospitality": "/restaurant",
+  "Retail & E-Commerce": "/ecommerce",
+};
+
 export const industriesMenu: NavMenu = {
   title: "Industries",
-  links: footerIndustries.map((label) => ({ label, href: "#" })),
+  links: footerIndustries.map((label) => ({ label, href: industryHrefs[label] ?? "#" })),
   // Under Industries on purpose: the reference has it wrong (approved decision).
   action: { label: "View All Industries", href: "/industries" },
 };

@@ -109,11 +109,11 @@ export const industryPhases = [
 
 /** The Footer's "Industries" column, in its order. A different set of categories from the carousel. */
 export const footerIndustries = [
-  "Healthcare & Medical",
-  "Legal & Professional Services",
-  "Real Estate & Construction",
-  "Finance, Insurance & Accounting",
-  "Retail, E-commerce & Logistics",
+  "Law Firms & Legal",
+  "Healthcare",
+  "Home Technicians & Repair Vendors",
+  "Restaurants & Hospitality",
+  "Retail & E-Commerce",
 ];
 
 /**

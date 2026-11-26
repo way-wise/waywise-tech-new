@@ -294,10 +294,11 @@ export const homeFooter = {
     {
       title: "Industries",
       links: [
-        { label: "Healthcare & Medical", href: "#" },
-        { label: "Legal & Professional Services", href: "#" },
-        { label: "Real Estate & Construction", href: "#" },
-        { label: "Finance, Insurance & Accounting", href: "#" },
+        { label: "Law Firms & Legal", href: "/attorney" },
+        { label: "Healthcare", href: "/doctor" },
+        { label: "Retail & E-Commerce", href: "/ecommerce" },
+        { label: "Restaurants & Hospitality", href: "/restaurant" },
+        { label: "Home Technicians & Repair Vendors", href: "/plumber" },
       ],
       action: { label: "View All Industries", href: "/industries" },
     },
