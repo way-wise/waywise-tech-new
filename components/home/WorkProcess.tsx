@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
+import { Reveal } from "@/components/motion/Reveal";
+import { revealOrder } from "@/components/motion/revealOrder";
 import { Container } from "@/components/ui/Container";
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -69,12 +71,15 @@ const stepIcons: Record<WorkProcessIcon, ReactNode> = {
 
 const CONNECTOR_ANCHORS = ["top-[11%]", "top-[37%]", "top-[63%]", "top-[89%]"];
 
-function StepCard({ step }: { step: WorkProcessStep }) {
+function StepCard({ step, order }: { step: WorkProcessStep; order: number }) {
   return (
-    <article className="group flex items-start gap-4 rounded-2xl border border-black/6 bg-white p-5 shadow-[0_2px_10px_rgba(13,29,68,0.03)] transition-[translate,box-shadow,border-color] duration-300 ease-out hover:border-[#D71920]/30 hover:shadow-[0_8px_20px_rgba(35,31,32,0.1)] motion-safe:hover:-translate-y-1">
+    <article
+      style={revealOrder(order)}
+      className="ww-rise group flex items-center gap-4 rounded-2xl border border-black/6 bg-white p-5 shadow-[0_2px_10px_rgba(13,29,68,0.03)] transition-[translate,box-shadow,border-color] duration-300 ease-out hover:border-[#D71920]/30 hover:shadow-[0_8px_20px_rgba(35,31,32,0.1)] motion-safe:hover:-translate-y-1"
+    >
       <div
         aria-hidden="true"
-        className="flex size-14 shrink-0 items-center justify-center rounded-xl bg-[#F3E2DF] text-[#D71920] transition-colors duration-300 ease-out group-hover:bg-[#D71920] group-hover:text-white"
+        className="flex size-16 shrink-0 items-center justify-center rounded-2xl bg-[#F3E2DF] text-[#D71920] transition-colors duration-300 ease-out group-hover:bg-[#D71920] group-hover:text-white sm:size-[72px]"
       >
         <svg
           viewBox="0 0 24 24"
@@ -83,7 +88,7 @@ function StepCard({ step }: { step: WorkProcessStep }) {
           strokeWidth="1.75"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="size-6"
+          className="size-7 sm:size-8"
         >
           {stepIcons[step.icon]}
         </svg>
@@ -249,40 +254,45 @@ export function WorkProcess() {
       aria-labelledby="work-process-heading"
       className="relative bg-[#EEE9E1]"
     >
-      <Container className="py-16 md:py-20 lg:py-24">
-        <div className="grid gap-5 lg:grid-cols-[minmax(0,968fr)_minmax(0,592fr)] lg:items-end lg:gap-0">
-          <div>
-            <SectionEyebrow size="lg" tracking="0.078em">
-              {eyebrow}
-            </SectionEyebrow>
-            <SectionHeading id="work-process-heading" tone="navy" className="mt-2">
-              {heading.first}{" "}
-              <span className="text-[#D71920]">{heading.accent}</span>
-            </SectionHeading>
-          </div>
-          <p className="text-[18px] leading-[1.45] text-[#626262] max-[1599px]:text-pretty lg:text-[clamp(17px,1.146vw,22px)]">
-            {description}
-          </p>
-        </div>
-
-        <div className="mt-10 grid items-stretch gap-4 lg:mt-14 lg:grid-cols-[minmax(0,320px)_minmax(0,1fr)_minmax(0,320px)] lg:gap-0 xl:grid-cols-[minmax(0,440px)_minmax(0,1fr)_minmax(0,440px)]">
-          <div className="order-2 grid gap-4 sm:grid-cols-2 lg:order-1 lg:grid-cols-1 lg:gap-5">
-            {leftSteps.map((step) => (
-              <StepCard key={step.number} step={step} />
-            ))}
+      <Reveal each>
+        <Container className="py-16 md:py-20 lg:py-24">
+          <div className="grid gap-5 lg:grid-cols-[minmax(0,968fr)_minmax(0,592fr)] lg:items-end lg:gap-0">
+            <div className="ww-rise">
+              <SectionEyebrow size="lg" tracking="0.078em">
+                {eyebrow}
+              </SectionEyebrow>
+              <SectionHeading id="work-process-heading" tone="navy" className="mt-2">
+                {heading.first}{" "}
+                <span className="text-[#D71920]">{heading.accent}</span>
+              </SectionHeading>
+            </div>
+            <p
+              style={revealOrder(1)}
+              className="ww-rise text-[18px] leading-[1.45] text-[#626262] max-[1599px]:text-pretty lg:text-[clamp(17px,1.146vw,22px)]"
+            >
+              {description}
+            </p>
           </div>
 
-          <div className="order-1 mb-4 lg:order-2 lg:mb-0">
-            <VennDiagram />
-          </div>
+          <div className="mt-10 grid items-stretch gap-4 lg:mt-14 lg:grid-cols-[minmax(0,320px)_minmax(0,1fr)_minmax(0,320px)] lg:gap-0 xl:grid-cols-[minmax(0,440px)_minmax(0,1fr)_minmax(0,440px)]">
+            <div className="order-2 grid gap-4 sm:grid-cols-2 lg:order-1 lg:grid-cols-1 lg:gap-5">
+              {leftSteps.map((step, index) => (
+                <StepCard key={step.number} step={step} order={index} />
+              ))}
+            </div>
 
-          <div className="order-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-1 lg:gap-5">
-            {rightSteps.map((step) => (
-              <StepCard key={step.number} step={step} />
-            ))}
+            <div style={revealOrder(1)} className="ww-rise order-1 mb-4 lg:order-2 lg:mb-0">
+              <VennDiagram />
+            </div>
+
+            <div className="order-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-1 lg:gap-5">
+              {rightSteps.map((step, index) => (
+                <StepCard key={step.number} step={step} order={index} />
+              ))}
+            </div>
           </div>
-        </div>
-      </Container>
+        </Container>
+      </Reveal>
     </section>
   );
 }
