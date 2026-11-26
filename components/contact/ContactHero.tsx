@@ -21,7 +21,7 @@ const { eyebrow, heading, description, primaryAction, secondaryAction, imageAlt:
  */
 export function ContactHero() {
   return (
-    <section className="relative overflow-hidden bg-[#f0ebe4]">
+    <section className="relative flex min-h-svh flex-col overflow-hidden bg-[#f0ebe4]">
       <div className="absolute inset-0 hidden lg:block">
         <AssetImage src={assets.contactHero} alt={heroImageAlt} sizes="100vw" priority className="object-cover" />
         {/*
@@ -38,7 +38,7 @@ export function ContactHero() {
       </div>
 
       {/* Below lg the text starts under the shared floating Navbar card, as on the Homepage Hero. */}
-      <div className="relative mx-auto grid w-full max-w-[1600px] px-5 pt-[116px] pb-12 md:px-8 md:pt-[124px] md:pb-16 lg:grid-cols-[minmax(0,800fr)_minmax(0,760fr)] lg:items-center lg:pt-[calc(76px+clamp(40px,4.167vw,80px))] lg:pb-[clamp(56px,5.208vw,100px)] xl:px-5 xl:pt-[calc(100px+clamp(40px,4.167vw,80px))]">
+      <div className="relative mx-auto grid w-full max-w-[1600px] flex-1 content-center px-5 pt-[116px] pb-12 md:px-8 md:pt-[124px] md:pb-16 lg:grid-cols-[minmax(0,800fr)_minmax(0,760fr)] lg:items-center lg:pt-[calc(76px+clamp(40px,4.167vw,80px))] lg:pb-[clamp(56px,5.208vw,100px)] xl:px-5 xl:pt-[calc(100px+clamp(40px,4.167vw,80px))]">
         <div className="min-w-0">
         <SectionEyebrow
           weight="bold"
