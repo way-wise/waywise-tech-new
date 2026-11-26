@@ -1,4 +1,5 @@
 import { ClientLogos } from "@/components/sections/ClientLogos";
+import { ClientTestimonials } from "@/components/home/ClientTestimonials";
 import { Hero } from "@/components/home/Hero";
 import { Industries } from "@/components/sections/industries/Industries";
 import { MissionVision } from "@/components/home/MissionVision";
@@ -47,6 +48,7 @@ export default function Home() {
         <div className="relative">
           <OurWork />
         </div>
+        <ClientTestimonials />
       </main>
       {/*
         2026-11-16 redesign: the Final CTA and the footer as one section (Homepage only). It ends the

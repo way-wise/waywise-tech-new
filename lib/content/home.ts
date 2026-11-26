@@ -69,16 +69,16 @@ export const homeHero = {
  * project data exists. Image sizes are the exported files' pixel sizes.
  */
 export const homeOurWork = {
-  eyebrow: "Our Work",
+  eyebrow: "OUR WORK",
   /** `accent` ends the first line in red; the whole `second` line is red. */
   heading: {
-    first: "Real Projects.",
-    accent: "Real",
-    second: "Digital Solutions.",
+    first: "Engineered for Scale",
+    accent: "",
+    second: "Built for Impact",
   },
   description:
-    "Explore some of the websites, apps, and software solutions we've designed and developed for different businesses.",
-  action: { label: "View All Projects", href: "/our-work" },
+    "Discover some of the websites, apps, software solutions and AI-driven systems we built to solve complex operational challenges.",
+  action: { label: "View All Case Studies", href: "/our-work" },
   industryLabel: "Industry",
   summary:
     "Our team of 10 highly skilled engineers excels in delivering innovative solutions.",
@@ -318,4 +318,195 @@ export const homeFooter = {
    * Fiona Bari). The shared `finalCta.team` roles stay unchanged for the inner pages' Final CTA.
    */
   teamRoles: ["CEO Founding Partner", "CTO Founding Partner", "CFO"],
+};
+
+export type HomeClientTestimonial = {
+  id: string;
+  headline: string;
+  quote: string;
+  name: string;
+  role: string;
+  location: string;
+  rating: number;
+  image: {
+    src: string;
+    width: number;
+    height: number;
+    alt: string;
+  };
+};
+
+/**
+ * The Homepage Client Testimonials section (components/home/ClientTestimonials.tsx), placed after
+ * Our Work. All copy, author details, ratings and avatars are managed here.
+ *
+ * Items #2–#9 currently use placeholder quotes, roles, locations and avatar photos until the real
+ * client copy and photos are supplied.
+ */
+export const homeClientTestimonials = {
+  eyebrow: "Client Testimonials",
+  heading: {
+    first: "Real Voices.",
+    accent: "Meaningful Results.",
+  },
+  description:
+    "A collaborative process. A committed team. Hear it from our clients.",
+  intro: {
+    heading: "What Our Clients Say",
+    subtext: "Real Voices. Real Impact. Real Success.",
+  },
+  items: [
+    {
+      id: "doctors-for-accidents",
+      headline: "Complete Healthcare SaaS Platform",
+      quote:
+        "We built a complete software platform that helps doctors, attorneys, and patients work together in one place. doctorsforaccidents.com",
+      name: "Jean-Paul & Nikki Kinsella",
+      role: "Founders | Doctors for Accidents",
+      location: "Santa Clarita, California",
+      rating: 5,
+      image: {
+        src: assets.workClient1,
+        width: 84,
+        height: 84,
+        alt: "Portrait of Jean-Paul & Nikki Kinsella",
+      },
+    },
+    {
+      id: "ak-prints",
+      // PLACEHOLDER: replace with real quote, role, location and photo.
+      headline: "AK Prints",
+      quote:
+        "“The team took time to understand our goals and turned a complex workflow into a fast, intuitive ordering experience. We always knew what was happening next.”",
+      name: "AK Prints",
+      role: "Client | AK Prints",
+      location: "United States",
+      rating: 5,
+      image: {
+        src: assets.workClient2,
+        width: 84,
+        height: 84,
+        alt: "Portrait of AK Prints client",
+      },
+    },
+    {
+      id: "corepromed",
+      // PLACEHOLDER: replace with real quote, role, location and photo.
+      headline: "CoreProMed",
+      quote:
+        "“From the first workshop to the final handoff, communication was clear and thoughtful. Their attention to detail made the whole experience feel effortless.”",
+      name: "CoreProMed",
+      role: "Client | CoreProMed",
+      location: "United States",
+      rating: 5,
+      image: {
+        src: assets.workClient3,
+        width: 84,
+        height: 84,
+        alt: "Portrait of CoreProMed client",
+      },
+    },
+    {
+      id: "coreally-claims-rcm",
+      // PLACEHOLDER: replace with real quote, role, location and photo.
+      headline: "CoreAlly Claims/RCM Portal",
+      quote:
+        "“They brought fresh thinking to every challenge and stayed with us after launch. It felt like a true partnership, not just another software project.”",
+      name: "CoreAlly",
+      role: "Client | CoreAlly Claims/RCM Portal",
+      location: "United States",
+      rating: 5,
+      image: {
+        src: assets.workClient4,
+        width: 84,
+        height: 84,
+        alt: "Portrait of CoreAlly client",
+      },
+    },
+    {
+      id: "calgrove-rentals",
+      // PLACEHOLDER: replace with real quote, role, location and photo.
+      headline: "Calgrove Rentals",
+      quote:
+        "“Way Wise Tech modernized our digital presence and simplified how customers browse and book with us online.”",
+      name: "Calgrove Rentals",
+      role: "Client | Calgrove Rentals",
+      location: "California, USA",
+      rating: 5,
+      image: {
+        src: assets.workClient5,
+        width: 84,
+        height: 84,
+        alt: "Portrait of Calgrove Rentals client",
+      },
+    },
+    {
+      id: "roger-doumanian",
+      // PLACEHOLDER: replace with real quote, role, location and photo.
+      headline: "Roger Doumanian, Attorney at Law",
+      quote:
+        "“Professional, responsive, and deeply knowledgeable. They delivered a clean, trustworthy web experience tailored to our legal practice.”",
+      name: "Roger Doumanian",
+      role: "Attorney at Law",
+      location: "California, USA",
+      rating: 5,
+      image: {
+        src: assets.workClient1,
+        width: 84,
+        height: 84,
+        alt: "Portrait of Roger Doumanian",
+      },
+    },
+    {
+      id: "filewyse",
+      // PLACEHOLDER: replace with real quote, role, location and photo.
+      headline: "FileWyse",
+      quote:
+        "“They helped us turn a complex document workflow into a streamlined, dependable platform our team uses every day.”",
+      name: "FileWyse",
+      role: "Client | FileWyse",
+      location: "United States",
+      rating: 5,
+      image: {
+        src: assets.workClient2,
+        width: 84,
+        height: 84,
+        alt: "Portrait of FileWyse client",
+      },
+    },
+    {
+      id: "michael-danis-finlay",
+      // PLACEHOLDER: replace with real quote, role, location and photo.
+      headline: "Michael Danis Finlay",
+      quote:
+        "“Clear communication, reliable engineering, and thoughtful design from start to finish.”",
+      name: "Michael Danis Finlay",
+      role: "Client",
+      location: "United States",
+      rating: 5,
+      image: {
+        src: assets.workClient3,
+        width: 84,
+        height: 84,
+        alt: "Portrait of Michael Danis Finlay",
+      },
+    },
+    {
+      id: "jpaliaisonsolutions",
+      // PLACEHOLDER: replace with real quote, role, location and photo.
+      headline: "jpaliaisonsolutions",
+      quote:
+        "“A committed team that listened carefully to our business needs and delivered beyond expectations.”",
+      name: "jpaliaisonsolutions",
+      role: "Client | jpaliaisonsolutions",
+      location: "United States",
+      rating: 5,
+      image: {
+        src: assets.workClient4,
+        width: 84,
+        height: 84,
+        alt: "Portrait of jpaliaisonsolutions client",
+      },
+    },
+  ] satisfies HomeClientTestimonial[],
 };
