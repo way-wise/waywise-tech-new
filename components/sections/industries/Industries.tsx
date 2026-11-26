@@ -1,6 +1,7 @@
 import { ButtonLink } from "@/components/ui/ButtonLink";
-import { industriesSection, industryCards, industryPhases } from "@/lib/content/industries";
+import { industriesSection, industryCards, industryPhases, industryShowcase } from "@/lib/content/industries";
 import { IndustryCarousel } from "./IndustryCarousel";
+import { IndustryShowcase } from "./IndustryShowcase";
 
 const { eyebrow, heading, intro, action } = industriesSection;
 
@@ -62,31 +63,35 @@ type IndustriesProps = {
 
 export function Industries({ cards = industryCards, variant = "default" }: IndustriesProps) {
   const layout = layouts[variant];
+  const headingBlock = (
+    <>
+      <p className="flex items-center gap-2 text-[16px] leading-5 font-semibold tracking-[0.078em] text-brand uppercase lg:text-[18px]">
+        <span className="h-[3px] w-[22px] shrink-0 -translate-y-0.5 bg-brand" aria-hidden="true" />
+        {eyebrow}
+      </p>
+      <h2 id="industries-heading" className={layout.heading}>
+        {heading.first}
+        <br />
+        <span className="text-brand">{heading.accent}</span>
+      </h2>
+    </>
+  );
+  const introText = <p className={layout.intro}>{intro}</p>;
+  const actionLink = (
+    <ButtonLink href={action.href} variant="outline" className="h-[52px] px-4 text-[18px] sm:px-6 lg:text-[20px]">
+      {action.label}
+    </ButtonLink>
+  );
+
   return (
     <section aria-labelledby="industries-heading" className={layout.section}>
-      <IndustryCarousel
-        cards={cards}
-        variant={variant}
-        heading={
-          <>
-            <p className="flex items-center gap-2 text-[16px] leading-5 font-semibold tracking-[0.078em] text-brand uppercase lg:text-[18px]">
-              <span className="h-[3px] w-[22px] shrink-0 -translate-y-0.5 bg-brand" aria-hidden="true" />
-              {eyebrow}
-            </p>
-            <h2 id="industries-heading" className={layout.heading}>
-              {heading.first}
-              <br />
-              <span className="text-brand">{heading.accent}</span>
-            </h2>
-          </>
-        }
-        intro={<p className={layout.intro}>{intro}</p>}
-        action={
-          <ButtonLink href={action.href} variant="outline" className="h-[52px] px-4 text-[18px] sm:px-6 lg:text-[20px]">
-            {action.label}
-          </ButtonLink>
-        }
-      />
+      {/* The redesign (2026-11-26, compact: Homepage and /services) replaces the card carousel with
+          the industry showcase: an image card and three phase cards per industry. */}
+      {variant === "compact" ? (
+        <IndustryShowcase industries={industryShowcase} heading={headingBlock} intro={introText} action={actionLink} />
+      ) : (
+        <IndustryCarousel cards={cards} variant={variant} heading={headingBlock} intro={introText} action={actionLink} />
+      )}
 
       {/* The Phase pricing cards belong to the original design only; the redesign removes them. */}
       {variant === "default" && (

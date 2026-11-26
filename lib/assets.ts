@@ -22,8 +22,14 @@ export const assets = {
   // 1619x656 JPEGs with a .png name and square corners (the card's own radius rounds the top).
   serviceCloud: "/images/services/cloud%20api.png", // cloud linked to API, data and CI icons
   serviceSupport: "/images/services/maintenance.png", // gears linked to tools, monitoring, security, 24/7
-  industryAttorney: "/images/industries/attorney.png",
-  industryRestaurant: "/images/industries/restaurant.png",
+  industryAttorney: "/images/industries/attorney1.png", // 457x530, rounded corners and a gold fade in the file
+  industryAttorneyQr: "/images/industries/attor-qr.png", // 78x78, the bare QR code on transparent (frame and caption drawn in code)
+  industryDoctorShowcase: "/images/industries/doctor1.png", // 457x530, rounded corners and a navy fade in the file
+  industryDoctorQr: "/images/industries/doctor-qr.png", // 78x78, the bare QR code on transparent (frame and caption drawn in code)
+  industryPlumberShowcase: "/images/industries/plumber.png", // 457x530, rounded corners and an olive fade in the file
+  industryPlumberQr: "/images/industries/plumber-qr.png", // 75x72, the bare QR code on transparent (frame and caption drawn in code)
+  industryRestaurantQr: "/images/industries/restaurant-qr.png", // 72x72, the bare QR code on transparent (frame and caption drawn in code)
+  industryRestaurant: "/images/industries/restaurant.png", // 457x530, chef with a rust fade, rounded corners in the file (replaced 2026-11-26)
   industryRetailers: "/images/industries/retailers.png",
   industryDoctor: "/images/industries/doctor.png",
   industryPlumbers: "/images/industries/plumbers.png",
