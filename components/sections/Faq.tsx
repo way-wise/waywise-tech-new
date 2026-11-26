@@ -93,7 +93,7 @@ export function Faq() {
             </p>
             <h2
               id="faq-heading"
-              className="mt-1 text-[clamp(26px,7.4vw,48px)] leading-[1.154] font-semibold tracking-[-0.015em] text-[#0d1d44] lg:mt-2 lg:text-[clamp(34px,2.786vw,53.5px)] lg:leading-[1.159]"
+              className="mt-1 text-[clamp(26px,7vw,36px)] leading-[1.154] font-semibold tracking-[-0.015em] text-[#0d1d44] lg:mt-2 lg:text-[clamp(32px,2.1875vw,42px)] lg:leading-[1.159]"
             >
               <MaskLine order={1}>{servicesFaq.heading.first}</MaskLine>{" "}
               <MaskLine order={2} className="text-brand">

@@ -138,7 +138,7 @@ export function ContactForm() {
             </SectionEyebrow>
             <h2
               id="contact-message-heading"
-              className="mt-3 text-[clamp(28px,8.2vw,calc(var(--u)*40))] leading-[1.2083] font-semibold tracking-[-0.02em] text-navy xl:mt-[calc(var(--u)*9.25)]"
+              className="mt-3 text-[clamp(26px,7vw,36px)] lg:text-[clamp(32px,2.1875vw,42px)] leading-[1.2083] font-semibold tracking-[-0.02em] text-navy xl:mt-[calc(var(--u)*9.25)]"
             >
               <MaskLine order={1}>
                 {heading.first} <span className="text-brand">{heading.second}</span>
@@ -176,7 +176,7 @@ export function ContactForm() {
             </SectionEyebrow>
             <h2
               id="contact-offices-heading"
-              className="mt-3 text-[clamp(28px,8.2vw,calc(var(--u)*40))] leading-[1.2083] font-semibold tracking-[-0.02em] text-navy xl:mt-[calc(var(--u)*13.25)] min-[1360px]:whitespace-nowrap"
+              className="mt-3 text-[clamp(26px,7vw,36px)] lg:text-[clamp(32px,2.1875vw,42px)] leading-[1.2083] font-semibold tracking-[-0.02em] text-navy xl:mt-[calc(var(--u)*13.25)] min-[1360px]:whitespace-nowrap"
             >
               {/* One line from 1360px (as drawn at 1920; below that its 28px minimum would not fit), wrapping naturally on narrower cards. */}
               <MaskLine order={1}>

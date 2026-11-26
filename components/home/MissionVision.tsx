@@ -39,7 +39,7 @@ export function MissionVision() {
             </SectionEyebrow>
             <h2
               id="mission-vision-heading"
-              className="mt-2 text-[clamp(26px,7.4vw,48px)] leading-[1.154] font-semibold tracking-[-0.015em] text-ink lg:mt-[calc(var(--u)*8)] lg:text-[max(34px,calc(var(--u)*53.5))]"
+              className="mt-2 text-[clamp(26px,7vw,36px)] leading-[1.154] font-semibold tracking-[-0.015em] text-ink lg:mt-[calc(var(--u)*8)] lg:text-[clamp(32px,2.1875vw,42px)]"
             >
               <MaskLine order={1}>
                 {`${heading.first} `}

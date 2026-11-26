@@ -75,7 +75,7 @@ export function ContactOverview() {
             */}
             <h2
               id="contact-overview-heading"
-              className="mt-2 text-[clamp(26px,7.4vw,48px)] leading-[1.13] font-semibold tracking-[-0.015em] text-navy lg:mt-[clamp(4px,0.365vw,7px)] lg:text-[clamp(34px,2.8125vw,54px)] lg:leading-[1.1667]"
+              className="mt-2 text-[clamp(26px,7vw,36px)] leading-[1.13] font-semibold tracking-[-0.015em] text-navy lg:mt-[clamp(4px,0.365vw,7px)] lg:text-[clamp(32px,2.1875vw,42px)] lg:leading-[1.1667]"
             >
               {/* Two lines at every width, as in the design: each MaskLine is its own line. */}
               <MaskLine order={1}>{heading.first} </MaskLine>

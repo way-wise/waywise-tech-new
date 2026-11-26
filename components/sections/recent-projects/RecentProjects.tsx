@@ -34,7 +34,7 @@ export function RecentProjects({ eyebrow, heading, intro, projects }: RecentProj
             </SectionEyebrow>
             <h2
               id="recent-projects-heading"
-              className="mt-[10px] text-[clamp(28px,7.4vw,48px)] leading-[1.09375] font-semibold tracking-[-0.013em] text-ink lg:mt-[clamp(6px,0.365vw,7px)] lg:text-[clamp(34px,2.786vw,53.5px)] lg:leading-[1.178]"
+              className="mt-[10px] text-[clamp(26px,7vw,36px)] leading-[1.09375] font-semibold tracking-[-0.013em] text-ink lg:mt-[clamp(6px,0.365vw,7px)] lg:text-[clamp(32px,2.1875vw,42px)] lg:leading-[1.178]"
             >
               <MaskLine order={1}>
                 {`${heading.first} `}

@@ -109,7 +109,7 @@ const l = {
   section: "flex items-center bg-[#faf5f1] lg:min-h-[clamp(628px,49.0625vw,942px)]",
   header: "grid gap-5 lg:grid-cols-[minmax(0,968fr)_minmax(0,592fr)] lg:items-end lg:gap-0",
   eyebrow: "lg:text-[clamp(14px,0.9375vw,18px)] lg:tracking-[0.09em]",
-  heading: "lg:mt-2 lg:text-[clamp(34px,2.786vw,53.5px)] lg:leading-[1.1215]",
+  heading: "lg:mt-2 lg:text-[clamp(32px,2.1875vw,42px)] lg:leading-[1.1215]",
   description: "lg:mb-[clamp(9px,0.729vw,14px)]",
   steps: "lg:mt-[46px]",
 };
@@ -165,7 +165,7 @@ export function OurProcess() {
             </p>
             <h2
               id="our-process-heading"
-              className={`mt-1 text-[clamp(26px,7.4vw,48px)] leading-[1.154] font-semibold tracking-[-0.015em] text-[#0d1d44] ${l.heading}`}
+              className={`mt-1 text-[clamp(26px,7vw,36px)] leading-[1.154] font-semibold tracking-[-0.015em] text-[#0d1d44] ${l.heading}`}
             >
               <MaskLine order={1}>{ourProcess.heading.first}</MaskLine>{" "}
               <MaskLine order={2} className="text-brand">

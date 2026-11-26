@@ -28,7 +28,7 @@ export function FinalCta() {
         <div className="min-w-0 lg:pr-6">
           <h2
             id="final-cta-heading"
-            className="text-[clamp(32px,8.6vw,56px)] leading-[1.094] font-semibold text-[#0d1d44] lg:text-[clamp(40px,3.333vw,64px)]"
+            className="text-[clamp(26px,7vw,36px)] leading-[1.094] font-semibold text-[#0d1d44] lg:text-[clamp(32px,2.1875vw,42px)]"
           >
             {heading.first}
             <br />

@@ -13,15 +13,15 @@ import { industryCards } from "@/lib/content/industries";
  * destinations are confirmed. Image sizes are the exported files' pixel sizes.
  */
 export const homeHero = {
-  eyebrow: "USA Strategy • Global Technology Delivery",
+  eyebrow: "USA-BASED TECHNOLOGY | INNOVATION WITHOUT BOUNDARIES",
   /** The first line is ink; the second line ends in the red `accent`. */
-  heading: { first: "Technology Built", second: "Around", accent: "Your Business" },
+  heading: { first: "Technology Build Around", second: "Your", accent: "Business Goals" },
   description:
-    "We design and develop high-performing websites, custom software, mobile apps, and AI-powered solutions that help businesses grow.",
+    "We design and develop custom software, high-performance websites, mobile apps and AI-powered digital solutions that accelerate business growth.",
   primaryAction: { label: "Explore Our Work", href: "#" },
   secondaryAction: { label: "Discuss Your Project", href: "#" },
   /** In reading order: the first four make the first row, the last two the second (Hero.tsx). */
-  features: ["Web Development", "Mobile Apps", "UI/UX Design", "AI & Automation", "Saas Programme", "Custom Software Development"],
+  features: ["Web Development", "Mobile Apps", "UI/UX Design", "AI-Powered Digital Solutions", "SaaS Development", "Custom Software Development"],
   /** The photo grid, in order: the tall left image, then the top and bottom right images. */
   images: [
     { src: assets.heroAi, width: 880, height: 1216, alt: "AI head made of circuitry in a city of data" },

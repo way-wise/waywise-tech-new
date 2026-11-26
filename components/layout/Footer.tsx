@@ -60,7 +60,7 @@ export function Footer() {
             <div className="min-w-0 xl:-mt-[calc(var(--u)*2.4)]">
               <h2
                 id="footer-cta-heading"
-                className="ww-rise text-[clamp(32px,8.6vw,56px)] leading-[1.11] font-semibold text-navy xl:text-[max(40px,calc(var(--u)*64))]"
+                className="ww-rise text-[clamp(26px,7vw,36px)] leading-[1.11] font-semibold text-navy lg:text-[clamp(32px,2.1875vw,42px)]"
               >
                 {heading.first}
                 <br />
