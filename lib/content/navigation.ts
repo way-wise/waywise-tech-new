@@ -100,10 +100,10 @@ export const navBrandCard = {
  * "View All Services" button.
  */
 export const primaryNav: NavItem[] = [
+  { label: "Company", href: "#", menu: companyMenu },
   { label: "Services", href: "#", menu: servicesMenu },
   { label: "Industries", href: "#", menu: industriesMenu },
   { label: "Our Work", href: "/our-work",},
-  { label: "Company", href: "#", menu: companyMenu },
   { label: "Contact", href: "/contact" },
 ];
 

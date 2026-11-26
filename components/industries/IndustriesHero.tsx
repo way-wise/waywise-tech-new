@@ -44,7 +44,7 @@ const photoFrame = "relative overflow-hidden rounded-[clamp(6px,0.417vw,8px)]";
  */
 export function IndustriesHero() {
   return (
-    <section className="relative overflow-hidden bg-[#e8d5c0]">
+    <section className="relative flex min-h-svh flex-col overflow-hidden bg-[#e8d5c0]">
       <AssetImage
         src={assets.industryHeroBackground}
         alt={imageAlts.background}
@@ -53,7 +53,7 @@ export function IndustriesHero() {
         className="object-cover"
       />
 
-      <div className="relative mx-auto grid w-full max-w-[1600px] gap-10 px-5 pt-[116px] pb-12 md:px-8 md:pt-[124px] md:pb-16 lg:grid-cols-[minmax(0,800fr)_minmax(0,760fr)] lg:items-center lg:gap-0 lg:pt-[calc(76px+clamp(40px,4.167vw,80px))] lg:pb-[clamp(56px,5.208vw,100px)] xl:px-5 xl:pt-[calc(100px+clamp(40px,4.167vw,80px))]">
+      <div className="relative mx-auto grid w-full max-w-[1600px] flex-1 content-center gap-10 px-5 pt-[116px] pb-12 md:px-8 md:pt-[124px] md:pb-16 lg:grid-cols-[minmax(0,800fr)_minmax(0,760fr)] lg:items-center lg:gap-0 lg:pt-[calc(76px+clamp(40px,4.167vw,80px))] lg:pb-[clamp(56px,5.208vw,100px)] xl:px-5 xl:pt-[calc(100px+clamp(40px,4.167vw,80px))]">
         {/* No right padding: the description's first line needs 784px of the 800 (as drawn, breaking after "types of"). */}
         <div className="min-w-0">
           <SectionEyebrow

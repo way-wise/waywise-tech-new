@@ -269,7 +269,13 @@ export const clientLogos = [
   {
     name: "Super Speciosa Raw Leaf",
     src: "/images/logos/speciosa.svg",
-    width: 45,
+    width: 120,
+    height: 50,
+  },
+  {
+    name: "AK Sign",
+    src: "/images/logos/ak-sign.svg",
+    width: 100,
     height: 34,
   },
   {
@@ -293,10 +299,10 @@ export const clientLogos = [
     width: 100,
     height: 34,
   },
-  { name: "Pleage", src: "/images/logos/pleage.svg", width: 115, height: 34 },
+  { name: "Pleage", src: "/images/logos/pleadge.svg", width: 115, height: 34 },
   {
     name: "Zealous Law",
-    src: "/images/logos/Zealous%20Law.svg",
+    src: "/images/logos/Zealous-Law.svg",
     width: 116,
     height: 34,
   },
@@ -307,8 +313,8 @@ export const clientLogos = [
     height: 34,
   },
   {
-    name: "Maison Lumen",
-    src: "/images/logos/Maison-Lumen.svg",
+    name: "Renovo",
+    src: "/images/logos/renovo.svg",
     width: 116,
     height: 34,
   },

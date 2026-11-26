@@ -20,7 +20,8 @@ export const homeHero = {
     "We design and develop high-performing websites, custom software, mobile apps, and AI-powered solutions that help businesses grow.",
   primaryAction: { label: "Explore Our Work", href: "#" },
   secondaryAction: { label: "Discuss Your Project", href: "#" },
-  features: ["Web Development", "Saas Programme", "Mobile Apps", "Custom Software Development", "UI/UX Design", "AI & Automation"],
+  /** In reading order: the first four make the first row, the last two the second (Hero.tsx). */
+  features: ["Web Development", "Mobile Apps", "UI/UX Design", "AI & Automation", "Saas Programme", "Custom Software Development"],
   /** The photo grid, in order: the tall left image, then the top and bottom right images. */
   images: [
     { src: assets.heroAi, width: 880, height: 1216, alt: "AI head made of circuitry in a city of data" },

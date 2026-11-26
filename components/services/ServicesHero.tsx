@@ -12,7 +12,7 @@ const textEnter = "animate-hero-text motion-reduce:animate-hero-fade";
 
 export function ServicesHero() {
   return (
-    <section id="services-hero" className="relative overflow-hidden bg-[#eedac2]">
+    <section id="services-hero" className="relative flex min-h-svh flex-col overflow-hidden bg-[#eedac2]">
       {/*
         Homepage Hero standard (owner, 2026-11-18): the frame of components/home/Hero.tsx, as on the
         other inner pages. From lg the content sits in the Homepage's two-column grid with its top
@@ -31,7 +31,7 @@ export function ServicesHero() {
         />
       </div>
 
-      <div className="relative mx-auto grid w-full max-w-[1600px] px-5 pt-[116px] pb-12 md:px-8 md:pt-[124px] md:pb-16 lg:grid-cols-[minmax(0,800fr)_minmax(0,760fr)] lg:items-center lg:pt-[calc(76px+clamp(40px,4.167vw,80px))] lg:pb-[clamp(56px,5.208vw,100px)] xl:px-5 xl:pt-[calc(100px+clamp(40px,4.167vw,80px))]">
+      <div className="relative mx-auto grid w-full max-w-[1600px] flex-1 content-center px-5 pt-[116px] pb-12 md:px-8 md:pt-[124px] md:pb-16 lg:grid-cols-[minmax(0,800fr)_minmax(0,760fr)] lg:items-center lg:pt-[calc(76px+clamp(40px,4.167vw,80px))] lg:pb-[clamp(56px,5.208vw,100px)] xl:px-5 xl:pt-[calc(100px+clamp(40px,4.167vw,80px))]">
         <div className="min-w-0 lg:pr-6">
         <p
           className={`${textEnter} text-[16px] leading-5 font-bold tracking-[0.066em] text-brand uppercase lg:text-[clamp(14px,0.833vw,16px)]`}

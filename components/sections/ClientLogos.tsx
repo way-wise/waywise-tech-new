@@ -41,8 +41,8 @@ const stripVars = Object.fromEntries(
  * 1920x942 frame (logos centred at y 875-908). Below lg the strip is 88px (100px from md).
  */
 const heights = {
-  default: "lg:h-[132px]",
-  compact: "lg:h-[100px]",
+  default: "lg:h-[142px]",
+  compact: "lg:h-[130px]",
 };
 
 type ClientLogosProps = {
