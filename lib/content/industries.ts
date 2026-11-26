@@ -69,11 +69,11 @@ export const industryCards: Industry[] = [
  * /services. "View All Industries" is a "#" placeholder until its destination is confirmed.
  */
 export const industriesSection = {
-  eyebrow: "Industry We Serve",
+  eyebrow: "Industries we serve",
   /** The first line is black; the second line is the red `accent`. */
-  heading: { first: "Digital Solutions for", accent: "Every Industry" },
+  heading: { first: "Driving Digital Innovation", accent: "Across Industries" },
   intro:
-    "We recognize that each business is unique. Our team creates digital solutions tailored to your industry's needs.",
+    "Every industry has unique challenges. Our team creates tailored technology solutions to meet your specific needs and unlock new opportunities.",
   action: { label: "View All Industries", href: "/industries" },
 };
 
@@ -267,3 +267,589 @@ export const industriesHero = {
     restaurant: "Waiter serving diners in a bright restaurant with tall windows",
   },
 };
+
+/** An image with its intrinsic size, as the newer content stores images. */
+type ContentImage = { src: string; width: number; height: number; alt: string };
+
+/** The line icons drawn in the phase cards' header circle (IndustryShowcase.tsx). */
+export type IndustryPhaseIcon = "monitor" | "users" | "layers";
+
+export type IndustryPhaseCard = {
+  /** Upper-case title, for example "Phase 1". */
+  phase: string;
+  title: string;
+  description: string;
+  icon: IndustryPhaseIcon;
+  /** Accordion rows: each title opens its list of points (points to be supplied by the owner). */
+  features: { title: string; points: string[] }[];
+  /** The note at the card's foot: `label` in semibold, then `text`. */
+  note: { label: string; text: string };
+};
+
+/** Colour theme of an industry's phase cards (the colours are set in IndustryShowcase.tsx). */
+export type IndustryShowcaseTheme = "gold" | "navy" | "olive" | "rust";
+
+export type IndustryShowcaseItem = {
+  title: string;
+  theme: IndustryShowcaseTheme;
+  description: string;
+  image: ContentImage;
+  /** The bare QR code; the component draws its white frame and the two-line caption under it. */
+  qr: ContentImage & { caption: { title: string; text: string } };
+  action: { label: string; href: string };
+  phases: IndustryPhaseCard[];
+};
+
+/**
+ * The Homepage Industries section's redesign (2026-11-26): per industry, an image card and three
+ * phase cards. The header arrows switch industry; Attorney & Lawyers is the only one so far.
+ */
+export const industryShowcase: IndustryShowcaseItem[] = [
+  {
+    title: "Attorney & Lawyers",
+    theme: "gold",
+    description: "Websites and digital tools that help law firms build trust and attract clients.",
+    image: {
+      src: assets.industryAttorney,
+      width: 457,
+      height: 530,
+      alt: "Barrister in a black gown holding a scroll and a law book",
+    },
+    qr: {
+      src: assets.industryAttorneyQr,
+      width: 78,
+      height: 78,
+      alt: "QR code: scan to explore our legal solutions",
+      caption: { title: "Scan to explore", text: "Our Legal Solutions" },
+    },
+    action: { label: "Contact for Price", href: "/contact" },
+    phases: [
+      {
+        phase: "Phase 1",
+        title: "Practice Launch",
+        description: "A professional, bar-compliant online presence that turns searches into consultations.",
+        icon: "monitor",
+        features: [
+          {
+            title: "Brand & Identity",
+            points: [
+              "Logo & Brand Guide",
+              "Business Cards, Letterhead & Email",
+            ],
+          },
+          {
+            title: "Law Firm Website",
+            points: [
+              "UX Research & Competitor Analysis",
+              "Design System, UI Design & Prototyping",
+              "Responsive Wireframe Design (Mobile, Tablet & Desktop)",
+              "5–10 Page Responsive Website",
+              "Practice Area & Lawyer Pages",
+              "Legal Disclaimers",
+              "Reviews & Case Results",
+              "ADA / WCAG Ready",
+            ],
+          },
+          {
+            title: "Local SEO & Lead Generation",
+            points: [
+              "Local SEO & Google Business Profile",
+              "Contact, Consultation & Basic Intake Forms",
+              "Call & Map Integration",
+            ],
+          },
+          {
+            title: "Hosting & Security",
+            points: [
+              "Domain, Hosting & Email (First Year)",
+              "SSL & Daily Backups",
+            ],
+          },
+        ],
+        note: { label: "FREE", text: "30 days of post-launch support" },
+      },
+      {
+        phase: "Phase 2",
+        title: "Client Engagement Platform",
+        description: "Never miss a lead again. Capture, book, and onboard clients 24/7 without adding staff.",
+        icon: "users",
+        features: [
+          {
+            title: "24/7 Client Intake",
+            points: [
+              "Smart Intake & Case Screening",
+              "Online Consultation Booking",
+              "Live Chat Support",
+            ],
+          },
+          {
+            title: "Secure Client Portal",
+            points: [
+              "Secure Document Upload & Sharing",
+              "Case Status Updates",
+              "E-Signature for Retainer Agreements",
+              "Secure Online Payments",
+              "Invoices & Billing Management",
+            ],
+          },
+          {
+            title: "Communication & Reminders",
+            points: [
+              "Automated Email & SMS Reminders",
+              "Secure Attorney-Client Messaging",
+            ],
+          },
+          {
+            title: "Grow Your Practice",
+            points: [
+              "Automatic Lead Follow-Up",
+              "Lead Source Tracking",
+            ],
+          },
+        ],
+        note: { label: "FREE", text: "60 days of support + staff training session" },
+      },
+      {
+        phase: "Phase 3",
+        title: "Smart Legal Practice Management",
+        description:
+          "Everything in Phases 1 & 2, plus your own custom practice management system. No per-user subscriptions, ever.",
+        icon: "layers",
+        features: [
+          {
+            title: "Client & Case Management",
+            points: [
+              "Manage Case & Client Records",
+              "Automated Conflict Checks",
+              "Automate Tasks & Workflows",
+              "Track Court Dates & Deadlines",
+              "Generate Legal Documents & Forms",
+            ],
+          },
+          {
+            title: "Time, Billing & Finance",
+            points: [
+              "Time Tracking & Billable Hours",
+              "QuickBooks Integration",
+            ],
+          },
+          {
+            title: "Analytics & AI",
+            points: [
+              "Revenue & Collections Dashboard",
+              "Case Pipeline & Attorney Performance Reports",
+              "AI Case Summaries & Insights",
+            ],
+          },
+          {
+            title: "Team & Staff Management",
+            points: [
+              "Multi-Attorney & Staff Portal",
+              "Role-Based Access & Permissions",
+              "Activity & Communication Logs",
+            ],
+          },
+          {
+            title: "Security & Growth",
+            points: [
+              "Data Encryption & Two-Factor Authentication",
+              "HIPAA-Ready for Personal Injury & Medical Records",
+              "Advanced SEO & Content Strategy",
+            ],
+          },
+        ],
+        note: { label: "FREE", text: "90 days of support + staff training session" },
+      },
+    ],
+  },
+  {
+    title: "Doctor, Dentist & Healthcare Professionals",
+    theme: "navy",
+    description: "Build patient trust, simplify appointments, and grow your healthcare practice.",
+    image: {
+      src: assets.industryDoctorShowcase,
+      width: 457,
+      height: 530,
+      alt: "Smiling doctor in a white coat with a stethoscope in a bright hospital corridor",
+    },
+    qr: {
+      src: assets.industryDoctorQr,
+      width: 78,
+      height: 78,
+      alt: "QR code: scan to explore our healthcare solutions",
+      caption: { title: "Scan to explore", text: "Our Healthcare Solutions" },
+    },
+    action: { label: "Contact for Price", href: "/contact" },
+    phases: [
+      {
+        phase: "Phase 1",
+        title: "Practice Launch",
+        description:
+          "A trusted, professional online presence that turns Google searches into booked appointments.",
+        icon: "monitor",
+        features: [
+          {
+            title: "Brand & Identity",
+            points: [
+              "Logo & Brand Guide",
+              "Business Cards, Letterhead & Appointment Cards",
+            ],
+          },
+          {
+            title: "Business Website",
+            points: [
+              "UX Research & Competitor Analysis",
+              "Design System, UI Design & Prototyping",
+              "Responsive Wireframe Design (Mobile, Tablet & Desktop)",
+              "5–10 Page Responsive Website",
+              "ADA / WCAG Ready",
+              "Services & Treatment Pages",
+              "Doctor & Staff Profiles",
+              "Patient Reviews & Before/After Gallery",
+            ],
+          },
+          {
+            title: "Local SEO & Lead Generation",
+            points: [
+              "Local SEO & Google Business Profile",
+              "Call & Google Maps Setup",
+              "Appointment Request Forms",
+            ],
+          },
+          {
+            title: "Hosting & Security",
+            points: [
+              "Domain, Hosting & Email (First Year)",
+              "SSL Certificate & Daily Backups",
+            ],
+          },
+        ],
+        note: { label: "FREE", text: "30 days of post-launch support" },
+      },
+      {
+        phase: "Phase 2",
+        title: "Patient Engagement Platform",
+        description:
+          "A fuller schedule and fewer no-shows. Patients book, check in, and pay online, HIPAA-ready from day one.",
+        icon: "users",
+        features: [
+          {
+            title: "Online Booking & Intake",
+            points: [
+              "24/7 Online Appointment Booking",
+              "Digital Patient Intake & Consent Forms",
+              "Pre-Visit Insurance Information Collection",
+              "Live Chat Support",
+            ],
+          },
+          {
+            title: "Secure Patient Portal",
+            points: [
+              "Secure Patient Login",
+              "Test Result & Document Sharing",
+              "Prescription Refill Requests",
+              "Secure Online Payments",
+            ],
+          },
+          {
+            title: "Appointment Reminders & Communication",
+            points: [
+              "Automated SMS & Email Reminders",
+              "Recall & Follow-Up Reminders",
+              "Secure Patient–Doctor Messages",
+            ],
+          },
+          {
+            title: "Grow Your Practice",
+            points: [
+              "Automated Patient Review Requests",
+              "Patient Follow-Up Campaigns",
+              "Targeted SEO Strategy",
+            ],
+          },
+        ],
+        note: { label: "FREE", text: "60 days of support + front-desk training session" },
+      },
+      {
+        phase: "Phase 3",
+        title: "Smart Practice Management",
+        description:
+          "Everything in Phases 1 & 2, plus your own custom practice management system. No per-provider subscriptions, ever.",
+        icon: "layers",
+        features: [
+          {
+            title: "Patient Records & Care",
+            points: [
+              "Patient Records & Medical History",
+              "Chronic Care Follow-Ups",
+              "Treatment Plans & Progress Tracking",
+              "Automated Tasks & Workflows",
+              "Medication & Allergy Management",
+            ],
+          },
+          {
+            title: "Scheduling & Billing",
+            points: [
+              "Multi-Doctor & Multi-Location Calendar",
+              "QuickBooks Integration",
+              "Insurance Claims & Billing Management",
+            ],
+          },
+          {
+            title: "Reports & AI",
+            points: [
+              "Revenue & Payment Analytics Dashboard",
+              "AI-Powered Patient Summaries & Insights",
+              "Appointment & No-Show Reports",
+            ],
+          },
+          {
+            title: "Team & Staff Management",
+            points: [
+              "Doctor & Staff Portal",
+              "Activity & Communication Logs",
+              "Role-Based Access & Permissions",
+            ],
+          },
+          {
+            title: "Security & Growth",
+            points: [
+              "HIPAA-Ready Secure System",
+              "SEO & Content Strategy",
+              "Two-Factor Authentication",
+              "Audit Logs & Access Tracking",
+            ],
+          },
+        ],
+        note: { label: "FREE", text: "90 days of support + staff training session" },
+      },
+    ],
+  },
+  {
+    title: "Plumbers, Electricians, Technicians & Other Repair Vendor",
+    theme: "olive",
+    description: "Digital tools to attract local customers, get more bookings, and grow your business.",
+    image: {
+      src: assets.industryPlumberShowcase,
+      width: 457,
+      height: 530,
+      alt: "Technician repairing the wiring of an electronic unit with a screwdriver",
+    },
+    qr: {
+      src: assets.industryPlumberQr,
+      width: 75,
+      height: 72,
+      alt: "QR code: scan to explore our field service solutions",
+      caption: { title: "Scan to explore", text: "Our Field Service Solutions" },
+    },
+    action: { label: "Contact for Price", href: "/contact" },
+    phases: [
+      {
+        phase: "Phase 1",
+        title: "Business Launch",
+        description: 'A professional brand and website that turns "near me" searches into phone calls.',
+        icon: "monitor",
+        features: [
+          {
+            title: "Brand & Identity",
+            points: [
+              "Logo & Brand Guide",
+              "Business Cards, Truck & Uniform Design",
+              "Estimate & Proposal Templates",
+            ],
+          },
+          {
+            title: "Business Website",
+            points: [
+              "UX Research & Competitor Analysis",
+              "Design System, UI Design & Prototyping",
+              "Responsive Wireframe Design (Mobile, Tablet & Desktop)",
+              "5–10 Page Responsive Website",
+              "Service & Service Area Pages",
+              "Project Before/After Gallery",
+              "Customer Reviews & Testimonials",
+              "License, Insurance & Certification Badges",
+            ],
+          },
+          {
+            title: "Local SEO & Lead Generation",
+            points: [
+              "Local SEO & Google Business Profile",
+              "Call & Google Maps Setup",
+              "Free Estimate Forms",
+            ],
+          },
+          {
+            title: "Hosting & Security",
+            points: [
+              "Domain, Hosting & Email (First Year)",
+              "SSL & Daily Backups",
+            ],
+          },
+        ],
+        note: { label: "FREE", text: "30 days of post-launch support" },
+      },
+      {
+        phase: "Phase 2",
+        title: "Customer & Job Platform",
+        description:
+          "Never lose a job to a missed call. Customers book, approve quotes, and pay online day or night.",
+        icon: "users",
+        features: [
+          {
+            title: "Booking & Estimates",
+            points: [
+              "24/7 Online Booking & Emergency Service Requests",
+              "Instant Estimates & Quote Requests",
+              "Online Quote Approval & E-Signature",
+              "Live Chat Support",
+            ],
+          },
+          {
+            title: "Customer Portal",
+            points: [
+              "Job Tracking & Project Status Updates",
+              "Photo & Document Sharing",
+              "Project Milestone Tracking",
+              "Invoices & Secure Online Payments",
+            ],
+          },
+          {
+            title: "Communication & Notifications",
+            points: [
+              "Automated SMS & Email Job Alerts",
+              "Real-Time Technician Arrival Notifications",
+              "Service & Maintenance Reminders",
+            ],
+          },
+          {
+            title: "Customer Retention & Growth",
+            points: [
+              "Automated Customer Review Requests",
+              "Targeted Local SEO Strategy",
+            ],
+          },
+        ],
+        note: { label: "FREE", text: "60 days of support + staff training session" },
+      },
+      {
+        phase: "Phase 3",
+        title: "Smart Field & Project Management",
+        description:
+          "Everything in Phases 1 & 2, plus your own custom system to run jobs, crews, and projects. No per-technician subscriptions, ever.",
+        icon: "layers",
+        features: [
+          {
+            title: "Jobs & Projects",
+            points: [
+              "Customer & Job History",
+              "Project Tasks & Daily Logs",
+              "Automated Workflows",
+              "Scheduling & Technician Dispatch",
+              "Change Orders & Approvals",
+            ],
+          },
+          {
+            title: "Estimates, Billing & Inventory",
+            points: [
+              "Estimates, Invoices & Payments",
+              "QuickBooks Integration",
+              "Parts & Material Tracking",
+            ],
+          },
+          {
+            title: "Reports & AI",
+            points: [
+              "Revenue & Job Profitability Dashboard",
+              "Crew & Technician Performance Reports",
+              "AI-Powered Job Summaries & Insights",
+            ],
+          },
+          {
+            title: "Team & Subcontractors",
+            points: [
+              "Staff & Subcontractor Portal",
+              "Time Tracking & Timesheets",
+              "Role-Based Access & Permissions",
+            ],
+          },
+          {
+            title: "Security & Growth",
+            points: [
+              "Data Encryption & Two-Factor Authentication",
+              "SEO & Content Strategy",
+              "Activity Logs",
+            ],
+          },
+        ],
+        note: { label: "FREE", text: "90 days of support + staff training session" },
+      },
+    ],
+  },
+  {
+    title: "Restaurant & Food Brand",
+    theme: "rust",
+    description: "Reach more diners, boost online orders, and build a stronger food brand.",
+    image: {
+      src: assets.industryRestaurant,
+      width: 457,
+      height: 530,
+      alt: "Smiling chef in a white chef's hat in a restaurant dining room",
+    },
+    qr: {
+      src: assets.industryRestaurantQr,
+      width: 72,
+      height: 72,
+      alt: "QR code: scan to explore our restaurant solutions",
+      caption: { title: "Scan to explore", text: "Our Restaurant Solutions" },
+    },
+    action: { label: "Contact for Price", href: "/contact" },
+    // Phase 2 and 3 accordion titles are as drawn; the design repeats the healthcare titles there,
+    // so they are expected to change with this industry's own feature list.
+    phases: [
+      {
+        phase: "Phase 1",
+        title: "Restaurant Launch",
+        description:
+          "Build a professional brand and website that attracts local diners and brings more customers through your doors.",
+        icon: "monitor",
+        features: [
+          { title: "Brand & Identity", points: [] },
+          { title: "Business Website", points: [] },
+          { title: "Local SEO & Lead Generation", points: [] },
+          { title: "Hosting & Security", points: [] },
+        ],
+        note: { label: "FREE", text: "30 days of post-launch support" },
+      },
+      {
+        phase: "Phase 2",
+        title: "Online Ordering Platform",
+        description:
+          "Let customers explore your menu, place orders, reserve tables, and pay online anytime.",
+        icon: "users",
+        features: [
+          { title: "Online Booking & Intake", points: [] },
+          { title: "Secure Patient Portal", points: [] },
+          { title: "Appointment Reminders & Communication", points: [] },
+          { title: "Grow Your Practice", points: [] },
+        ],
+        note: { label: "FREE", text: "60 days of support + staff training session" },
+      },
+      {
+        phase: "Phase 3",
+        title: "Smart Commerce Management",
+        description:
+          "Everything in Phases 1 & 2, plus your own custom system to manage orders, inventory, staff, and daily operations.",
+        icon: "layers",
+        features: [
+          { title: "Patient Records & Care", points: [] },
+          { title: "Scheduling & Billing", points: [] },
+          { title: "Reports & AI", points: [] },
+          { title: "Team & Staff Management", points: [] },
+          { title: "Security & Growth", points: [] },
+        ],
+        note: { label: "FREE", text: "90 days of support + staff training session" },
+      },
+    ],
+  },
+];
