@@ -36,7 +36,7 @@ export function ContactLocations() {
       >
         <h2
           id="contact-locations-heading"
-          className="text-[clamp(28px,8.4vw,56px)] leading-[1.06] font-semibold tracking-[-0.01em] text-navy lg:text-[clamp(34px,2.786vw,53.5px)] lg:leading-[1.178]"
+          className="text-[clamp(26px,7vw,36px)] leading-[1.06] font-semibold tracking-[-0.01em] text-navy lg:text-[clamp(32px,2.1875vw,42px)] lg:leading-[1.178]"
         >
           {/* Two lines at every width, as in the design: each MaskLine is its own line. */}
           <MaskLine order={1}>{heading.first} </MaskLine>

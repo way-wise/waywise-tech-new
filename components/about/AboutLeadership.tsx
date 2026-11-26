@@ -98,7 +98,7 @@ export function AboutLeadership() {
 
                     <h2
                       id={headingId}
-                      className="mt-3 text-[clamp(26px,7vw,40px)] leading-[1.154] font-semibold tracking-[-0.015em] text-ink xl:mt-[clamp(2px,0.182vw,3.5px)] xl:text-[clamp(28px,2.208vw,42.4px)] xl:leading-[1.286]"
+                      className="mt-3 text-[clamp(26px,7vw,36px)] leading-[1.154] font-semibold tracking-[-0.015em] text-ink xl:mt-[clamp(2px,0.182vw,3.5px)] lg:text-[clamp(32px,2.1875vw,42px)] xl:leading-[1.286]"
                     >
                       {/*
                         942 frame (2026-11-17, Frame 2147239037.png): the short connecting word ("a",

@@ -13,20 +13,46 @@ import { industryCards } from "@/lib/content/industries";
  * destinations are confirmed. Image sizes are the exported files' pixel sizes.
  */
 export const homeHero = {
-  eyebrow: "USA Strategy • Global Technology Delivery",
+  eyebrow: "USA-BASED TECHNOLOGY | INNOVATION WITHOUT BOUNDARIES",
   /** The first line is ink; the second line ends in the red `accent`. */
-  heading: { first: "Technology Built", second: "Around", accent: "Your Business" },
+  heading: {
+    first: "Technology Built",
+    second: "Around",
+    accent: "Your Business",
+  },
   description:
-    "We design and develop high-performing websites, custom software, mobile apps, and AI-powered solutions that help businesses grow.",
+    "We design and develop custom software, high-performance websites, mobile apps and AI-powered digital solutions that accelerate business growth.",
   primaryAction: { label: "Explore Our Work", href: "#" },
   secondaryAction: { label: "Discuss Your Project", href: "#" },
   /** In reading order: the first four make the first row, the last two the second (Hero.tsx). */
-  features: ["Web Development", "Mobile Apps", "UI/UX Design", "AI & Automation", "Saas Programme", "Custom Software Development"],
+  features: [
+    "Web Development",
+    "Mobile Apps",
+    "UI/UX Design",
+    "AI & Automation",
+    "Saas Programme",
+    "Custom Software Development",
+  ],
   /** The photo grid, in order: the tall left image, then the top and bottom right images. */
   images: [
-    { src: assets.heroAi, width: 880, height: 1216, alt: "AI head made of circuitry in a city of data" },
-    { src: assets.heroStrategy, width: 600, height: 588, alt: "Businessman pointing at a rising bar chart" },
-    { src: assets.heroDashboard, width: 600, height: 588, alt: "Hand pointing at a dashboard on a desktop monitor" },
+    {
+      src: assets.heroAi,
+      width: 880,
+      height: 1216,
+      alt: "AI head made of circuitry in a city of data",
+    },
+    {
+      src: assets.heroStrategy,
+      width: 600,
+      height: 588,
+      alt: "Businessman pointing at a rising bar chart",
+    },
+    {
+      src: assets.heroDashboard,
+      width: 600,
+      height: 588,
+      alt: "Hand pointing at a dashboard on a desktop monitor",
+    },
   ],
 };
 
@@ -45,12 +71,17 @@ export const homeHero = {
 export const homeOurWork = {
   eyebrow: "Our Work",
   /** `accent` ends the first line in red; the whole `second` line is red. */
-  heading: { first: "Real Projects.", accent: "Real", second: "Digital Solutions." },
+  heading: {
+    first: "Real Projects.",
+    accent: "Real",
+    second: "Digital Solutions.",
+  },
   description:
     "Explore some of the websites, apps, and software solutions we've designed and developed for different businesses.",
   action: { label: "View All Projects", href: "/our-work" },
   industryLabel: "Industry",
-  summary: "Our team of 10 highly skilled engineers excels in delivering innovative solutions.",
+  summary:
+    "Our team of 10 highly skilled engineers excels in delivering innovative solutions.",
   details: [
     { label: "Project Scope", value: "Website Development" },
     { label: "Project Duration", value: "3 Month" },
@@ -59,32 +90,77 @@ export const homeOurWork = {
     {
       number: "01",
       title: "Laravel Backend System",
-      image: { src: assets.workLaravelBackend, width: 1367, height: 910, alt: "Laptop on a blue chair showing a medical website" },
-      client: { name: "Marvin McKinney", role: "Nursing Assistant", photo: { src: assets.workClient1, width: 84, height: 84 } },
+      image: {
+        src: assets.workLaravelBackend,
+        width: 1367,
+        height: 910,
+        alt: "Laptop on a blue chair showing a medical website",
+      },
+      client: {
+        name: "Marvin McKinney",
+        role: "Nursing Assistant",
+        photo: { src: assets.workClient1, width: 84, height: 84 },
+      },
     },
     {
       number: "02",
       title: "Landing Page Dev Work",
-      image: { src: assets.workLandingPage, width: 1367, height: 910, alt: "Laptop in a spotlight showing a dark green landing page" },
-      client: { name: "Brooklyn Simmons", role: "Web Designer", photo: { src: assets.workClient2, width: 84, height: 84 } },
+      image: {
+        src: assets.workLandingPage,
+        width: 1367,
+        height: 910,
+        alt: "Laptop in a spotlight showing a dark green landing page",
+      },
+      client: {
+        name: "Brooklyn Simmons",
+        role: "Web Designer",
+        photo: { src: assets.workClient2, width: 84, height: 84 },
+      },
     },
     {
       number: "03",
       title: "Online Store Launch",
-      image: { src: assets.workOnlineStore, width: 1367, height: 910, alt: "Laptop on a stone surface showing a furniture store" },
-      client: { name: "Bessie Cooper", role: "Marketing Coordinator", photo: { src: assets.workClient3, width: 84, height: 84 } },
+      image: {
+        src: assets.workOnlineStore,
+        width: 1367,
+        height: 910,
+        alt: "Laptop on a stone surface showing a furniture store",
+      },
+      client: {
+        name: "Bessie Cooper",
+        role: "Marketing Coordinator",
+        photo: { src: assets.workClient3, width: 84, height: 84 },
+      },
     },
     {
       number: "04",
       title: "React Dashboard Panel",
-      image: { src: assets.workReactDashboard, width: 1367, height: 900, alt: "Tablet showing a medical dashboard on a pastel background" },
-      client: { name: "Ronald Richards", role: "Medical Assistant", photo: { src: assets.workClient4, width: 84, height: 84 } },
+      image: {
+        src: assets.workReactDashboard,
+        width: 1367,
+        height: 900,
+        alt: "Tablet showing a medical dashboard on a pastel background",
+      },
+      client: {
+        name: "Ronald Richards",
+        role: "Medical Assistant",
+        photo: { src: assets.workClient4, width: 84, height: 84 },
+      },
     },
     {
       number: "05",
       title: "Mobile App UI Design",
-      image: { src: assets.workMobileApp, width: 1367, height: 900, alt: "Hand holding a phone showing a medical appointment app" },
-      client: { name: "Esther Howard", role: "President of Sales", photo: { src: assets.workClient5, width: 84, height: 84 } },
+      image: {
+        src: assets.workMobileApp,
+        width: 1367,
+        height: 900,
+        alt: "Hand holding a phone showing a medical appointment app",
+      },
+      client: {
+        name: "Esther Howard",
+        role: "President of Sales",
+        photo: { src: assets.workClient5, width: 84, height: 84 },
+      },
     },
   ],
 };
@@ -101,16 +177,16 @@ export const homeOurWork = {
  * next word on the first line.
  */
 const homeServiceDescriptions: Record<string, string> = {
-  "UI/UX & Product Design":
-    "We design clean, modern interfaces that enhance digital\u00a0experiences for businesses.",
-  "Custom Software Development":
-    "We develop custom software that streamlines work and boosts efficiency for your business.",
-  "Web Development": "We create fast, secure websites that attract customers and drive online growth.",
-  "Mobile App Development":
-    "We design user-friendly iOS and Android apps for easy\u00a0access to your services.",
-  "AI, Data & Automation": "We build smart AI solutions that automate tasks and save businesses time.",
-  "Branding & Digital Growth":
-    "We enhance online visibility through SEO, branding, and digital marketing.",
+  // "UI/UX & Product Design":
+  //   "We design clean, modern interfaces that enhance digital\u00a0experiences for businesses.",
+  // "Custom Software Development":
+  //   "We develop custom software that streamlines work and boosts efficiency for your business.",
+  // "Web Development": "We create fast, secure websites that attract customers and drive online growth.",
+  // "Mobile App Development":
+  //   "We design user-friendly iOS and Android apps for easy\u00a0access to your services.",
+  // "AI, Data & Automation": "We build smart AI solutions that automate tasks and save businesses time.",
+  // "Branding & Digital Growth":
+  //   "We enhance online visibility through SEO, branding, and digital marketing.",
 };
 
 export const homeServiceCards = serviceCards.map((card) => ({
@@ -170,9 +246,12 @@ export const homeMissionVision = {
  * descriptions (to confirm with the owner).
  */
 const homeIndustryDescriptions: Record<string, string> = {
-  "Attorney & Lawyers": "Websites and digital tools that help law firms build trust and attract clients.",
-  Restaurant: "Websites and online systems that help restaurants serve more customers.",
-  Retailers: "Online stores and tools that simplify shopping and boost retail sales.",
+  "Attorney & Lawyers":
+    "Websites and digital tools that help law firms build trust and attract clients.",
+  Restaurant:
+    "Websites and online systems that help restaurants serve more customers.",
+  Retailers:
+    "Online stores and tools that simplify shopping and boost retail sales.",
 };
 
 export const homeIndustryCards = industryCards.map((card) => ({
@@ -196,9 +275,18 @@ export const homeFooter = {
     {
       title: "Services",
       links: [
-        { label: "UI/UX & Product Design", href: "/services/ui-ux-product-design" },
-        { label: "Custom Software", href: "/services/custom-software-development" },
-        { label: "Web & Mobile Apps", href: "/services/mobile-app-development" },
+        {
+          label: "UI/UX & Product Design",
+          href: "/services/ui-ux-product-design",
+        },
+        {
+          label: "Custom Software",
+          href: "/services/custom-software-development",
+        },
+        {
+          label: "Web & Mobile Apps",
+          href: "/services/mobile-app-development",
+        },
         { label: "AI & Cloud DevOps", href: "/services/ai-data-automation" },
       ],
       action: { label: "View All Services", href: "/services" },

@@ -79,7 +79,7 @@ export function WhyChooseUs({ eyebrow, heading, description, image, reasons }: W
             </SectionEyebrow>
             <h2
               id="why-choose-us-heading"
-              className="mt-[10px] text-[clamp(28px,7.4vw,48px)] leading-[1.09375] font-bold tracking-[-0.006em] text-navy lg:font-semibold lg:tracking-[-0.014em] lg:mt-[clamp(6px,0.469vw,9px)] lg:text-[clamp(34px,2.786vw,53.5px)] lg:leading-[1.159]"
+              className="mt-[10px] text-[clamp(26px,7vw,36px)] leading-[1.09375] font-bold tracking-[-0.006em] text-navy lg:font-semibold lg:tracking-[-0.014em] lg:mt-[clamp(6px,0.469vw,9px)] lg:text-[clamp(32px,2.1875vw,42px)] lg:leading-[1.159]"
             >
               <MaskLine order={1}>
                 {`${heading.first} `}
