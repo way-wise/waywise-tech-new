@@ -516,3 +516,148 @@ export const homeClientTestimonials = {
     { value: "2x", label: "Avg. Online Growth", icon: "growth" },
   ] satisfies { value: string; label: string; icon: "users" | "building" | "star" | "growth" }[],
 };
+
+export type WorkProcessIcon =
+  | "onboarding"
+  | "brief"
+  | "roadmap"
+  | "contract"
+  | "communication"
+  | "documentation"
+  | "reviews"
+  | "support";
+
+export type WorkProcessStep = {
+  number: string;
+  title: string;
+  description: string;
+  icon: WorkProcessIcon;
+};
+
+/**
+ * The Homepage Our Work Process section (components/home/WorkProcess.tsx), placed after Our Work.
+ */
+export const homeWorkProcess = {
+  eyebrow: "Our Work Process",
+  heading: {
+    first: "A Simple Process for",
+    accent: "Successful Projects",
+  },
+  description:
+    "A clear and structured process to turn your idea into a successful solution, from start to long-term support.",
+  center: {
+    leftLabel: "You",
+    middleLabel: "YOUR PROJECT",
+    rightLabel: "Way Wise Tech",
+  },
+  steps: [
+    {
+      number: "01",
+      title: "Onboarding",
+      description: "We get to know your business, goals, and requirements.",
+      icon: "onboarding",
+    },
+    {
+      number: "02",
+      title: "Detailed Client Brief",
+      description: "We gather the details needed to define your project scope.",
+      icon: "brief",
+    },
+    {
+      number: "03",
+      title: "Preliminary Roadmap",
+      description: "We outline the project plan, timeline, and best approach.",
+      icon: "roadmap",
+    },
+    {
+      number: "04",
+      title: "Contract Management",
+      description: "We finalize the agreement, scope, and deliverables.",
+      icon: "contract",
+    },
+    {
+      number: "05",
+      title: "Communication Setup",
+      description: "We set up channels to keep you connected and updated.",
+      icon: "communication",
+    },
+    {
+      number: "06",
+      title: "Documentation & Setup",
+      description: "We organize project files, access, and documentation.",
+      icon: "documentation",
+    },
+    {
+      number: "07",
+      title: "Periodic Reviews",
+      description: "We review progress, collect feedback, and refine our work.",
+      icon: "reviews",
+    },
+    {
+      number: "08",
+      title: "Meeting & Ongoing Support",
+      description: "We deliver, review, and provide ongoing support as needed.",
+      icon: "support",
+    },
+  ] satisfies WorkProcessStep[],
+};
+
+export type SecurityCardIcon =
+  | "lock"
+  | "access"
+  | "server"
+  | "backup"
+  | "nda"
+  | "shield";
+
+export type SecurityCardItem = {
+  title: string;
+  description: string;
+  icon: SecurityCardIcon;
+};
+
+/**
+ * The Homepage Security & Data Protection section (components/home/SecurityProtection.tsx),
+ * placed after Our Work Process.
+ */
+export const homeSecurity = {
+  eyebrow: "Security & Data Protection",
+  heading: {
+    first: "Your Data is",
+    accent: "Safe with Us",
+  },
+  description:
+    "We follow strong security practices and industry standards to keep your business and client data private, secure, and protected at all times.",
+  cards: [
+    {
+      title: "Data Encryption",
+      description: "Your data encrypted in transit and at rest.",
+      icon: "lock",
+    },
+    {
+      title: "Secure Access Control",
+      description: "Role-based access with multi-factor login.",
+      icon: "access",
+    },
+    {
+      title: "Secure Servers",
+      description: "Hosted on trusted, enterprise-grade cloud.",
+      icon: "server",
+    },
+    {
+      title: "Data Backup",
+      description: "Automated backups to prevent data loss.",
+      icon: "backup",
+    },
+    {
+      title: "NDA Ready",
+      description: "We sign a NDA to keep your data confidential.",
+      icon: "nda",
+    },
+    {
+      title: "Security Monitoring",
+      description: "Continuous monitoring to detect and stop threats.",
+      icon: "shield",
+    },
+  ] satisfies SecurityCardItem[],
+};
