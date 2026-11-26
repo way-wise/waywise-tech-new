@@ -227,6 +227,21 @@ export const assets = {
   footerLinkedin: "/images/footer/Button.svg",
   footerTwitter: "/images/footer/Button%20(1).svg",
   footerInstagram: "/images/footer/Button%20(2).svg",
+  workProcessYou: "/images/icons/team-line.png",
+  workProcessProject: "/images/icons/stack-overflow-line.png",
+  workProcessWayWise: "/images/icons/way-wise-icon.png",
+  securityDataProtectionBg: "/images/security-data-protection-bg.png",
+  securityLock: "/images/icons/security-data-protection/Vector.png",
+  securityAccess:
+    "/images/icons/security-data-protection/coolicons_users-group-sharp.png",
+  securityServer:
+    "/images/icons/security-data-protection/famicons_server-outline.png",
+  securityBackup:
+    "/images/icons/security-data-protection/hugeicons_database-backup.png",
+  securityNda:
+    "/images/icons/security-data-protection/fluent_document-bullet-list-20-regular.png",
+  securityShield:
+    "/images/icons/security-data-protection/griddy-icons_shield-check.png",
 };
 
 /** Client logos in design order, at their design size. */
