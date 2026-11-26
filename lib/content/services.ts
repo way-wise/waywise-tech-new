@@ -29,87 +29,89 @@ export type Service = {
  */
 export const services: Service[] = [
   {
-    title: "UI/UX & Product Design",
+    title: "Custom Software Development",
     featured: true,
     card: {
       href: "/services/ui-ux-product-design",
       description:
-        "We create clean, modern, and easy-to-use designs that help businesses deliver better digital experiences.",
+        "We build custom software to simplify workflows, boost efficiency, and scale your business.",
       image: assets.serviceUiUx,
       alt: "Tablet and desktop monitor showing interface designs",
     },
   },
   {
-    title: "Custom Software Development",
+    title: "Web Design & Development",
     featured: true,
     card: {
       href: "/services/custom-software-development",
       description:
-        "We build custom software that simplifies daily work, improves efficiency, and supports your business growth.",
+        "We create modern, responsive, high-performing websites that strengthen your online presence.",
       image: assets.serviceCustomSoftware,
       alt: "Monitor, laptop and phone showing code and software screens beside a server stack",
-    },
-  },
-  {
-    title: "Web Development",
-    featured: true,
-    card: {
-      href: "/services/web-development",
-      description:
-        "We develop fast, secure, and responsive websites that help businesses attract customers and grow online.",
-      image: assets.serviceWeb,
-      alt: "Desktop monitor showing a website beside a code editor",
     },
   },
   {
     title: "Mobile App Development",
     featured: true,
     card: {
+      href: "/services/web-development",
+      description:
+        "We build powerful, user-friendly mobile apps for seamless digital experiences.",
+      image: assets.serviceWeb,
+      alt: "Desktop monitor showing a website beside a code editor",
+    },
+  },
+  {
+    title: "AI & ML Development",
+    featured: true,
+    card: {
       href: "/services/mobile-app-development",
       description:
-        "We build user-friendly iOS and Android apps that make your services easy to access anywhere.",
+        "We develop intelligent AI solutions that automate workflows and power smarter decisions.",
       image: assets.serviceMobile,
       alt: "Two phones showing a property app with app store icons",
     },
   },
   {
-    title: "AI, Data & Automation",
+    title: "Custom Blockchain Development",
     featured: true,
     card: {
       href: "/services/ai-data-automation",
       description:
-        "We create smart AI solutions that automate tasks, improve decisions, and help businesses save time.",
+        "We build secure custom blockchain solutions and apps for transparent, trusted transactions.",
       image: assets.serviceAi,
       alt: "Laptop showing a data dashboard beside a small robot",
     },
   },
   {
-    title: "Branding & Digital Growth",
+    title: "DevOps & Automation",
     featured: true,
     card: {
       href: "/services/branding-digital-growth",
       description:
-        "We help businesses improve their online visibility through SEO, branding, and digital marketing strategies.",
+        "We automated deployments and infrastructure for reliable, scalable system performance.",
       image: assets.serviceBranding,
       alt: "Laptop and phone showing a brand website with a camera and marketing icons",
     },
   },
   {
-    title: "Cloud, API & DevOps",
+    title: "UI/UX Design",
+    featured: true,
     card: {
       href: "/services/cloud-api-devops",
       description:
-        "We build secure cloud setups, reliable APIs, and automated deployments that keep your systems running smoothly.",
+        "We create intuitive, user-friendly designs for seamless and engaging digital experiences.",
       image: assets.serviceCloud,
       alt: "Glowing cloud linked to API, data and deployment icons above a desk with a server stack",
     },
   },
   {
-    title: "Support & Maintenance",
+    title: "Digital Marketing & SEO",
+    featured: true,
     card: {
       href: "/services/support-maintenance",
       description:
-        "We keep your websites and software secure, up to date, and running smoothly with ongoing support.",
+        "We boost online visibility, attract targeted audiences, and drive measurable digital growth.",
       image: assets.serviceSupport,
       alt: "Interlocking gears linked to tool, performance, security and support icons above a desk",
     },
@@ -119,16 +121,16 @@ export const services: Service[] = [
 type ServiceCard = NonNullable<Service["card"]> & { title: string };
 
 /** Every service with a card (all eight), in order: the /services page's Services section. */
-export const allServiceCards: ServiceCard[] = services.flatMap(({ title, card }) =>
-  card ? [{ title, ...card }] : [],
+export const allServiceCards: ServiceCard[] = services.flatMap(
+  ({ title, card }) => (card ? [{ title, ...card }] : []),
 );
 
 /**
  * The six featured cards, in order: the Homepage Services section (approved design, exactly six)
  * and the Contact form's Project Type options.
  */
-export const serviceCards: ServiceCard[] = services.flatMap(({ title, featured, card }) =>
-  featured && card ? [{ title, ...card }] : [],
+export const serviceCards: ServiceCard[] = services.flatMap(
+  ({ title, featured, card }) => (featured && card ? [{ title, ...card }] : []),
 );
 
 /**
@@ -136,11 +138,15 @@ export const serviceCards: ServiceCard[] = services.flatMap(({ title, featured, 
  * `action` is the Homepage button; /services, which already shows every service, uses `pageAction`.
  */
 export const servicesSection = {
-  eyebrow: "Our Services",
+  eyebrow: "All Services",
   /** The first line is ink; the second line ends in the red `accent`. */
-  heading: { first: "From First Idea to", second: "Scalable", accent: "Digital Product" },
+  heading: {
+    first: "End-to-End Technology",
+    second: "Services for",
+    accent: "Business Success",
+  },
   description:
-    "From design and development to AI and digital growth, we help businesses build better digital products.",
+    "From innovative software to AI-powered solutions, we deliver technology that creates new opportunities.",
   action: { label: "View All Services", href: "/services" },
   pageAction: { label: "Discuss Your Project", href: "/contact#contact-form" },
 };
