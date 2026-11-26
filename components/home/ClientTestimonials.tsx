@@ -6,12 +6,46 @@ import {
   useState,
   type CSSProperties,
   type PointerEvent,
+  type ReactNode,
 } from "react";
+import { RollingNumber } from "@/components/motion/RollingNumber";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { Container } from "@/components/ui/Container";
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { homeClientTestimonials } from "@/lib/content/home";
+
+type StatIcon = (typeof homeClientTestimonials.stats)[number]["icon"];
+
+const statIcons: Record<StatIcon, ReactNode> = {
+  users: (
+    <>
+      <circle cx="9" cy="8" r="3.5" />
+      <path d="M2.5 20c0-3.6 2.9-6.5 6.5-6.5s6.5 2.9 6.5 6.5" />
+      <path d="M15 4.8a3.5 3.5 0 0 1 0 6.4M17.5 13.9c2.4.9 4 3.2 4 6.1" />
+    </>
+  ),
+  building: (
+    <>
+      <path d="M3.5 20.5h17M5.5 20.5V4.5h9v16M14.5 10.5h4v10" />
+      <path d="M8.5 8h3M8.5 11.5h3M8.5 15h3M16.5 14h0M16.5 17h0" />
+    </>
+  ),
+  star: <path d="m12 3.5 2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9L12 3.5Z" />,
+  growth: (
+    <>
+      <path d="M3.5 3.5v17h17" />
+      <path d="m7 15 4-4.5 3 3 5.5-6M15.5 7.5h4v4" />
+    </>
+  ),
+};
+
+const statPadding = [
+  "lg:pl-[clamp(22px,1.979vw,38px)]",
+  "lg:pl-[clamp(23px,2.031vw,39px)]",
+  "lg:pl-[clamp(24px,2.135vw,41px)]",
+  "lg:pl-[clamp(26px,2.292vw,44px)]",
+];
 
 const STAR_PATH =
   "M12 1.6l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.7l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z";
@@ -87,7 +121,7 @@ function ArrowIcon({ direction }: { direction: "prev" | "next" }) {
  * All copy, ratings and client details come from `homeClientTestimonials` in `lib/content/home.ts`.
  */
 export function ClientTestimonials() {
-  const { eyebrow, heading, description, intro, items } =
+  const { eyebrow, heading, description, intro, items, stats } =
     homeClientTestimonials;
   const [visibleCount, setVisibleCount] = useState(3);
   const [index, setIndex] = useState(0);
@@ -280,6 +314,45 @@ export function ClientTestimonials() {
             </div>
           </div>
         </div>
+
+        <ul className="mt-10 grid gap-6 rounded-2xl bg-white px-6 py-7 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4 lg:gap-0 lg:px-0 lg:py-0">
+          {stats.map((stat, statIndex) => (
+            <li
+              key={stat.label}
+              className={`flex items-center gap-[clamp(16px,1.563vw,30px)] lg:h-[clamp(110px,7.813vw,150px)] ${statPadding[statIndex] ?? "lg:pl-8"} ${
+                statIndex > 0
+                  ? "lg:relative lg:before:absolute lg:before:top-1/2 lg:before:left-0 lg:before:h-[60%] lg:before:w-0.5 lg:before:-translate-x-1/2 lg:before:-translate-y-1/2 lg:before:bg-[#e7e0d5]"
+                  : ""
+              }`}
+            >
+              <span
+                aria-hidden="true"
+                className="flex size-14 shrink-0 items-center justify-center rounded-full bg-[#faeddc] text-brand lg:size-[clamp(52px,3.75vw,72px)]"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.75"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="size-8 lg:size-[clamp(28px,1.875vw,36px)]"
+                >
+                  {statIcons[stat.icon]}
+                </svg>
+              </span>
+              <span className="min-w-0">
+                <RollingNumber
+                  value={stat.value}
+                  className="block text-[36px] leading-[1.1] font-semibold text-navy lg:text-[clamp(32px,2.5vw,48px)] lg:leading-[0.85]"
+                />
+                <span className="mt-1 block text-[17px] leading-6 text-ink-muted lg:mt-[clamp(8px,0.833vw,16px)] lg:text-[clamp(15px,1.146vw,22px)]">
+                  {stat.label}
+                </span>
+              </span>
+            </li>
+          ))}
+        </ul>
       </Container>
     </section>
   );

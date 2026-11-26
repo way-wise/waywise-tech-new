@@ -509,4 +509,10 @@ export const homeClientTestimonials = {
       },
     },
   ] satisfies HomeClientTestimonial[],
+  stats: [
+    { value: "100+", label: "Businesses Served", icon: "users" },
+    { value: "6+", label: "Industries", icon: "building" },
+    { value: "98%", label: "Client Satisfaction", icon: "star" },
+    { value: "2x", label: "Avg. Online Growth", icon: "growth" },
+  ] satisfies { value: string; label: string; icon: "users" | "building" | "star" | "growth" }[],
 };
