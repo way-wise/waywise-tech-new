@@ -32,7 +32,7 @@ export function OurWork() {
             </p>
             <h2
               id="our-work-heading"
-              className="mt-1 text-[clamp(26px,7.4vw,48px)] leading-[1.365] font-semibold tracking-[-0.015em] text-[#0d1d44] lg:text-[clamp(34px,2.71vw,52px)]"
+              className="mt-1 text-[clamp(26px,7vw,36px)] leading-[1.365] font-semibold tracking-[-0.015em] text-[#0d1d44] lg:text-[clamp(32px,2.1875vw,42px)]"
             >
               {/* One text node ("Real Projects. "), as before: a separate " " node shifts the red words' sub-pixel rendering. */}
               {`${heading.first} `}

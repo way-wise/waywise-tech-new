@@ -20,7 +20,7 @@ const s = {
   header:
     "grid gap-5 lg:grid-cols-[minmax(0,968fr)_minmax(0,592fr)] lg:items-end lg:gap-0",
   heading:
-    "mt-1 text-[clamp(26px,7.4vw,48px)] leading-[1.154] font-semibold tracking-[-0.015em] text-ink lg:mt-[9px] lg:text-[clamp(34px,2.786vw,53.5px)]",
+    "mt-1 text-[clamp(26px,7vw,36px)] leading-[1.154] font-semibold tracking-[-0.015em] text-ink lg:mt-[9px] lg:text-[clamp(32px,2.1875vw,42px)]",
   button: "mt-4 h-12 px-6 text-[18px]",
   list: "mt-8 grid gap-5 md:grid-cols-2 lg:mt-[39.5px] lg:grid-cols-4 lg:gap-y-[25px] xl:gap-x-10",
   // 8px, measured from the reference's anti-aliased corners. The card clips the image (overflow-hidden),

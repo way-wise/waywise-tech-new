@@ -39,7 +39,7 @@ const layouts = {
     section:
       "overflow-hidden bg-[#d0d0c8] pt-12 pb-12 md:pt-16 md:pb-16 lg:pt-[59px] lg:pb-[60px]",
     heading:
-      "mt-1 text-[clamp(26px,7.4vw,48px)] leading-[1.154] font-semibold tracking-[-0.015em] text-black lg:text-[clamp(34px,2.71vw,52px)]",
+      "mt-1 text-[clamp(26px,7vw,36px)] leading-[1.154] font-semibold tracking-[-0.015em] text-black lg:text-[clamp(32px,2.1875vw,42px)]",
     intro:
       "text-[18px] leading-[1.45] text-ink max-w-[28em] max-[1599px]:text-pretty lg:pt-[5px] lg:text-[clamp(17px,1.146vw,22px)]",
   },
@@ -47,7 +47,7 @@ const layouts = {
     section:
       "overflow-hidden bg-[#d0d0c8] pt-12 pb-12 md:pt-16 md:pb-16 lg:pt-[84px] lg:pb-[72.95px]",
     heading:
-      "mt-1 text-[clamp(26px,7.4vw,48px)] leading-[1.154] font-semibold tracking-[-0.015em] text-black lg:mt-[7px] lg:text-[clamp(34px,2.786vw,53.5px)] lg:leading-[1.178]",
+      "mt-1 text-[clamp(26px,7vw,36px)] leading-[1.154] font-semibold tracking-[-0.015em] text-black lg:mt-[7px] lg:text-[clamp(32px,2.1875vw,42px)] lg:leading-[1.178]",
     intro:
       "text-[18px] leading-[1.45] text-ink max-w-[28em] max-[1599px]:text-pretty lg:max-w-[25.5em] lg:pt-[7px] lg:text-[clamp(17px,1.146vw,22px)]",
   },
