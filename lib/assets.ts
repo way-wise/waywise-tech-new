@@ -16,7 +16,10 @@ export const assets = {
   serviceCustomSoftware: "/images/services/custom-software-dev.png",
   serviceWeb: "/images/services/web-dev.png",
   serviceMobile: "/images/services/mobile-app-dev.png",
-  serviceAi: "/images/services/ai-automation.png",
+  serviceAi: "/images/services/ai-ml-development.png",
+  serviceBlockchain: "/images/services/blockchain-dev.png",
+  serviceDevops: "/images/services/devops-and-automation.png",
+  serviceDigitalMarketing: "/images/services/digital-marketing-and-seo.png",
   serviceBranding: "/images/services/branding.png",
   // 1619x656 JPEGs with a .png name and square corners (the card's own radius rounds the top).
   serviceCloud: "/images/services/cloud%20api.png", // cloud linked to API, data and CI icons
