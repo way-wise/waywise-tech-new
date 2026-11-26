@@ -63,6 +63,13 @@ Last updated 2026-11-10. Read this before changing anything. Details were verifi
 - **Verified 2026-11-25** (headless Chrome, 1920×942 and 390×844, all 13 main routes including the 404): no pinned section anywhere; sticky elements only in the two card stacks; no horizontal overflow; every page ends exactly at its Footer. `tsc` and `eslint` pass.
 - **Relation to the planned Lenis + Layered Depth work:** that plan builds on the pinned transitions, so it needs revisiting with the owner before it starts.
 
+## Section titles: 42px site-wide (owner, 2026-11-26)
+
+Every section title (`h2`) on every main-site page is **42px at 1920**: `text-[clamp(26px,7vw,36px)] lg:text-[clamp(32px,2.1875vw,42px)]` (27px at 390, 32px from 1024 to about 1460, then up to 42px). This overrides the 52–64px heading sizes quoted in the section notes below.
+- **Where:** `SectionHeading` (for `h2`/`h3`) and the sections that style their own `h2`, each with the same two classes: Services, Mission & Vision, Industries, Our Work, Our Process, FAQ, Recent Projects, Testimonials, Why Choose, Why Choose Us, Portfolio Showcase, About Leadership, Contact Overview, map, form and offices cards, Case Study Overview, Challenges, Tech and Results, the Footer's CTA band and the old `FinalCta`. Line heights stay relative (Portfolio Showcase's fixed 61.7px became `lg:leading-[1.153]`).
+- **Not changed:** every Hero `h1`; the `h1` page titles of `/book` and the 404 (`SectionHeading as="h1"` keeps 26–48 / 34–52px); card titles (`h3`); the Blog Details article headings; the old `SiteFooter` column titles; the landing pages.
+- **Verified** (headless Chrome, 13 routes at 1920×942, 1024×768, 390×844): every visible section `h2` is 42 / 32 / 27.3px, Hero titles unchanged, no horizontal overflow. `tsc` and `eslint` pass. Sections tuned to the 942 frame are now slightly shorter.
+
 ## Phase A: CMS & SEO readiness (owner-approved, 2026-11-14)
 
 Preparation only. No CMS, database, backend, API route, Server Action, package or dynamic route was added, and no existing page, component, content file, title, description or URL was changed.

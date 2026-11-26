@@ -107,7 +107,7 @@ export function PortfolioShowcase() {
           </SectionEyebrow>
           <h2
             id="portfolio-showcase-heading"
-            className="mt-2 text-[clamp(26px,7.4vw,48px)] leading-[1.154] font-semibold tracking-[-0.015em] text-ink lg:mt-[calc(var(--u)*8)] lg:text-[max(34px,calc(var(--u)*53.5))] lg:leading-[calc(var(--u)*61.7)]"
+            className="mt-2 text-[clamp(26px,7vw,36px)] leading-[1.154] font-semibold tracking-[-0.015em] text-ink lg:mt-[calc(var(--u)*8)] lg:text-[clamp(32px,2.1875vw,42px)] lg:leading-[1.153]"
           >
             <MaskLine order={1}>{heading.first} </MaskLine>
             <MaskLine order={2}>

@@ -36,7 +36,7 @@ export function CaseStudyTech() {
             </SectionEyebrow>
             <h2
               id="case-study-tech-heading"
-              className="mt-2 text-[clamp(30px,8.4vw,56px)] leading-[1.09] font-semibold tracking-[-0.007em] text-navy lg:mt-[calc(var(--u)*10)] lg:text-[max(40px,calc(var(--u)*52.5))] lg:leading-[1.181]"
+              className="mt-2 text-[clamp(26px,7vw,36px)] leading-[1.09] font-semibold tracking-[-0.007em] text-navy lg:mt-[calc(var(--u)*10)] lg:text-[clamp(32px,2.1875vw,42px)] lg:leading-[1.181]"
             >
               <MaskLine order={1}>{heading.first} </MaskLine>
               <MaskLine order={2} className="text-brand">

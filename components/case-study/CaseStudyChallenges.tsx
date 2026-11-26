@@ -36,7 +36,7 @@ const unit = "[--u:0.8px] md:[--u:0.9px] xl:[--u:clamp(0.6667px,0.05208vw,1px)]"
 
 // Section heading: 53.5px semibold with 62px line spacing (942 frame, 2026-11-17, Frame 2147239210.png).
 const heading =
-  "text-[clamp(26px,7.4vw,48px)] leading-[1.1538] font-semibold tracking-[-0.015em] lg:text-[max(34px,calc(var(--u)*53.5))] lg:leading-[1.159]";
+  "text-[clamp(26px,7vw,36px)] leading-[1.1538] font-semibold tracking-[-0.015em] lg:text-[clamp(32px,2.1875vw,42px)] lg:leading-[1.159]";
 // Card headings: 45px on 54px lines, as drawn.
 const cardHeading =
   "text-[clamp(26px,7.4vw,44px)] leading-[1.2] font-semibold tracking-[-0.015em] lg:text-[max(30px,calc(var(--u)*45))]";

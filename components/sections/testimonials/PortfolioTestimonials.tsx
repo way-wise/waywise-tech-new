@@ -48,7 +48,7 @@ export function PortfolioTestimonials() {
             </SectionEyebrow>
             <h2
               id="portfolio-testimonials-heading"
-              className="mt-2 text-[clamp(26px,7.4vw,48px)] leading-[1.173] font-semibold tracking-[-0.015em] text-ink lg:mt-[calc(var(--u)*7)] lg:text-[max(34px,calc(var(--u)*52))]"
+              className="mt-2 text-[clamp(26px,7vw,36px)] leading-[1.173] font-semibold tracking-[-0.015em] text-ink lg:mt-[calc(var(--u)*7)] lg:text-[clamp(32px,2.1875vw,42px)]"
             >
               <MaskLine order={1}>{heading.first} </MaskLine>
               <MaskLine order={2} className="text-brand">
