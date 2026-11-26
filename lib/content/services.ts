@@ -29,36 +29,25 @@ export type Service = {
  */
 export const services: Service[] = [
   {
-    title: "UI/UX & Product Design",
-    featured: true,
-    card: {
-      href: "/services/ui-ux-product-design",
-      description:
-        "We create clean, modern, and easy-to-use designs that help businesses deliver better digital experiences.",
-      image: assets.serviceUiUx,
-      alt: "Tablet and desktop monitor showing interface designs",
-    },
-  },
-  {
     title: "Custom Software Development",
     featured: true,
     card: {
       href: "/services/custom-software-development",
       description:
-        "We build custom software that simplifies daily work, improves efficiency, and supports your business growth.",
+        "Custom software solutions that simplify workflows, improve efficiency, and support growth.",
       image: assets.serviceCustomSoftware,
-      alt: "Monitor, laptop and phone showing code and software screens beside a server stack",
+      alt: "Developer working on custom software and analytics dashboard",
     },
   },
   {
-    title: "Web Development",
+    title: "Web Design & Development",
     featured: true,
     card: {
       href: "/services/web-development",
       description:
-        "We develop fast, secure, and responsive websites that help businesses attract customers and grow online.",
+        "Create modern, responsive, high-performing websites that strengthen your digital presence.",
       image: assets.serviceWeb,
-      alt: "Desktop monitor showing a website beside a code editor",
+      alt: "Desktop monitor displaying a modern responsive website",
     },
   },
   {
@@ -67,51 +56,64 @@ export const services: Service[] = [
     card: {
       href: "/services/mobile-app-development",
       description:
-        "We build user-friendly iOS and Android apps that make your services easy to access anywhere.",
+        "Create modern, responsive, high-performing websites that strengthen your digital presence.",
       image: assets.serviceMobile,
-      alt: "Two phones showing a property app with app store icons",
+      alt: "Person testing a mobile app alongside a laptop",
     },
   },
   {
-    title: "AI, Data & Automation",
+    title: "AI & ML Development",
     featured: true,
     card: {
       href: "/services/ai-data-automation",
       description:
-        "We create smart AI solutions that automate tasks, improve decisions, and help businesses save time.",
+        "Intelligent AI solutions that automate tasks, analyse data, and enable  smarter decisions.",
       image: assets.serviceAi,
-      alt: "Laptop showing a data dashboard beside a small robot",
+      alt: "AI neural head with digital data interfaces",
     },
   },
   {
-    title: "Branding & Digital Growth",
+    title: "Custom Blockchain Development",
+    featured: true,
+    card: {
+      href: "#",
+      description:
+        "We build secure custom blockchain solutions and apps for transparent, trusted transactions.",
+      image: assets.serviceBlockchain,
+      alt: "Team collaborating around a table with blockchain network nodes",
+    },
+  },
+  {
+    title: "DevOps & Automation",
+    featured: true,
+    card: {
+      href: "/services/cloud-api-devops",
+      description:
+        "Automated deployment and infrastructure solutions that improve reliability, scalable system performance.",
+      image: assets.serviceDevops,
+      alt: "Engineer working at multi-monitor DevOps dashboard",
+    },
+  },
+  {
+    title: "UI/UX Design",
+    featured: true,
+    card: {
+      href: "/services/ui-ux-product-design",
+      description:
+        "Creating intuitive designs that deliver seamless, and engaging digital experiences.",
+      image: assets.serviceUiUx,
+      alt: "Designer working on UI/UX layouts at dual monitors",
+    },
+  },
+  {
+    title: "Digital Marketing & SEO",
     featured: true,
     card: {
       href: "/services/branding-digital-growth",
       description:
-        "We help businesses improve their online visibility through SEO, branding, and digital marketing strategies.",
-      image: assets.serviceBranding,
-      alt: "Laptop and phone showing a brand website with a camera and marketing icons",
-    },
-  },
-  {
-    title: "Cloud, API & DevOps",
-    card: {
-      href: "/services/cloud-api-devops",
-      description:
-        "We build secure cloud setups, reliable APIs, and automated deployments that keep your systems running smoothly.",
-      image: assets.serviceCloud,
-      alt: "Glowing cloud linked to API, data and deployment icons above a desk with a server stack",
-    },
-  },
-  {
-    title: "Support & Maintenance",
-    card: {
-      href: "/services/support-maintenance",
-      description:
-        "We keep your websites and software secure, up to date, and running smoothly with ongoing support.",
-      image: assets.serviceSupport,
-      alt: "Interlocking gears linked to tool, performance, security and support icons above a desk",
+        "We boost online visibility, attract targeted audiences, and drive measurable digital growth.",
+      image: assets.serviceDigitalMarketing,
+      alt: "Marketing team reviewing analytics and SEO performance on laptops",
     },
   },
 ];
@@ -119,16 +121,16 @@ export const services: Service[] = [
 type ServiceCard = NonNullable<Service["card"]> & { title: string };
 
 /** Every service with a card (all eight), in order: the /services page's Services section. */
-export const allServiceCards: ServiceCard[] = services.flatMap(({ title, card }) =>
-  card ? [{ title, ...card }] : [],
+export const allServiceCards: ServiceCard[] = services.flatMap(
+  ({ title, card }) => (card ? [{ title, ...card }] : []),
 );
 
 /**
  * The six featured cards, in order: the Homepage Services section (approved design, exactly six)
  * and the Contact form's Project Type options.
  */
-export const serviceCards: ServiceCard[] = services.flatMap(({ title, featured, card }) =>
-  featured && card ? [{ title, ...card }] : [],
+export const serviceCards: ServiceCard[] = services.flatMap(
+  ({ title, featured, card }) => (featured && card ? [{ title, ...card }] : []),
 );
 
 /**
@@ -136,11 +138,15 @@ export const serviceCards: ServiceCard[] = services.flatMap(({ title, featured, 
  * `action` is the Homepage button; /services, which already shows every service, uses `pageAction`.
  */
 export const servicesSection = {
-  eyebrow: "Our Services",
+  eyebrow: "All Services",
   /** The first line is ink; the second line ends in the red `accent`. */
-  heading: { first: "From First Idea to", second: "Scalable", accent: "Digital Product" },
+  heading: {
+    first: "End-to-End Technology",
+    second: "Services for",
+    accent: "Business Success",
+  },
   description:
-    "From design and development to AI and digital growth, we help businesses build better digital products.",
+    "From innovative software to AI-powered solutions, we deliver technology that creates new opportunities.",
   action: { label: "View All Services", href: "/services" },
   pageAction: { label: "Discuss Your Project", href: "/contact#contact-form" },
 };
