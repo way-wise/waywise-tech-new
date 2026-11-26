@@ -8,6 +8,8 @@ import {
   type PointerEvent,
   type ReactNode,
 } from "react";
+import { Reveal } from "@/components/motion/Reveal";
+import { revealOrder } from "@/components/motion/revealOrder";
 import { RollingNumber } from "@/components/motion/RollingNumber";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { Container } from "@/components/ui/Container";
@@ -205,29 +207,30 @@ export function ClientTestimonials() {
       aria-labelledby="client-testimonials-heading"
       className="relative bg-[#FAF5F1]"
     >
-      <Container className="py-16 md:py-20 lg:py-24">
-        <div className="text-center">
-          <SectionEyebrow
-            size="lg"
-            className="justify-center"
-            tracking="0.078em"
-          >
-            {eyebrow}
-          </SectionEyebrow>
-          <SectionHeading
-            id="client-testimonials-heading"
-            tone="navy"
-            className="mt-3"
-          >
-            {heading.first} <span className="text-brand">{heading.accent}</span>
-          </SectionHeading>
-          <p className="mx-auto mt-3 max-w-2xl text-[18px] leading-[1.45] text-ink-muted lg:text-[clamp(17px,1.146vw,22px)]">
-            {description}
-          </p>
-        </div>
+      <Reveal each>
+        <Container className="py-16 md:py-20 lg:py-24">
+          <div className="ww-rise text-center">
+            <SectionEyebrow
+              size="lg"
+              className="justify-center"
+              tracking="0.078em"
+            >
+              {eyebrow}
+            </SectionEyebrow>
+            <SectionHeading
+              id="client-testimonials-heading"
+              tone="navy"
+              className="mt-3"
+            >
+              {heading.first} <span className="text-brand">{heading.accent}</span>
+            </SectionHeading>
+            <p className="mx-auto mt-3 max-w-2xl text-[18px] leading-[1.45] text-ink-muted lg:text-[clamp(17px,1.146vw,22px)]">
+              {description}
+            </p>
+          </div>
 
-        <div className="mt-12 grid gap-8 lg:mt-16 lg:grid-cols-[260px_minmax(0,1fr)] lg:items-center lg:gap-12 xl:grid-cols-[290px_minmax(0,1fr)] xl:gap-14">
-          <div>
+          <div className="mt-12 grid gap-8 lg:mt-16 lg:grid-cols-[260px_minmax(0,1fr)] lg:items-center lg:gap-12 xl:grid-cols-[290px_minmax(0,1fr)] xl:gap-14">
+            <div style={revealOrder(1)} className="ww-rise">
             <QuoteMark />
             <h3 className="mt-5 text-[24px] leading-tight font-semibold tracking-[-0.015em] text-navy lg:text-[clamp(22px,1.667vw,32px)]">
               {intro.heading}
@@ -263,7 +266,8 @@ export function ClientTestimonials() {
             onPointerMove={handlePointerMove}
             onPointerUp={finishDrag}
             onPointerCancel={finishDrag}
-            className="cursor-grab touch-pan-y overflow-hidden select-none active:cursor-grabbing"
+            style={revealOrder(2)}
+            className="ww-rise cursor-grab touch-pan-y overflow-hidden select-none active:cursor-grabbing"
           >
             <div
               style={trackStyle}
@@ -315,7 +319,10 @@ export function ClientTestimonials() {
           </div>
         </div>
 
-        <ul className="mt-10 grid gap-6 rounded-2xl bg-white px-6 py-7 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4 lg:gap-0 lg:px-0 lg:py-0">
+        <ul
+          style={revealOrder(3)}
+          className="ww-rise mt-10 grid gap-6 rounded-2xl bg-white px-6 py-7 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4 lg:gap-0 lg:px-0 lg:py-0"
+        >
           {stats.map((stat, statIndex) => (
             <li
               key={stat.label}
@@ -354,6 +361,7 @@ export function ClientTestimonials() {
           ))}
         </ul>
       </Container>
+      </Reveal>
     </section>
   );
 }

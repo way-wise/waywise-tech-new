@@ -32,88 +32,88 @@ export const services: Service[] = [
     title: "Custom Software Development",
     featured: true,
     card: {
-      href: "/services/ui-ux-product-design",
+      href: "/services/custom-software-development",
       description:
-        "We build custom software to simplify workflows, boost efficiency, and scale your business.",
-      image: assets.serviceUiUx,
-      alt: "Tablet and desktop monitor showing interface designs",
+        "Custom software solutions that simplify workflows, improve efficiency, and support growth.",
+      image: assets.serviceCustomSoftware,
+      alt: "Developer working on custom software and analytics dashboard",
     },
   },
   {
     title: "Web Design & Development",
     featured: true,
     card: {
-      href: "/services/custom-software-development",
+      href: "/services/web-development",
       description:
-        "We create modern, responsive, high-performing websites that strengthen your online presence.",
-      image: assets.serviceCustomSoftware,
-      alt: "Monitor, laptop and phone showing code and software screens beside a server stack",
+        "Create modern, responsive, high-performing websites that strengthen your digital presence.",
+      image: assets.serviceWeb,
+      alt: "Desktop monitor displaying a modern responsive website",
     },
   },
   {
     title: "Mobile App Development",
     featured: true,
     card: {
-      href: "/services/web-development",
+      href: "/services/mobile-app-development",
       description:
-        "We build powerful, user-friendly mobile apps for seamless digital experiences.",
-      image: assets.serviceWeb,
-      alt: "Desktop monitor showing a website beside a code editor",
+        "Create modern, responsive, high-performing websites that strengthen your digital presence.",
+      image: assets.serviceMobile,
+      alt: "Person testing a mobile app alongside a laptop",
     },
   },
   {
     title: "AI & ML Development",
     featured: true,
     card: {
-      href: "/services/mobile-app-development",
+      href: "/services/ai-data-automation",
       description:
         "Intelligent AI solutions that automate tasks, analyse data, and enable  smarter decisions.",
-      image: assets.serviceMobile,
-      alt: "Two phones showing a property app with app store icons",
+      image: assets.serviceAi,
+      alt: "AI neural head with digital data interfaces",
     },
   },
   {
     title: "Custom Blockchain Development",
     featured: true,
     card: {
-      href: "/services/ai-data-automation",
+      href: "#",
       description:
         "We build secure custom blockchain solutions and apps for transparent, trusted transactions.",
-      image: assets.serviceAi,
-      alt: "Laptop showing a data dashboard beside a small robot",
+      image: assets.serviceBlockchain,
+      alt: "Team collaborating around a table with blockchain network nodes",
     },
   },
   {
     title: "DevOps & Automation",
     featured: true,
     card: {
-      href: "/services/branding-digital-growth",
+      href: "/services/cloud-api-devops",
       description:
-        "We automated deployments and infrastructure for reliable, scalable system performance.",
-      image: assets.serviceBranding,
-      alt: "Laptop and phone showing a brand website with a camera and marketing icons",
+        "Automated deployment and infrastructure solutions that improve reliability, scalable system performance.",
+      image: assets.serviceDevops,
+      alt: "Engineer working at multi-monitor DevOps dashboard",
     },
   },
   {
     title: "UI/UX Design",
     featured: true,
     card: {
-      href: "/services/cloud-api-devops",
+      href: "/services/ui-ux-product-design",
       description:
-        "We create intuitive, user-friendly designs for seamless and engaging digital experiences.",
-      image: assets.serviceCloud,
-      alt: "Glowing cloud linked to API, data and deployment icons above a desk with a server stack",
+        "Creating intuitive designs that deliver seamless, and engaging digital experiences.",
+      image: assets.serviceUiUx,
+      alt: "Designer working on UI/UX layouts at dual monitors",
     },
   },
   {
     title: "Digital Marketing & SEO",
     featured: true,
     card: {
-      href: "/services/support-maintenance",
+      href: "/services/branding-digital-growth",
       description:
         "We boost online visibility, attract targeted audiences, and drive measurable digital growth.",
-      image: assets.serviceSupport,
-      alt: "Interlocking gears linked to tool, performance, security and support icons above a desk",
+      image: assets.serviceDigitalMarketing,
+      alt: "Marketing team reviewing analytics and SEO performance on laptops",
     },
   },
 ];
