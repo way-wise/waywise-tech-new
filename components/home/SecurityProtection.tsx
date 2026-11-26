@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
 import { revealOrder } from "@/components/motion/revealOrder";
-import { AssetImage } from "@/components/ui/AssetImage";
 import { Container } from "@/components/ui/Container";
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -46,77 +45,91 @@ export function SecurityProtection() {
     <section
       id="security-protection"
       aria-labelledby="security-protection-heading"
-      className="relative overflow-hidden bg-[#f5efe8]"
+      className="relative overflow-hidden bg-[#f8ece5]"
     >
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <AssetImage
-          src={assets.securityDataProtectionBg}
-          alt=""
-          sizes="100vw"
-          className="object-cover object-right"
-        />
-        {/* Soft left scrim on smaller screens so cards stay crisp over the background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#f5efe8]/90 via-[#f5efe8]/70 to-transparent lg:from-[#f5efe8]/45 lg:via-transparent" />
-      </div>
-
       <Reveal each>
-        <Container className="relative py-16 md:py-20 lg:py-16 xl:py-20">
-          <div className="max-w-3xl lg:max-w-[58%] xl:max-w-[920px]">
-            <div className="ww-rise">
-              <SectionEyebrow size="lg" tracking="0.078em">
-                {eyebrow}
-              </SectionEyebrow>
-              <SectionHeading
-                id="security-protection-heading"
-                tone="navy"
-                className="mt-2"
-              >
-                {heading.first}{" "}
-                <span className="text-brand">{heading.accent}</span>
-              </SectionHeading>
-              <p className="mt-4 max-w-2xl text-[18px] leading-[1.45] text-[#626262] lg:text-[clamp(17px,1.146vw,22px)]">
-                {description}
-              </p>
-            </div>
+        <div className="relative">
+          <Container className="py-16 md:py-20 lg:py-20 xl:py-24">
+            <div className="lg:max-w-[54%] xl:max-w-[880px]">
+              <div className="ww-rise">
+                <SectionEyebrow size="lg" tracking="0.078em">
+                  {eyebrow}
+                </SectionEyebrow>
+                <SectionHeading
+                  id="security-protection-heading"
+                  tone="navy"
+                  className="mt-2"
+                >
+                  {heading.first}{" "}
+                  <span className="text-brand">{heading.accent}</span>
+                </SectionHeading>
+                <p className="mt-4 max-w-2xl text-[18px] leading-[1.45] text-[#626262] lg:text-[clamp(17px,1.146vw,22px)]">
+                  {description}
+                </p>
+              </div>
 
-            <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:mt-10 xl:grid-cols-3 xl:gap-5">
-              {cards.map((card, index) => {
-                const { badge, src } = iconStyles[card.icon];
+              <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:mt-10 xl:grid-cols-3 xl:gap-5">
+                {cards.map((card, index) => {
+                  const { badge, src } = iconStyles[card.icon];
 
-                return (
-                  <li
-                    key={card.title}
-                    style={revealOrder(index % 3)}
-                    className="ww-rise"
-                  >
-                  <article className="flex h-full items-center gap-4 rounded-2xl border border-black/6 bg-white/95 p-5 shadow-[0_2px_10px_rgba(13,29,68,0.04)] backdrop-blur-[2px] transition-[translate,box-shadow,border-color] duration-300 ease-out hover:border-[#D71920]/30 hover:shadow-[0_8px_20px_rgba(35,31,32,0.1)] motion-safe:hover:-translate-y-1 sm:p-6">
-                    <span
-                      aria-hidden="true"
-                      className={`flex size-14 shrink-0 items-center justify-center rounded-full sm:size-[60px] ${badge}`}
+                  return (
+                    <li
+                      key={card.title}
+                      style={revealOrder(index % 3)}
+                      className="ww-rise"
                     >
-                      <Image
-                        src={src}
-                        alt=""
-                        width={32}
-                        height={32}
-                        className="size-7 object-contain sm:size-8"
-                      />
-                    </span>
-                    <div className="min-w-0">
-                      <h3 className="text-[18px] leading-[24px] font-semibold text-navy xl:text-[20px] xl:leading-[26px]">
-                        {card.title}
-                      </h3>
-                      <p className="mt-1 text-[15px] leading-[21px] tracking-[0.02em] text-[#626262] lg:text-[clamp(14px,0.833vw,16px)]">
-                        {card.description}
-                      </p>
-                    </div>
-                  </article>
-                </li>
-              );
-              })}
-            </ul>
+                      <article className="flex h-full items-center gap-4 rounded-2xl border border-black/6 bg-white p-5 shadow-[0_2px_10px_rgba(13,29,68,0.04)] transition-[translate,box-shadow,border-color] duration-300 ease-out hover:border-[#D71920]/30 hover:shadow-[0_8px_20px_rgba(35,31,32,0.1)] motion-safe:hover:-translate-y-1 sm:p-6">
+                        <span
+                          aria-hidden="true"
+                          className={`flex size-14 shrink-0 items-center justify-center rounded-full sm:size-[60px] ${badge}`}
+                        >
+                          <Image
+                            src={src}
+                            alt=""
+                            width={32}
+                            height={32}
+                            className="size-7 object-contain sm:size-8"
+                          />
+                        </span>
+                        <div className="min-w-0">
+                          <h3 className="text-[16px] leading-[22px] font-semibold text-navy xl:text-[17px] xl:leading-[23px]">
+                            {card.title}
+                          </h3>
+                          <p className="mt-1 text-[13.5px] leading-[19px] tracking-[0.015em] text-[#626262] lg:text-[14px] lg:leading-[20px]">
+                            {card.description}
+                          </p>
+                        </div>
+                      </article>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </Container>
+
+          <div
+            style={revealOrder(2)}
+            className="ww-rise px-5 pb-16 md:px-8 md:pb-20 lg:pointer-events-none lg:absolute lg:inset-y-0 lg:right-0 lg:flex lg:w-[44%] lg:items-center lg:justify-end lg:p-0 xl:w-[45%]"
+          >
+            <div className="mx-auto w-full max-w-160 lg:flex lg:h-full lg:max-w-none lg:justify-end">
+              <Image
+                src={assets.securityDataProtectionLaptop}
+                alt="Laptop displaying security shield surrounded by data protection icons"
+                width={900}
+                height={700}
+                style={{
+                  maskImage:
+                    "linear-gradient(to right, transparent 0%, #000 7%, #000 96%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%)",
+                  maskComposite: "intersect",
+                  WebkitMaskImage:
+                    "linear-gradient(to right, transparent 0%, #000 7%, #000 96%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%)",
+                  WebkitMaskComposite: "source-in",
+                }}
+                className="h-auto w-full object-contain lg:h-full lg:w-auto lg:max-w-full"
+              />
+            </div>
           </div>
-        </Container>
+        </div>
       </Reveal>
     </section>
   );

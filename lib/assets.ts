@@ -229,6 +229,7 @@ export const assets = {
   workProcessProject: "/images/icons/stack-overflow-line.png",
   workProcessWayWise: "/images/icons/way-wise-icon.png",
   securityDataProtectionBg: "/images/security-data-protection-bg.png",
+  securityDataProtectionLaptop: "/images/security-and-data-protection.png",
   securityLock: "/images/icons/security-data-protection/Vector.png",
   securityAccess:
     "/images/icons/security-data-protection/coolicons_users-group-sharp.png",
