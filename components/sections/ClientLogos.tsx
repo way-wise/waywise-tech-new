@@ -1,5 +1,4 @@
 import type { CSSProperties } from "react";
-import Image from "next/image";
 import { clientLogos } from "@/lib/assets";
 import { ClientLogosTiming } from "./ClientLogosTiming";
 import "./client-logos.css";
@@ -24,14 +23,21 @@ const sizes = [
  * exactly this distance, so its duration is distance / SPEED.
  */
 function loopDistance(height: number, gap: number) {
-  return clientLogos.reduce((sum, logo) => sum + Math.floor(((logo.width * height) / logo.height) * 64) / 64 + gap, 0);
+  return clientLogos.reduce(
+    (sum, logo) =>
+      sum + Math.floor(((logo.width * height) / logo.height) * 64) / 64 + gap,
+    0,
+  );
 }
 
 const stripVars = Object.fromEntries(
   sizes.flatMap(({ height, gap }, index) => [
     [`--cl-h${index}`, `${height}px`],
     [`--cl-gap${index}`, `${gap}px`],
-    [`--cl-duration${index}`, `${(loopDistance(height, gap) / SPEED).toFixed(4)}s`],
+    [
+      `--cl-duration${index}`,
+      `${(loopDistance(height, gap) / SPEED).toFixed(4)}s`,
+    ],
   ]),
 ) as CSSProperties;
 
@@ -56,14 +62,19 @@ type LogoSetProps = {
 
 function LogoSet({ duplicate = false }: LogoSetProps) {
   return (
-    <ul className="cl-set flex shrink-0 items-center" aria-hidden={duplicate || undefined}>
+    <ul
+      className="cl-set flex shrink-0 items-center"
+      aria-hidden={duplicate || undefined}
+    >
       {clientLogos.map((logo) => (
         <li key={logo.name} className="cl-logo shrink-0">
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src={logo.src}
             alt={duplicate ? "" : logo.name}
             width={logo.width}
             height={logo.height}
+            decoding="async"
             className="h-(--cl-h) w-auto max-w-none"
           />
         </li>
@@ -80,7 +91,7 @@ export function ClientLogos({ height = "default" }: ClientLogosProps) {
   return (
     <section aria-label="Our clients" className="bg-white">
       <div
-        className={`cl-strip mx-auto flex h-[88px] w-full max-w-[1600px] items-center px-5 md:h-[100px] md:px-8 ${heights[height]} xl:px-5`}
+        className={`cl-strip mx-auto flex h-22 w-full max-w-[1600px] items-center px-5 md:h-25 md:px-8 ${heights[height]} xl:px-5`}
         style={stripVars}
       >
         <ClientLogosTiming />

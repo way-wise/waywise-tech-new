@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { Reveal } from "@/components/motion/Reveal";
+import { revealOrder } from "@/components/motion/revealOrder";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { serviceCards, servicesSection } from "@/lib/content/services";
@@ -28,7 +30,7 @@ const s = {
   // whatever corners the image file has.
   card: "rounded-[8px]",
   link: "after:rounded-[8px]",
-  image: "aspect-[493/192]",
+  image: "aspect-[493/230]",
   body: "px-6 pt-[17px] pb-[18px]",
   title: "text-[20px] leading-[26px] font-semibold text-ink",
   text: "mt-[5px] text-[16px] leading-[22px] tracking-[0.025em] text-[#626262] max-[1599px]:text-pretty lg:text-[clamp(15px,0.885vw,17px)]",
@@ -47,42 +49,47 @@ export function Services({
 }: ServicesProps) {
   return (
     <section aria-labelledby="services-heading" className="bg-[#eae2dd]">
-      <div className={s.frame}>
-        <div className={s.header}>
-          <div>
-            <p className="flex items-center gap-2 text-[16px] leading-5 font-semibold tracking-[0.078em] text-brand uppercase lg:text-[18px]">
-              <span
-                className="h-[3px] w-[22px] shrink-0 bg-brand"
-                aria-hidden="true"
-              />
-              {eyebrow}
-            </p>
-            <h2 id="services-heading" className={s.heading}>
-              {heading.first}
-              <br />
-              {/* One text node ("Scalable "), as before: a separate " " node shifts the red words' sub-pixel rendering. */}
-              {`${heading.second} `}
-              <span className="text-brand">{heading.accent}</span>
-            </h2>
+      <Reveal each>
+        <div className={s.frame}>
+          <div className={s.header}>
+            <div className="ww-rise">
+              <p className="flex items-center gap-2 text-[16px] leading-5 font-semibold tracking-[0.078em] text-brand uppercase lg:text-[18px]">
+                <span
+                  className="h-[3px] w-[22px] shrink-0 bg-brand"
+                  aria-hidden="true"
+                />
+                {eyebrow}
+              </p>
+              <h2 id="services-heading" className={s.heading}>
+                {heading.first}
+                <br />
+                {/* One text node ("Scalable "), as before: a separate " " node shifts the red words' sub-pixel rendering. */}
+                {`${heading.second} `}
+                <span className="text-brand">{heading.accent}</span>
+              </h2>
+            </div>
+
+            <div style={revealOrder(1)} className="ww-rise">
+              <p className="text-[18px] leading-[1.45] text-[#626262] max-[1599px]:text-pretty lg:text-[clamp(17px,1.146vw,22px)]">
+                {description}
+              </p>
+              <ButtonLink
+                href={action.href}
+                variant="outline"
+                className={s.button}
+              >
+                {action.label}
+              </ButtonLink>
+            </div>
           </div>
 
-          <div>
-            <p className="text-[18px] leading-[1.45] text-[#626262] max-[1599px]:text-pretty lg:text-[clamp(17px,1.146vw,22px)]">
-              {description}
-            </p>
-            <ButtonLink
-              href={action.href}
-              variant="outline"
-              className={s.button}
-            >
-              {action.label}
-            </ButtonLink>
-          </div>
-        </div>
-
-        <ul className={s.list}>
-          {services.map((service) => (
-            <li key={service.title}>
+          <ul className={s.list}>
+            {services.map((service, index) => (
+              <li
+                key={service.title}
+                style={revealOrder(index % 4)}
+                className="ww-rise"
+              >
               <article
                 className={`relative flex h-full flex-col overflow-hidden ${s.card} shadow-[0_1px_1.5px_rgba(0,0,0,0.18)] transition-[translate,box-shadow] duration-300 ease-out focus-within:shadow-[0_8px_20px_rgba(35,31,32,0.1)] hover:shadow-[0_8px_20px_rgba(35,31,32,0.1)] motion-safe:focus-within:-translate-y-1 motion-safe:hover:-translate-y-1`}
               >
@@ -116,8 +123,9 @@ export function Services({
               </article>
             </li>
           ))}
-        </ul>
-      </div>
+          </ul>
+        </div>
+      </Reveal>
     </section>
   );
 }

@@ -19,7 +19,11 @@ export const contactHero = {
     "Two business people in suits shaking hands over a desk with documents, a pen and a laptop, a city skyline behind",
 };
 
-export type ContactOverviewIcon = "lightbulb" | "team" | "laptop" | "chat-check";
+export type ContactOverviewIcon =
+  | "lightbulb"
+  | "team"
+  | "laptop"
+  | "chat-check";
 
 /**
  * "Client Overview" on the Contact Us page, as written in its reference (Frame 2147239128.png).
@@ -40,19 +44,22 @@ export const contactOverview = {
   channels: [
     {
       title: "Call Us",
-      description: "We design with your users in mind to create meaningful experiences.",
+      description:
+        "We design with your users in mind to create meaningful experiences.",
       icon: "lightbulb",
       tone: "#ecd4ba",
     },
     {
       title: "Email Us",
-      description: "Skilled UI/UX designers with experience across different industries.",
+      description:
+        "Skilled UI/UX designers with experience across different industries.",
       icon: "team",
       tone: "#c0d0fe",
     },
     {
       title: "Live Chat",
-      description: "Clear, modern, and easy to scale for future growth and success.",
+      description:
+        "Clear, modern, and easy to scale for future growth and success.",
       icon: "laptop",
       tone: "#fedcdd",
     },
@@ -62,7 +69,12 @@ export const contactOverview = {
       icon: "chat-check",
       tone: "#cef3e4",
     },
-  ] satisfies { title: string; description: string; icon: ContactOverviewIcon; tone: string }[],
+  ] satisfies {
+    title: string;
+    description: string;
+    icon: ContactOverviewIcon;
+    tone: string;
+  }[],
 };
 
 /**
@@ -101,12 +113,41 @@ export type ContactField = {
 export const contactMessage = {
   eyebrow: "Send Us a Message",
   heading: { first: "Tell Us About", second: "Your Project" },
-  description: "Fill out the form below and our team will get back to you shortly.",
+  description:
+    "Fill out the form below and our team will get back to you shortly.",
   fields: [
-    { name: "name", label: "Full Name", required: true, placeholder: "David Michel", type: "text", autoComplete: "name" },
-    { name: "company", label: "Your Company", required: false, placeholder: "Your Company", type: "text", autoComplete: "organization" },
-    { name: "email", label: "Email Address", required: true, placeholder: "john@company.com", type: "email", autoComplete: "email" },
-    { name: "phone", label: "Phone Number", required: true, placeholder: "+1 201 456 789", type: "tel", autoComplete: "tel" },
+    {
+      name: "name",
+      label: "Full Name",
+      required: true,
+      placeholder: "David Michel",
+      type: "text",
+      autoComplete: "name",
+    },
+    {
+      name: "company",
+      label: "Your Company",
+      required: false,
+      placeholder: "Your Company",
+      type: "text",
+      autoComplete: "organization",
+    },
+    {
+      name: "email",
+      label: "Email Address",
+      required: true,
+      placeholder: "john@company.com",
+      type: "email",
+      autoComplete: "email",
+    },
+    {
+      name: "phone",
+      label: "Phone Number",
+      required: true,
+      placeholder: "+1 201 456 789",
+      type: "tel",
+      autoComplete: "tel",
+    },
     {
       name: "projectType",
       label: "Project Type",
@@ -155,21 +196,38 @@ export const contactOffices = {
       address: "Saddleback Ridge rd, Santa Clarita, California, USA",
       phone: "+1 (310) 528-6170",
       hours: "Mon – Fri: 9 AM – 5 PM",
-      image: { src: assets.contactOfficeLosAngeles, width: 302, height: 300, alt: "Downtown Los Angeles skyscrapers and freeways" },
+      image: {
+        src: assets.contactOfficeLosAngeles,
+        width: 302,
+        height: 300,
+        alt: "Downtown Los Angeles skyscrapers and freeways",
+      },
     },
     {
       name: "Dubai Office",
-      address: "Arzoo Building, 3rd floor (306-14), 171 Al Nahda St, Al Qusais 2, Dubai",
+      address:
+        "Arzoo Building, 3rd floor (306-14), 171 Al Nahda St, Al Qusais 2, Dubai",
       phone: "+971 52 144-2416",
       hours: "Mon – Fri: 9 AM – 5 PM",
-      image: { src: assets.contactOfficeDubai, width: 300, height: 300, alt: "Dubai skyline with the Burj Khalifa" },
+      image: {
+        src: assets.contactOfficeDubai,
+        width: 300,
+        height: 300,
+        alt: "Dubai skyline with the Burj Khalifa",
+      },
     },
     {
       name: "Dhaka Office",
-      address: "House: B/148, Road: 22, Mohakhali DOHS, Dhaka, Bangladesh, 1212",
+      address:
+        "House: B/148, Road: 22, Mohakhali DOHS, Dhaka, Bangladesh, 1212",
       phone: "+880 1748-771945",
       hours: "Sun – Thu: 9 AM – 5 PM",
-      image: { src: assets.contactOfficeDhaka, width: 300, height: 300, alt: "Aerial view of Dhaka" },
+      image: {
+        src: assets.contactOfficeDhaka,
+        width: 300,
+        height: 300,
+        alt: "Aerial view of Dhaka",
+      },
     },
   ],
 };
@@ -182,15 +240,30 @@ export const contactOffices = {
  */
 export const finalCta = {
   /** The first line is navy; the whole `second` line is red. */
-  heading: { first: "Have a Project Idea?", second: "Let’s get started" },
+  heading: { first: "Have a Project Idea?", second: "Let's Build It Right." },
   description:
-    "We'll schedule a call to discuss your idea. After discovery sessions, we'll send a proposal, and upon approval, we'll get started.",
-  promises: ["We will respond to you within 24 hrs", "We’ll sign an NDA if requested."],
+    "Let's schedule a call to discuss your ideas. After our discovery sessions, we’ll deliver a tailored proposal for your review and approval.",
+  promises: [
+    "Our senior engineer will respond within 24 hrs.",
+    "We'll be happy to sign an NDA upon request.",
+  ],
   /** Photos are 330x358. Each photo's alt text is the person's name (set in the component). */
   team: [
-    { name: "Firoz Bari", role: "Chairman", photo: { src: assets.ctaChairman, width: 330, height: 358 } },
-    { name: "Seung Lee", role: "CEO", photo: { src: assets.ctaCeo, width: 330, height: 358 } },
-    { name: "Fiona Bari", role: "CFO", photo: { src: assets.ctaCfo, width: 330, height: 358 } },
+    {
+      name: "Firoz Bari",
+      role: "Chairman",
+      photo: { src: assets.ctaChairman, width: 330, height: 358 },
+    },
+    {
+      name: "Seung Lee",
+      role: "CEO",
+      photo: { src: assets.ctaCeo, width: 330, height: 358 },
+    },
+    {
+      name: "Fiona Bari",
+      role: "CFO",
+      photo: { src: assets.ctaCfo, width: 330, height: 358 },
+    },
   ],
   form: {
     /** Two lines, broken where the design breaks them. */
@@ -199,8 +272,18 @@ export const finalCta = {
     /** As in contactMessage: each label is also the input's placeholder and aria-label. */
     fields: [
       { name: "name", label: "Full Name", type: "text", autoComplete: "name" },
-      { name: "phone", label: "Phone Number", type: "tel", autoComplete: "tel" },
-      { name: "email", label: "Email Address", type: "email", autoComplete: "email" },
+      {
+        name: "phone",
+        label: "Phone Number",
+        type: "tel",
+        autoComplete: "tel",
+      },
+      {
+        name: "email",
+        label: "Email Address",
+        type: "email",
+        autoComplete: "email",
+      },
     ],
     detailsLabel: "Project Details",
     submitLabel: "Start Our Free Consultation",

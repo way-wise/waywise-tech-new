@@ -11,17 +11,15 @@ export const assets = {
   // its rounded corners are in the file (transparent). A man smiling at his desk in a wood-panelled
   // office with bookshelves, a portrait, an armchair and a flag. The supplied file name says "Industry Card".
   missionVision: "/images/mission-vision/Industry%20Card.png",
-  // Services cards. The six original files are 987x400 PNGs with rounded top corners in the file.
+  // Services cards.
   serviceUiUx: "/images/services/ui-ux.png",
-
   serviceCustomSoftware: "/images/services/custom-software-dev.png",
   serviceWeb: "/images/services/web-dev.png",
   serviceMobile: "/images/services/mobile-app-dev.png",
-  serviceAi: "/images/services/ai-automation.png",
-  serviceBranding: "/images/services/branding.png",
-  // 1619x656 JPEGs with a .png name and square corners (the card's own radius rounds the top).
-  serviceCloud: "/images/services/cloud%20api.png", // cloud linked to API, data and CI icons
-  serviceSupport: "/images/services/maintenance.png", // gears linked to tools, monitoring, security, 24/7
+  serviceAi: "/images/services/ai-ml-development.png",
+  serviceBlockchain: "/images/services/blockchain-dev.png",
+  serviceDevops: "/images/services/devops-and-automation.png",
+  serviceDigitalMarketing: "/images/services/digital-marketing-and-seo.png",
   industryAttorney: "/images/industries/attorney.png",
   industryRestaurant: "/images/industries/restaurant.png",
   industryRetailers: "/images/industries/retailers.png",
@@ -227,6 +225,21 @@ export const assets = {
   footerLinkedin: "/images/footer/Button.svg",
   footerTwitter: "/images/footer/Button%20(1).svg",
   footerInstagram: "/images/footer/Button%20(2).svg",
+  workProcessYou: "/images/icons/team-line.png",
+  workProcessProject: "/images/icons/stack-overflow-line.png",
+  workProcessWayWise: "/images/icons/way-wise-icon.png",
+  securityDataProtectionBg: "/images/security-data-protection-bg.png",
+  securityLock: "/images/icons/security-data-protection/Vector.png",
+  securityAccess:
+    "/images/icons/security-data-protection/coolicons_users-group-sharp.png",
+  securityServer:
+    "/images/icons/security-data-protection/famicons_server-outline.png",
+  securityBackup:
+    "/images/icons/security-data-protection/hugeicons_database-backup.png",
+  securityNda:
+    "/images/icons/security-data-protection/fluent_document-bullet-list-20-regular.png",
+  securityShield:
+    "/images/icons/security-data-protection/griddy-icons_shield-check.png",
 };
 
 /** Client logos in design order, at their design size. */
